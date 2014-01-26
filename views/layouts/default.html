@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href="/components/foundation/css/foundation.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/components/foundation/js/foundation.min.js"></script>
+  </head>
+  <body>
+  {{#admin}}
+    {{> topnav_admin}}
+  {{/admin}}
+  {{^admin}}
+    {{> topnav}}
+  {{/admin}}
+  	 
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ title }}</p>
+    {{{ yield }}}
+  </body>
+</html>
+

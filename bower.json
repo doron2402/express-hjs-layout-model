@@ -1,0 +1,27 @@
+{
+  "name": "myExpressApp",
+  "version": "0.0.0",
+  "homepage": "https://github.com/doron2402/express-hjs-layout-model",
+  "authors": [
+    "Doron Segal <doron2402@gmail.com>"
+  ],
+  "description": "exprees hogan bower node.js",
+  "main": "app.js",
+  "keywords": [
+    "node.js",
+    "express",
+    "hogan",
+    "bower",
+    "foundation"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ]
+}
