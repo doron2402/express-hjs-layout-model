@@ -26,11 +26,9 @@ module.exports = function (grunt) {
         cssmin: {
             css: {
                 src: [
-                    'public/components/foundation/css/normalize.css',
-                    'public/components/foundation/css/foundation.css',
-                	'public/stylesheets/lib/*.css'
+                    'public/stylesheets/style.css'
                 ],
-                dest: 'public/stylesheets/style.min.css'
+                dest: 'public/stylesheets/mainStyle.min.css'
             }
         },
         uglify: {
@@ -38,26 +36,41 @@ module.exports = function (grunt) {
                 files: {
                     'public/javascripts/main.min.js': ['public/javascripts/main.js']
                 }
-            },
-            css: {
-                files: {
-                  'public/stylesheets/style.min.css': ['public/stylesheets/style.css']  
-                }
             }
         },
         watch: {
     		files: ['public/stylesheets/lib/*', 'public/javascripts/lib/*'],
       		tasks: ['concat', 'cssmin', 'uglify']
-   		}
+   		},
+        nodemon: {
+            dev: {
+                script: 'app.js',
+                options: {
+                  args: ['dev'],
+                  nodeArgs: ['--debug'],
+                  env: {
+                    PORT: '3000'
+                  },
+                  cwd: __dirname,
+                  ignore: ['node_modules/**'],
+                  ext: 'js',
+                  watch: ['server'],
+                  delayTime: 1,
+                  legacyWatch: true
+                }
+            }
+        },
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-nodemon');
+
     
     //Defualt
-    grunt.registerTask('default', ['concat:css', 'cssmin:css', 'concat:js', 'uglify:js']);
+    grunt.registerTask('default', ['concat','cssmin', 'uglify:js','nodemon:dev','watch']);
     //CSS
     grunt.registerTask('css', ['concat:css','cssmin:css']);
     //JS
