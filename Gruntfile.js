@@ -18,7 +18,9 @@ module.exports = function (grunt) {
                     'public/components/lodash/dist/lodash.js',
                     'public/components/fastclick/lib/fastclick.js',
                     'public/components/modernizr/modernizr.js',
-                    'public/components/foundation/foundation.js'
+                    'public/components/foundation/foundation.js',
+                    'public/components/angular/angular.min.js',
+
                 ],
                 dest: 'public/javascripts/main.js'
             }
@@ -70,7 +72,7 @@ module.exports = function (grunt) {
 
     
     //Defualt
-    grunt.registerTask('default', ['concat','cssmin', 'uglify:js','nodemon:dev','watch']);
+    grunt.registerTask('default', ['concat','cssmin','nodemon:dev','watch']);
     //CSS
     grunt.registerTask('css', ['concat:css','cssmin:css']);
     //JS

@@ -42,7 +42,7 @@ app.get('/contact', static_pages.contact);
 app.get('/faq', static_pages.faq);
 app.get('/admin/users', admin.users);
 app.get('/admin/dashboard', admin.dashboard);
-app.get('/admin/', admin.dashboard);
+app.get('/admin', admin.dashboard);
 app.get('/admin/analytics', admin.analytics);
 app.get('/admin/users', admin.users);
 app.get('/users', user.list);

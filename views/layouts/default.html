@@ -5,18 +5,18 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/mainStyle.min.css">
   </head>
   <body>
-  {{#admin}}
+    {{#admin}}
     {{> topnav_admin}}
   {{/admin}}
   {{^admin}}
     {{> topnav}}
   {{/admin}}
-  	 
+  <div class="row">
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
-    {{{ yield }}}
-
-    <script type="text/javascript" src="/javascripts/main.min.js"></script>
+    {{{ yield }}}  
+  </div>
+      <script type="text/javascript" src="/javascripts/main.min.js"></script>
   </body>
 </html>
 

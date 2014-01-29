@@ -12,7 +12,10 @@
     "less-middleware": "*",
     "hogan-express": "~0.5.2",
     "bower": "~1.2.8",
-    "nodemon": "~1.0.13"
+    "nodemon": "~1.0.13",
+    "mysql": "~2.0.1",
+    "knex": "~0.5.5",
+    "bookshelf": "~0.6.2"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
