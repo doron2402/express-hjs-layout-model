@@ -10,6 +10,7 @@ var user = require('./routes/user');
 var static_pages = require('./routes/pages');
 var http = require('http');
 var path = require('path');
+var traffic = require('./routes/traffic');
 
 var app = express();
 
@@ -43,6 +44,7 @@ app.get('/admin', admin.dashboard);
 app.get('/admin/analytics', admin.analytics);
 app.get('/admin/users', admin.users);
 app.get('/users', user.list);
+app.post('/traffic/:campignId',traffic.counter);
 
 
 http.createServer(app).listen(app.get('port'), function(){
