@@ -1,0 +1,31 @@
+<div ng-controller="formContactController">
+<form novalidate class="css-form">
+  <div class="row">
+    <div class="large-4 columns">
+      <label>First Name</label>
+      <input type="text" placeholder="large-4.columns"  ng-model="contact.fname" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <label>Last Name</label>
+      <input type="text" placeholder="large-4.columns" ng-model="contact.lname" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <label>Phone</label>
+      <input type="text" placeholder="large-4.columns" ng-model="contact.phone" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-4 columns">
+      <label>Email</label>
+      <input type="text" placeholder="large-4.columns" ng-model="contact.email" required/>
+    </div>
+  </div>
+  <a href="#"  ng-click="update(contact)" class="button [radius round]">Submit</a>
+
+</form>
+</div>
+

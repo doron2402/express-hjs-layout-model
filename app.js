@@ -37,9 +37,6 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/about', static_pages.about);
-app.get('/contact', static_pages.contact);
-app.get('/faq', static_pages.faq);
 app.get('/admin/users', admin.users);
 app.get('/admin/dashboard', admin.dashboard);
 app.get('/admin', admin.dashboard);

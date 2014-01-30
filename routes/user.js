@@ -12,22 +12,12 @@ exports.getUserId = function(req, res){
 
 };
 
-//Signup Regular User
-exports.signUpUser = function(req, res){
+//Register
+exports.registerUser = function(req, res){
 
 };
 
-//FB User
-exports.signUpFacebookUser = function(req, res){
-
-};
-
-//Google User
-exports.signUpFacebookUser = function(req, res){
-
-};
-
-//Twitter User
-exports.signUpTwitterUser = function(req, res){
+//login
+exports.loginUser = function(req, res){
 
 };

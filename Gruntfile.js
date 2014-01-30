@@ -15,14 +15,19 @@ module.exports = function (grunt) {
                     'public/components/jquery/jquery.js',
                     'public/components/jquery-placeholder/jquery.placeholder.js',
                     'public/components/jquery.cookie/jquery.cookie.js',
-                    'public/components/lodash/dist/lodash.js',
-                    'public/components/fastclick/lib/fastclick.js',
-                    'public/components/modernizr/modernizr.js',
                     'public/components/foundation/foundation.js',
-                    'public/components/angular/angular.min.js',
+                    'public/components/angular/angular.js',
 
                 ],
                 dest: 'public/javascripts/main.js'
+            },
+            js_app: {
+                src: [
+                    'public/javascripts/controllers/*',
+                    'public/javascripts/models/*',
+                    'public/javascripts/routes/*'
+                ],
+                dest: 'public/javascripts/app.js'
             }
         },
         cssmin: {
