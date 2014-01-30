@@ -32,6 +32,9 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	 $scope.user = {name: 'me', email: 'me@me.com', lastLogin: '01-23-2014'};
 	});
 
+	myApp.controller('formContactController', function($scope){
+		$scope.user = null;
+	});
 	myApp.config(function($routeProvider) {
 		$routeProvider
 
@@ -56,11 +59,6 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 			//Signup page
 			.when('/signup',{
 			  templateUrl : 'templates/signup.html',
-			  controller : 'signupController'
-			})
-
-			.when('/register',{
-			  templateUrl : 'templates/register.html',
 			  controller : 'signupController'
 			})
 			

@@ -31,3 +31,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	myApp.controller('meController', function($scope){
 	 $scope.user = {name: 'me', email: 'me@me.com', lastLogin: '01-23-2014'};
 	});
+
+	myApp.controller('formContactController', function($scope){
+		$scope.user = null;
+	});
