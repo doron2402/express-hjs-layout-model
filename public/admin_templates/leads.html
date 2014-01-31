@@ -1,0 +1,25 @@
+<div class="jumbotron text-center">
+	<div class="panel panel-default">
+  	<div class="panel-heading">Leads</div>
+  	<div class="panel-body"></div>
+
+  	<table class="table">
+  	<thead>
+  		<tr>
+  			<td>#</td>
+  			<td>Name</td>
+  			<td>Phone</td>
+  			<td>Email</td>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr ng-repeat="lead in leads">
+  			<td>{{ lead.id }}</td>
+  			<td>{{ lead.name }}</td>
+  			<td>{{ lead.phone }}</td>
+  			<td>{{ lead.email }}</td>
+  		</tr>
+  	</tbody>
+  	</table>
+	</div>
+</div>

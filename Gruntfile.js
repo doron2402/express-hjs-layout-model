@@ -28,6 +28,15 @@ module.exports = function (grunt) {
                     'public/javascripts/routes/*'
                 ],
                 dest: 'public/javascripts/app.js'
+            },
+            js_admin: {
+                src: [
+                    'public/secure_app/main.js',
+                    'public/secure_app/controllers/*.js',
+                    'public/secure_app/models/*.js',
+                    'public/secure_app/routes/*.js'
+                ],
+                dest: 'public/javascripts/admin_app.js'
             }
         },
         cssmin: {
