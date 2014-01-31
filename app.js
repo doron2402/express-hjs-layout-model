@@ -35,6 +35,20 @@ app.use(app.router);
 app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.all('*', function(req, res, next){
+	if (!req.get('Origin')) 
+		return next();
+	// use "*" here to accept any origin
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', '*');
+    res.set('Access-Control-Allow-Headers', '*');
+	
+	// res.set('Access-Control-Allow-Max-Age', 3600);
+    if ('OPTIONS' == req.method) 
+    	return res.send(200);
+	next();
+});
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

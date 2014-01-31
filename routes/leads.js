@@ -14,13 +14,16 @@ exports.getAllLeads = function(req, res){
 	return qb.where({campignId: req.params.campignId}).select().then(function(resp,err) {
 		if (err)
 			console.log('err %s',err);
-
 			
-			return res.json(resp);		
+			console.log(resp);
+			res.header("Access-Control-Allow-Origin", "*");
+			res.json(resp);
+
 		});
    }
 
-   return res.json({error: 'Missing arguments'});
+   res.header("Access-Control-Allow-Origin", "*");
+   res.json({error: 'Missing arguments'});
 };
 
 
