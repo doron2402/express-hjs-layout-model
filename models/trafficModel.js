@@ -4,5 +4,4 @@ var TrafficModel = base.Model.extend({
   tableName: 'traffic'
 });
 
-
 exports.TrafficModel = TrafficModel;
