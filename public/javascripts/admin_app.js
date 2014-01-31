@@ -1,5 +1,4 @@
-var adminApp = angular.module('adminApp', ['ngRoute']);
-  
+var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);  
 	// create the controller and inject Angular's $scope
 	adminApp.controller('mainController', function($scope) {
 		// create a message to display in our view
@@ -65,7 +64,7 @@ var adminApp = angular.module('adminApp', ['ngRoute']);
 	
 
 	adminApp.controller('adminLeads',function($scope,$http){
-	  	$http({method: 'POST',
+	  	$http({method: 'GET',
 	    	url: 'http://localhost:3000/lead/all/123'}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
@@ -95,18 +94,12 @@ var adminApp = angular.module('adminApp', ['ngRoute']);
 				controller  : 'mainController'
 			})
 
-			
 	       //After user contact us
 			.when('/contact/thanks', {
 			  templateUrl : 'admin_templates/thanks.html',
 			  controller : 'thanksController'
 			})
 			
-			//Signup page
-			.when('/signup',{
-			  templateUrl : 'admin_templates/signup.html',
-			  controller : 'signupController'
-			})
 			
 			//Login
 			.when('/login', {

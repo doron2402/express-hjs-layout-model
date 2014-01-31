@@ -1,5 +1,10 @@
 <!DOCTYPE html>
+{{#admin}}
+<html ng-app="adminApp">
+{{/admin}}
+{{^admin}}
 <html ng-app="myApp">
+{{/admin}}
   <head>
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/mainStyle.min.css">

@@ -7,18 +7,12 @@
 				controller  : 'mainController'
 			})
 
-			
 	       //After user contact us
 			.when('/contact/thanks', {
 			  templateUrl : 'admin_templates/thanks.html',
 			  controller : 'thanksController'
 			})
 			
-			//Signup page
-			.when('/signup',{
-			  templateUrl : 'admin_templates/signup.html',
-			  controller : 'signupController'
-			})
 			
 			//Login
 			.when('/login', {
