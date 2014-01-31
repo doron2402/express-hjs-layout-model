@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express'),
 	routes = require('./routes'),
 	admin = require('./routes/admin'),
@@ -25,7 +20,7 @@ api.set('port', process.env.API_PORT || 6000);
 api.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -49,8 +44,6 @@ api.use(api.router);
 /* API Calls */
 api.post('/traffic/:campignId',traffic.counter);//Traffic
 api.post('/lead/new/:campignId',leads.newLead);//Lead
-
-
 
 var app = express();
 // all environments
@@ -92,8 +85,8 @@ app.get('/admin/users', admin.users);
 app.get('/users', user.list);
 app.post('/users', user.getList)
 
-app.get('/lead/media/:campignId', leads.getLeadByMedia);
-app.get('/lead/all/:campignId', leads.getAllLeads);
+app.get('/leads/media/:campignId', leads.getLeadByMedia);
+app.get('/leads/all/:campignId', leads.getAllLeads);
 //Create new campign
 app.post('/campign/new',campign.newCampign);
 app.post('/campign/delete',campign.deleteCampign);
