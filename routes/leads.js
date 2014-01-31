@@ -7,8 +7,12 @@
 exports.getAllLeads = function(req, res){
    var Collection = require('../collections/leadsCollection');
    //Todo: Authenticate user and user.type
+   console.log(req);
+
    if (req.params.campignId > 0){
 	
+
+
 	var qb = new Collection.LeadsCollection().query();
 	
 	return qb.where({campignId: req.params.campignId}).select().then(function(resp,err) {

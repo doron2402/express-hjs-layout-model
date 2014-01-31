@@ -16,6 +16,7 @@ var express = require('express'),
 
 
 var app = express();
+var api = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -34,20 +35,32 @@ app.use(express.session());
 app.use(app.router);
 app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function (req, res, next) {
 
-app.all('*', function(req, res, next){
-	if (!req.get('Origin')) 
-		return next();
-	// use "*" here to accept any origin
-    res.set('Access-Control-Allow-Origin', '*');
-    res.set('Access-Control-Allow-Methods', '*');
-    res.set('Access-Control-Allow-Headers', '*');
-	
-	// res.set('Access-Control-Allow-Max-Age', 3600);
-    if ('OPTIONS' == req.method) 
-    	return res.send(200);
-	next();
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    //res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
 });
+
+app.all('/*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -61,6 +74,7 @@ app.get('/admin', admin.dashboard);
 app.get('/admin/analytics', admin.analytics);
 app.get('/admin/users', admin.users);
 app.get('/users', user.list);
+app.post('/users', user.getList)
 //Traffic
 app.post('/traffic/:campignId',traffic.counter);
 //Lead

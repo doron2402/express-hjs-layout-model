@@ -4,7 +4,7 @@
  */
 
 exports.list = function(req, res){
-  res.send("respond with a resource");
+	return res.json([{username: 'Doron'},{username: 'Rachel'}]);
 };
 
 //Get User by Id
@@ -21,3 +21,8 @@ exports.registerUser = function(req, res){
 exports.loginUser = function(req, res){
 
 };
+
+exports.getList = function(req, res){
+
+	return res.json([{username: 'Doron'},{username: 'Rachel'}]);
+}
