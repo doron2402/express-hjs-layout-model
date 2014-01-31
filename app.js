@@ -3,14 +3,17 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var admin = require('./routes/admin');
-var user = require('./routes/user');
-var static_pages = require('./routes/pages');
-var http = require('http');
-var path = require('path');
-var traffic = require('./routes/traffic');
+var express = require('express'),
+	routes = require('./routes'),
+	admin = require('./routes/admin'),
+	user = require('./routes/user'),
+	static_pages = require('./routes/pages'),
+	http = require('http'),
+	path = require('path'),
+	traffic = require('./routes/traffic'),
+	leads = require('./routes/leads'),
+	campign = require('./routes/campign');
+
 
 var app = express();
 
@@ -44,7 +47,15 @@ app.get('/admin', admin.dashboard);
 app.get('/admin/analytics', admin.analytics);
 app.get('/admin/users', admin.users);
 app.get('/users', user.list);
+//Traffic
 app.post('/traffic/:campignId',traffic.counter);
+//Lead
+app.post('/lead/new/:campignId',leads.newLead);
+//Create new campign
+app.post('/campign/new',campign.newCampign);
+
+app.post('/campign/delete',campign.deleteCampign)
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
