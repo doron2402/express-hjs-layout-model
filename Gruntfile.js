@@ -52,9 +52,11 @@ module.exports = function (grunt) {
         nodemon: {
             dev: {
                 script: 'app.js',
+                tasks: ['nodemon','watch'],
                 options: {
                   args: ['dev'],
                   nodeArgs: ['--debug'],
+                  logConcurrentOutput: true,
                   env: {
                     PORT: '3000'
                   },
@@ -75,7 +77,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-nodemon');
 
-    
     //Defualt
     grunt.registerTask('default', ['concat','cssmin','nodemon:dev','watch']);
     //CSS

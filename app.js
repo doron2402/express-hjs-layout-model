@@ -51,6 +51,8 @@ app.get('/users', user.list);
 app.post('/traffic/:campignId',traffic.counter);
 //Lead
 app.post('/lead/new/:campignId',leads.newLead);
+app.get('/lead/media/:campignId', leads.getLeadByMedia);
+app.get('/lead/all/:campignId', leads.getAllLeads)
 //Create new campign
 app.post('/campign/new',campign.newCampign);
 

@@ -4,13 +4,33 @@
 	-d '{fname": "Doron", "lname": "Segal",media" : "Boaz ata homo"}' 
 	http://localhost:3000/lead/123
 */
-exports.listAllLeadsByCampignId = function(req, res){
-  res.send("respond with a resource");
+exports.getAllLeads = function(req, res){
+   var Collection = require('../collections/leadsCollection');
+   //Todo: Authenticate user and user.type
+   if (req.params.campignId > 0){
+	
+	var qb = new Collection.LeadsCollection().query();
+	
+	return qb.where({campignId: req.params.campignId}).select().then(function(resp,err) {
+		if (err)
+			console.log('err %s',err);
+
+			
+			return res.json(resp);		
+		});
+   }
+
+   return res.json({error: 'Missing arguments'});
 };
 
-exports.listLeadsByMedia = function(req, res){
-	
+
+
+//Get Campign Id and Media -> Return an array of leads
+exports.getLeadByMedia = function(req, res){
+
 };
+
+
 
 exports.newLead = function(req, res){
 
@@ -27,8 +47,6 @@ exports.newLead = function(req, res){
 	  	if (req.body.lname)
 	  		Name += ' ' + req.body.lname;
 	  }
-
-	  console.log(req.body.trafficId || 'NULL');
 
 	  return new Model.LeadModel({
 	  	id: req.body.trafficId || 'NULL',
