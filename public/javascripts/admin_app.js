@@ -65,7 +65,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	adminApp.controller('adminLeads',function($scope,$http){
 	  	$http({method: 'GET',
-	    	url: 'http://localhost:3000/lead/all/123'}).
+	    	url: 'http://localhost:3000/leads/all/123'}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
             	// when the response is available
@@ -94,12 +94,11 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				controller  : 'mainController'
 			})
 
-	       //After user contact us
+	        //After user contact us
 			.when('/contact/thanks', {
 			  templateUrl : 'admin_templates/thanks.html',
 			  controller : 'thanksController'
 			})
-			
 			
 			//Login
 			.when('/login', {
@@ -112,7 +111,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			  controller : 'meController'
 			})
 			
-			.when('/leads',{
+			.when('/admin/leads',{
 				'templateUrl' : 'admin_templates/leads.html',
 				controller : 'adminLeads'
 			})

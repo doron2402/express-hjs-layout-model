@@ -7,12 +7,11 @@
 				controller  : 'mainController'
 			})
 
-	       //After user contact us
+	        //After user contact us
 			.when('/contact/thanks', {
 			  templateUrl : 'admin_templates/thanks.html',
 			  controller : 'thanksController'
 			})
-			
 			
 			//Login
 			.when('/login', {
@@ -25,7 +24,7 @@
 			  controller : 'meController'
 			})
 			
-			.when('/leads',{
+			.when('/admin/leads',{
 				'templateUrl' : 'admin_templates/leads.html',
 				controller : 'adminLeads'
 			})

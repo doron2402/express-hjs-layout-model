@@ -64,7 +64,7 @@
 
 	adminApp.controller('adminLeads',function($scope,$http){
 	  	$http({method: 'GET',
-	    	url: 'http://localhost:3000/lead/all/123'}).
+	    	url: 'http://localhost:3000/leads/all/123'}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
             	// when the response is available
