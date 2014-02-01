@@ -30,11 +30,6 @@
 			  	controller : 'loginController'
 			})
 			
-			.when('/me', {
-			  templateUrl : 'templates/me.html',
-			  controller : 'meController'
-			})
-			
 			.when('/faq', {
 			  templateUrl : 'templates/faq.html',
 			  controller : 'meController'
