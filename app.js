@@ -1,4 +1,5 @@
 var express = require('express'),
+	auth = require('./lib/auth'),
 	routes = require('./routes'),
 	admin = require('./routes/admin'),
 	user = require('./routes/user'),
@@ -77,11 +78,13 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/admin/users', admin.users);
-app.get('/admin/dashboard', admin.dashboard);
-app.get('/admin', admin.dashboard);
-app.get('/admin/analytics', admin.analytics);
-app.get('/admin/users', admin.users);
+
+/* Admin Pages - Route that need to be secure */
+app.get('/admin/users', auth.checkAuth, admin.users);
+app.get('/admin/dashboard',auth.checkAuth, admin.dashboard);
+app.get('/admin', auth.checkAuth, admin.dashboard);
+app.get('/admin/analytics',auth.checkAuth, admin.analytics);
+app.get('/admin/users',auth.checkAuth, admin.users);
 app.get('/users', user.list);
 app.post('/users', user.getList);
 
