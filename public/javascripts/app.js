@@ -10,9 +10,6 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	//Signup Controller
 	myApp.controller('signupController', function($scope) {
 		$scope.message = 'Please join us';
-		$scope.signupOptions = [{name: 'Facebook', link: '#'},
-		{name: 'Google+', link: '#'},
-		{name: 'Twitter', link: '#'}];
 	});
   
   	myApp.controller('thanksController', function($scope) {
@@ -26,10 +23,6 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 
 	myApp.controller('contactController', function($scope) {
 		$scope.message = 'Contact us! JK. This is just a demo.';
-	});
-	
-	myApp.controller('meController', function($scope){
-	 $scope.user = {name: 'me', email: 'me@me.com', lastLogin: '01-23-2014'};
 	});
 
 	myApp.controller('formContactController', function($scope){
@@ -90,11 +83,6 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 			.when('/login',{
 				templateUrl : 'templates/login.html',
 			  	controller : 'loginController'
-			})
-			
-			.when('/me', {
-			  templateUrl : 'templates/me.html',
-			  controller : 'meController'
 			})
 			
 			.when('/faq', {
