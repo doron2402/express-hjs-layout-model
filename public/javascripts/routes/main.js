@@ -24,6 +24,11 @@
 			  templateUrl : 'templates/signup.html',
 			  controller : 'signupController'
 			})
+
+			.when('/login',{
+				templateUrl : 'templates/login.html',
+			  	controller : 'loginController'
+			})
 			
 			.when('/me', {
 			  templateUrl : 'templates/me.html',

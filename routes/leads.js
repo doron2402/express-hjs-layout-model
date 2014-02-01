@@ -37,7 +37,9 @@ exports.getLeadByMedia = function(req, res){
 };
 
 
-
+/*
+	Enter new leads to the system
+*/
 exports.newLead = function(req, res){
 
   var Model = require('../models/leadsModel');

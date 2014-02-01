@@ -35,6 +35,30 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	myApp.controller('formContactController', function($scope){
 		$scope.user = null;
 	});
+
+	myApp.controller('loginController', function($scope,$http){
+		$scope.authenticateUserForm = function() {
+	     if (this.user && this.user.username !== null && this.user.password !== null){
+	      
+	      $http({
+	      	method: 'POST',
+	      	data: this.user, 
+	      	headers: {"Content-Type": "application/json"},
+  			url: '/auth/user'
+  		}).
+          	success(function(data, status, headers, config) {
+            // this callback will be called asynchronously
+            // when the response is available
+            console.log(data);
+          }).
+          error(function(data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log(data);
+          });
+	     }
+	   }
+	});
 	myApp.config(function($routeProvider) {
 		$routeProvider
 
@@ -60,6 +84,11 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 			.when('/signup',{
 			  templateUrl : 'templates/signup.html',
 			  controller : 'signupController'
+			})
+
+			.when('/login',{
+				templateUrl : 'templates/login.html',
+			  	controller : 'loginController'
 			})
 			
 			.when('/me', {
