@@ -36,7 +36,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 		$scope.user = null;
 	});
 
-	myApp.controller('loginController', function($scope,$http){
+	myApp.controller('loginController', function($scope,$http,$location){
 		$scope.authenticateUserForm = function() {
 	     if (this.user && this.user.username !== null && this.user.password !== null){
 	      
@@ -50,6 +50,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
             // this callback will be called asynchronously
             // when the response is available
             console.log(data);
+            $location.path(data.redirect);
           }).
           error(function(data, status, headers, config) {
             // called asynchronously if an error occurs

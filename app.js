@@ -84,7 +84,9 @@ app.get('/admin/analytics', admin.analytics);
 app.get('/admin/users', admin.users);
 app.get('/users', user.list);
 app.post('/users', user.getList);
+
 app.post('/auth/user', user.loginUser);
+app.get('/logout', user.logoutUser);
 
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
 app.get('/leads/all/:campignId', leads.getAllLeads);
