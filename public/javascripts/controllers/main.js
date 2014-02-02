@@ -11,7 +11,9 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	myApp.controller('signupController', function($scope,$http,$location,$window) {
 		
 		$scope.message = 'Please join us';
-		
+		$scope.patternCheckAlpha = /^[a-zA-Z]*$/;
+		$scope.patternCheckNumeric = /^\d+$/;
+
 		$scope.resetForm = function(){
 			console.log(this.user);
 			return this.user = {};
