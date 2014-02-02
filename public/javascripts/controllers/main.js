@@ -8,12 +8,17 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	});
 	
 	//Signup Controller
-	myApp.controller('signupController', function($scope) {
+	myApp.controller('signupController', function($scope,$http,$location) {
 		$scope.message = 'Please join us';
 		$scope.resetForm = function(){
 			console.log(this.user);
 			this.user = {};
-		}
+		};
+		
+		$scope.submitForm = function(){
+			console.log($scope.user.$valid);
+			console.log($scope.user);
+		};
 	});
   
   	myApp.controller('thanksController', function($scope) {
