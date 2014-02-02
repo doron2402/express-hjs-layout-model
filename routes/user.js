@@ -31,6 +31,10 @@ exports.signupUser = function(req, res){
 			email: UserData.email || 'NULL'
 		}).save().then(function(model) {
 	    	console.log(model);
+	    	var session_id = crypto.createHash('sha1');
+				session_id.update('#' + model.get('id') + '-' + model.get('username'));
+
+				req.session.user_id = session_id.digest('hex');
 	    	return res.json({redirect: '/admin',dataReturn: 'success' });
 	  	});
 
@@ -61,7 +65,6 @@ exports.loginUser = function(req, res){
 				session_id.update('#' + model.get('id') + '-' + model.get('username'));
 
 				req.session.user_id = session_id.digest('hex');
-				console.log(req.session);
 
 				return res.json({redirect: '/admin',dataReturn: 'success' });
 			}	
