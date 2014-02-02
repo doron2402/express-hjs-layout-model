@@ -59,8 +59,24 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 		$scope.message = 'Look! I am an about page.';
 	});
 
-	myApp.controller('contactController', function($scope) {
+	myApp.controller('contactController', function($scope, $http, $location, $window) {
 		$scope.message = 'Contact us! JK. This is just a demo.';
+		
+		$scope.contactFormSubmit = function(){
+			console.log('contactFormSubmit');
+			console.log(this.contact);
+			if (this.contact && 
+				this.contact.fname && 
+				this.contact.lname &&
+				this.contact.phone &&
+				this.contact.email ){
+
+				console.log('submit form...');
+				$location.path('/contact/thanks');
+			}
+			
+			
+		};
 	});
 
 	myApp.controller('formContactController', function($scope){

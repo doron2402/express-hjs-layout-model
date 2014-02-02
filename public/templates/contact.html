@@ -2,23 +2,39 @@
 Contact us
 </p>
 <div ng-controller="formContactController">
-<form novalidate class="css-form">
+<form name="contactForm" novalidate class="css-form" ng-submit="contactFormSubmit()">
   <div class="row">
     <div class="large-4 columns">
       <label>First Name</label>
-      <input type="text" placeholder="Your First Name"  ng-model="contact.fname" required />
+      <input type="text" name="fname" ng-pattern="/^[a-zA-Z]*$/" placeholder="Your First Name"  ng-model="contact.fname" class="signup-input" required />
+      <small class="error" ng-hide="contactForm.fname.$valid">
+        First Name is required and must be only letters
+      </small>
     </div>
   </div>
   <div class="row">
     <div class="large-4 columns">
       <label>Last Name</label>
-      <input type="text" placeholder="Your Last Name" ng-model="contact.lname" required />
+      <input type="text" name="lname" ng-pattern="/^[a-zA-Z]*$/" class="signup-input" placeholder="Your Last Name" ng-model="contact.lname" required />
+      <small class="error" ng-hide="contactForm.lname.$valid">
+        Last Name is required and must be only letters
+      </small>
     </div>
   </div>
   <div class="row">
     <div class="large-4 columns">
       <label>Phone</label>
-      <input type="text" placeholder="xxx-xxx-xxxx" ng-model="contact.phone" />
+      <input class="signup-input" 
+      type="text" 
+      placeholder="xxx-xxx-xxxx" 
+      ng-model="contact.phone" 
+      ng-pattern="/^[0-9_-]+$/" 
+      name="phone"
+      ng-minlength="9"
+      required/>
+      <small class="error" ng-hide="contactForm.phone.$valid">
+        Phone number must be only numbers or `-`
+      </small>
     </div>
   </div>
   <div class="row">
@@ -27,7 +43,11 @@ Contact us
       <input type="text" placeholder="xxxxx@xxxxx.xxx" ng-model="contact.email" required/>
     </div>
   </div>
-  <a href="#"  ng-click="update(contact)" class="button radius round">Submit</a>
+  <div class="row"><div class="large-4 columns">
+    <label>Message</label>
+    <textarea ng-model="contact.msg" placeholder="Your Message"></textarea>
+  </div></div>
+  <input type="submit" class="button radius round" value="Submit" >
 
 </form>
 </div>
