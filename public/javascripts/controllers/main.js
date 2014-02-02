@@ -9,7 +9,9 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	
 	//Signup Controller
 	myApp.controller('signupController', function($scope,$http,$location,$window) {
+		
 		$scope.message = 'Please join us';
+		
 		$scope.resetForm = function(){
 			console.log(this.user);
 			return this.user = {};
@@ -19,7 +21,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 		$scope.submitForm = function(){
 
 			var data = $scope.user; 
-			if (data.password && 
+			if (data && data.password && 
 				data.password_confirmation && 
 				data.password == data.password_confirmation && 
 				data.username && data.email){

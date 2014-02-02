@@ -5,17 +5,25 @@
         <div class="row">
 	        <div class="large-6 columns">
 	    		<input type="text" name="name" ng-minlength="3" ng-model="user.name" placeholder="Name" required/>
-	    		<small ng-show="submitted && signupForm.name.$error.required" class="error">Please enter full name</small>
+	    		<small ng-show="signupForm.name.$dirty && signupForm.name.$error.required" class="error">Please enter full name</small>
 	    	</div>
 	    	<div class="large-6 columns">
 	    		<input type="email" name="email" ng-model="user.email" placeholder="Email Address" required/>
-	    		<small ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.required" class="error">Please enter Email address</small>
-	    		<small ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.email" class="error">Invalid email address, user@domain.com</small>
+	    		<small ng-show="signupForm.email.$dirty && signupForm.email.$error.required" class="error">Please enter Email address</small>
+	    		<small ng-show="signupForm.email.$dirty && signupForm.email.$error.email" class="error">Invalid email address, user@domain.com</small>
 	    	</div>	
         </div>
         <div class="row">
 	        <div class="large-6 columns">
-	    		<input type="text" ng-model="user.username" placeholder="Username" required/>
+	    		<input type="text" 
+	    		ng-model="user.username" 
+	    		ng-minlength="6"
+	    		placeholder="Username" 
+	    		name="username" 
+	    		required/>
+	    		<small ng-show="signupForm.username.$error.required" class="error">
+	    			Username is a required field, at least 6 characters 
+	    		</small>
 	    	</div>
 	    	<div class="large-6 columns">
 	    		<input type="text" ng-model="user.cell_phone" placeholder="Cell Phone" />
@@ -23,10 +31,16 @@
         </div>
         <div class="row">
         	<div class="large-6 columns">
-	    		<input type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" required/>
+	    		<input type="password" ng-model="user.password" placeholder="Password" name="password" ng-minlength="6" required/>
+	    		<small ng-show="signupForm.password.$error.required" class="error">
+	    			Password is a required field, at least 6 characters 
+	    		</small>
 	    	</div>	
 	        <div class="large-6 columns">
-	    		<input type="password" ng-model="user.password_confirmation" ng-minlength="6" placeholder="Password Confirmation" required/>
+	    		<input type="password" name="password_confirmation" ng-model="user.password_confirmation" ng-minlength="6" placeholder="Password Confirmation" required/>
+	    		<small ng-show="signupForm.password_confirmation.$error.required" class="error">
+	    			Password is a required field, at least 6 characters 
+	    		</small>
 	    	</div>
         </div>
     	<div class="row">
