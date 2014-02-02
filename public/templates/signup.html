@@ -1,37 +1,50 @@
 <div class="row">
 <h3>Signup</h3>
-<form>
+<form data-abide>
   <div class="row">
     <div class="large-4 columns">
-      <label>Name</label>
-      <input type="text" placeholder="Full Name" required/>
+      	<label>Full Name <small>required</small></label>
+  		<input ng-model="user.name" required pattern="[a-zA-Z]+" placeholder="John Smith" type="text" required>
+  		<small class="error">A valid full name is required.</small>
     </div>
-    <div class="large-4 columns">
-      <label>Email</label>
-      <input type="text" placeholder="Email" required/>
+    <div class="large-6 columns">
+  		<label>Email Address <small>required</small></label>
+  		<input ng-model="user.email" placeholder="Email"type="email" required>
+  		<small class="error">A valid email address is required.</small>
     </div>
   </div>
   <div class="row">
   	<div class="large-4 columns">
-      <label>Username</label>
-      <input type="text" placeholder="Username" required/>
+     	<label>Username <small>required</small></label>
+  		<input ng-model="user.username" required pattern="[a-zA-Z]+" placeholder="Username" type="text" required>
+  		<small class="error">A valid username is required.</small>
     </div>
-    <div class="large-4 columns">
-      <label>Password</label>
-      <input type="password" placeholder="Password" required/>
-    </div>
+    <div class="large-6 columns">
+        <div class="password-field small-6 columns">
+		    <label>Password <small>required</small></label>
+		    <input type="password" ng-model="user.password" id="password" required pattern="password">
+		    <small class="error">Your password must match the requirements</small>
+	  	</div>
+	  	<div class="password-confirmation-field small-6 columns">
+		    <label>Confirm Password <small>required</small></label>
+		    <input type="password" ng-model="user.password_confirm" required pattern="password" data-equalto="password">
+		    <small class="error">The password did not match</small>
+		  </div>
+	    </div>
   </div>
   <div class="row">
   	<div class="large-4 columns">
       <label>Phone</label>
-      <input type="text" placeholder="(xxx)-xxx-xxxx" required/>
+      <input type="text" ng-model="user.phone" placeholder="(xxx)-xxx-xxxx" required/>
     </div>
-    <div class="large-4 columns">
+    <div class="large-6 columns">
       <label>Company</label>
-      <input type="text" placeholder="Company Name" required/>
+      <input type="text" ng-model="user.company" placeholder="Company Name" />
     </div>
   </div>
   <input type="submit" value="Signup" class="button round tiny" />
+  <a ng-click="resetForm()" class="button tiny round alert">Reset</a>
+
 </form>	
 </div>
 
