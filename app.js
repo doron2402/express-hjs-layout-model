@@ -87,7 +87,7 @@ app.get('/admin/analytics',auth.checkAuth, admin.analytics);
 app.get('/admin/users',auth.checkAuth, admin.users);
 app.get('/users', user.list);
 app.post('/users', user.getList);
-
+app.post('/user/signup', user.signupUser)
 app.post('/auth/user', user.loginUser);
 app.get('/admin/logout', user.logoutUser);
 

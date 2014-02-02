@@ -12,9 +12,31 @@ exports.getUserId = function(req, res){
 
 };
 
-//Register
-exports.registerUser = function(req, res){
+//Singup new user
+exports.signupUser = function(req, res){
+	//1. validate user details, check for mysql injection
+	//2. insert to db
+	var Model = require('../models/userModel'),
+		crypto = require('crypto'),
+  		password = crypto.createHash('sha1'),
+		UserData = req.body;
 
+	if (UserData.username && UserData.password && UserData.email){
+		
+		password.update(UserData.password);
+		
+		new Model.UserModel({ 
+			username: UserData.username, 
+			password:  password.digest('hex'),
+			email: UserData.email || 'NULL'
+		}).save().then(function(model) {
+	    	console.log(model);
+	    	return res.json({redirect: '/admin',dataReturn: 'success' });
+	  	});
+
+	}
+	else
+		return res.json({redirect: '/sigup', dataReturn: 'Missing arguments'});
 };
 
 //login

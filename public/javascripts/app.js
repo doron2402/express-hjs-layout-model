@@ -8,7 +8,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	});
 	
 	//Signup Controller
-	myApp.controller('signupController', function($scope,$http,$location) {
+	myApp.controller('signupController', function($scope,$http,$location,$window) {
 		$scope.message = 'Please join us';
 		$scope.resetForm = function(){
 			console.log(this.user);
@@ -17,8 +17,6 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 		};
 		
 		$scope.submitForm = function(){
-			console.log($scope.user);
-				console.log('Creating User..part 1');
 
 			var data = $scope.user; 
 			if (data.password && 
@@ -26,7 +24,24 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 				data.password == data.password_confirmation && 
 				data.username && data.email){
 				//Create User
-				console.log('Creating User..');
+				//Todo create a call to backend create the user in the database and redirect the user to admin welcome page
+				$http({
+			      	method: 'POST',
+			      	data: data, 
+			      	headers: {"Content-Type": "application/json"},
+		  			url: '/user/signup'
+		  		}).
+		          	success(function(data, status, headers, config) {
+		            // this callback will be called asynchronously
+		            // when the response is available
+		            console.log(data);
+		            $window.location.href = data.redirect;
+		        }).
+		        	error(function(data, status, headers, config) {
+		            // called asynchronously if an error occurs
+		            // or server returns response with an error status.
+		            console.log(data);
+		        });
 			}
 		};
 	});
