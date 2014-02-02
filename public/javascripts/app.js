@@ -11,13 +11,23 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	myApp.controller('signupController', function($scope,$http,$location) {
 		$scope.message = 'Please join us';
 		$scope.resetForm = function(){
-			console.log(this.signup);
-			this.signup = {};
+			console.log(this.user);
+			return this.user = {};
+
 		};
 		
 		$scope.submitForm = function(){
-			console.log($scope.signup_form.$valid);
-			console.log($scope.signup_form.submitted);
+			console.log($scope.user);
+				console.log('Creating User..part 1');
+
+			var data = $scope.user; 
+			if (data.password && 
+				data.password_confirmation && 
+				data.password == data.password_confirmation && 
+				data.username && data.email){
+				//Create User
+				console.log('Creating User..');
+			}
 		};
 	});
   

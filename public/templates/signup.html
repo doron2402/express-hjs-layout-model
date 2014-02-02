@@ -1,36 +1,52 @@
-<form name="signup-form" novalidate ng-submit="submitForm()">
+<form name="signupForm" novalidate ng-submit="submitForm()">
   <fieldset>
     <legend>Signup</legend>
-    <div class="row">
-        <div class="large-4 columns">
-    		<input type="text" ng-model="user.name" placeholder="Name" required/>
+    <div class="columns text-center">
+        <div class="row">
+	        <div class="large-6 columns">
+	    		<input type="text" name="name" ng-minlength="3" ng-model="user.name" placeholder="Name" required/>
+	    		<small ng-show="submitted && signupForm.name.$error.required" class="error">Please enter full name</small>
+	    	</div>
+	    	<div class="large-6 columns">
+	    		<input type="email" name="email" ng-model="user.email" placeholder="Email Address" required/>
+	    		<small ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.required" class="error">Please enter Email address</small>
+	    		<small ng-show="(signupForm.email.$dirty || submitted) && signupForm.email.$error.email" class="error">Invalid email address, user@domain.com</small>
+	    	</div>	
+        </div>
+        <div class="row">
+	        <div class="large-6 columns">
+	    		<input type="text" ng-model="user.username" placeholder="Username" required/>
+	    	</div>
+	    	<div class="large-6 columns">
+	    		<input type="text" ng-model="user.cell_phone" placeholder="Cell Phone" />
+	    	</div>	
+        </div>
+        <div class="row">
+        	<div class="large-6 columns">
+	    		<input type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" required/>
+	    	</div>	
+	        <div class="large-6 columns">
+	    		<input type="password" ng-model="user.password_confirmation" ng-minlength="6" placeholder="Password Confirmation" required/>
+	    	</div>
+        </div>
+    	<div class="row">
+    		<div class="large-6 columns">
+	    		<input type="text" ng-model="user.company" placeholder="Company Name" />
+	    	</div>	
+    		<div class="large-6 columns">
+   				<input type="text" ng-model="user.company_website" placeholder="Company Web Site" />
+	    	</div>
     	</div>
-    	<div class="large-4 columns">
-    		<input type="email" ng-model="user.email" placeholder="Email Address" required/>
+    	<div class="row">
+    		<div class="large-6 columns">
+    			<input type="text" ng-model="user.work_phone" placeholder="Work Phone" />
+    		</div>	
     	</div>
-    	<div class="large-4 columns">
-    		<input type="text" ng-model="user.username" placeholder="Username" required/>
-    	</div>
-    	<div class="large-4 columns">
-    		<input type="password" ng-model="user.password" placeholder="Password" required/>
-    	</div>
-    	<div class="large-4 columns">
-    		<input type="password" ng-model="user.password_confirmation" placeholder="Password Confirmation" required/>
-    	</div>
-    	<div class="large-4 columns">
-    		<input type="text" ng-model="user.company" placeholder="Company Name" required/>
-    	</div>
-    	<div class="large-4 columns">
-   			<input type="text" ng-model="user.company_website" placeholder="Company Web Site" />
-    	</div>
-    	<div class="large-4 columns">
-    		<input type="text" ng-model="user.cell_phone" placeholder="Cell Phone" required/>
-    	</div>
-    	<div class="large-4 columns">
-    		<input type="text" ng-model="user.work_phone" placeholder="Work Phone" required/>
-    	</div>
-    <button type="submit" class="button radius">Submit</button>
-    <a ng-click="resetForm()" class="button tiny round alert">Reset</a>
-    </div>
+    
+	    <div class="row">
+	    	<button type="submit" class="button radius">Submit</button>
+	    	<a ng-click="resetForm()" class="button tiny round alert">Reset</a>
+		</div>
+	</div>
   </fieldset>
 </form>

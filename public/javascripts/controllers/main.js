@@ -12,12 +12,21 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 		$scope.message = 'Please join us';
 		$scope.resetForm = function(){
 			console.log(this.user);
-			this.user = {};
+			return this.user = {};
+
 		};
 		
 		$scope.submitForm = function(){
-			console.log($scope.user.$valid);
-			console.log($scope.user);
+
+			var data = $scope.user; 
+			if (data.password && 
+				data.password_confirmation && 
+				data.password == data.password_confirmation && 
+				data.username && data.email){
+				//Create User
+				//Todo create a call to backend create the user in the database and redirect the user to admin welcome page
+				console.log('Creating User..');
+			}
 		};
 	});
   
