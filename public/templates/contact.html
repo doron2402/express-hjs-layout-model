@@ -1,8 +1,11 @@
-<p class="panel">
-Contact us
-</p>
+
 <div ng-controller="formContactController">
-<form name="contactForm" novalidate class="css-form" ng-submit="contactFormSubmit()">
+<div ng-show="showForm">
+  <h3>Processing...</h3>
+</div>
+<form ng-hide="showForm" name="contactForm" novalidate class="css-form" ng-submit="contactFormSubmit()">
+<fieldset>
+  <legend><h3>Contact us</h3></legend>
   <div class="row">
     <div class="large-4 columns">
       <label>First Name</label>
@@ -11,14 +14,14 @@ Contact us
         First Name is required and must be only letters
       </small>
     </div>
-  </div>
-  <div class="row">
     <div class="large-4 columns">
       <label>Last Name</label>
       <input type="text" name="lname" ng-pattern="/^[a-zA-Z]*$/" class="signup-input" placeholder="Your Last Name" ng-model="contact.lname" required />
       <small class="error" ng-hide="contactForm.lname.$valid">
         Last Name is required and must be only letters
       </small>
+    </div>
+    <div class="large-4 columns">
     </div>
   </div>
   <div class="row">
@@ -36,19 +39,28 @@ Contact us
         Phone number must be only numbers or `-`
       </small>
     </div>
-  </div>
-  <div class="row">
     <div class="large-4 columns">
       <label>Email</label>
-      <input type="text" placeholder="xxxxx@xxxxx.xxx" ng-model="contact.email" required/>
+      <input type="email"
+      name="email"
+      class="signup-input" 
+      placeholder="xxxxx@xxxxx.xxx" 
+      ng-model="contact.email" required/>
+      <small class="error" ng-hide="contactForm.email.$dirty && contactForm.email.$valid">
+        Please enter your emaill address
+      </small>
+    </div>
+    <div class="large-4 columns">
     </div>
   </div>
-  <div class="row"><div class="large-4 columns">
-    <label>Message</label>
-    <textarea ng-model="contact.msg" placeholder="Your Message"></textarea>
-  </div></div>
+  <div class="row">
+    <div class="large-8 columns">
+      <label>Message</label>
+      <textarea ng-model="contact.msg" placeholder="Your Message"></textarea>
+    </div>
+  </div>
   <input type="submit" class="button radius round" value="Submit" >
-
+</fieldset>
 </form>
 </div>
 

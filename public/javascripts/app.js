@@ -71,8 +71,29 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 				this.contact.phone &&
 				this.contact.email ){
 
+				$scope.showForm = true;
 				console.log('submit form...');
-				$location.path('/contact/thanks');
+			$http({
+	      	method: 'POST',
+	      	data: this.contact, 
+	      	headers: {"Content-Type": "application/json"},
+  			url: '/contact/new'
+  		}).
+          	success(function(data, status, headers, config) {
+            // this callback will be called asynchronously
+            // when the response is available
+            console.log(data);
+            $location.path('/contact/thanks');
+          }).
+          error(function(data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log(data);
+            console.log('Something Went wrong')
+            $location.path('/contact/thanks');
+          });
+
+		
 			}
 			
 			

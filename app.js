@@ -8,6 +8,7 @@ var express = require('express'),
 	path = require('path'),
 	traffic = require('./routes/traffic'),
 	leads = require('./routes/leads'),
+	contact = require('./routes/contact'),
 	campign = require('./routes/campign');
 
 
@@ -90,6 +91,7 @@ app.post('/users', user.getList);
 app.post('/user/signup', user.signupUser)
 app.post('/auth/user', user.loginUser);
 app.get('/admin/logout', user.logoutUser);
+app.post('/contact/new', contact.newContactInformation);
 
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
 app.get('/leads/all/:campignId', leads.getAllLeads);

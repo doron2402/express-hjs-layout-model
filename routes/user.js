@@ -57,7 +57,7 @@ exports.loginUser = function(req, res){
 			var tmp_pass = password.digest('hex');
 
 		return new Model.UserModel({'username': req.body.username}).fetch().then(function(model){
-			console.log(model.get('password'));
+			
 			if (model.get('password') == tmp_pass)
 			{
 				console.log('login');
