@@ -91,8 +91,8 @@ CREATE TABLE `leads` (
 --
 
 INSERT INTO `leads` (`id`, `campignId`, `name`, `email`, `phone`, `message`, `fields`, `createdAt`, `dayOfWeek`, `media`, `prod`, `erate`, `channel`, `size`, `reffer`) VALUES
-(1, 1, 'doron segal', 'doron@doron.con', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:58:40', 2, 'facebook', '', '', '', '', ''),
-(2, 1, 'doron segal', 'doron@doron.con', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:59:18', 2, 'facebook', '', '', '', '', ''),
+(1, 1, 'doron segal', 'doron1@doron.com', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:58:40', 2, 'facebook', '', '', '', '', ''),
+(2, 1, 'doron segal', 'doron2@doron.com', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:59:18', 2, 'facebook', '', '', '', '', ''),
 (3, 123, 'Doron Segal', 'NULL', 'NULL', 0x4e554c4c, 0x4e554c4c, '2014-01-31 06:50:02', 4, 'Boaz ata homo', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL'),
 (4, 123, 'Doron Segal', 'NULL', 'NULL', 0x4e554c4c, 0x4e554c4c, '2014-01-31 07:13:22', 4, 'Boaz ata homo', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL'),
 (21, 123, 'NULL', 'NULL', 'NULL', 0x4e554c4c, 0x4e554c4c, '2014-01-31 23:31:44', 5, 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL');
@@ -161,7 +161,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `username`, `type`, `phone`, `copmany`) VALUES
-(1, 'Doron Segal', 'doron@doron.com', '2ec7c71de8020e3ce84bc8ba83967b541e6ce5db', 'doron', 0, '123123123', ''),
-(2, '', 'doron@doron.com', '897ff81adc514e1b70306e45a4a77be12f50c92c', 'doron123', 0, '', ''),
+(1, 'Doron Segal', 'doron2@doron.com', '2ec7c71de8020e3ce84bc8ba83967b541e6ce5db', 'doron', 0, '123123123', ''),
+(2, '', 'doron1@doron.com', '897ff81adc514e1b70306e45a4a77be12f50c92c', 'doron123', 0, '', ''),
 (3, '', 'boaz@boaz.com', 'd4d8a60e491d212baa5e1087ffc901707a697172', 'boaz123', 0, '', ''),
 (4, '', 'doron1234@doron.com', '52f0cd161603999005f2a3d7ec783dfc96e5863d', 'doron1234', 0, '', '');
