@@ -55,6 +55,15 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 		$scope.message = 'Thanks for contacting us';
 	});
 
+  	myApp.controller('faqController', function($scope, $http) {
+  		$scope.faq = [
+  		{title: 'title',body: 'body........'},
+  		{title: 't1',body: 'body2........'},
+  		{title: 'how to signup',body: 'body3........'},
+  		{title: 'whats the different between media to prod?',body: 'body4........'}
+  		];
+  	});
+
 	myApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});

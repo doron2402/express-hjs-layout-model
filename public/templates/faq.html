@@ -1,1 +1,25 @@
 <h3>Faq</h3>
+  <div class="row">
+    <div class="small-8">
+      <div class="row">
+        <div class="small-6 columns">
+          <input ng-model="query" type="text" id="" placeholder="Search a question">
+        </div>
+        <div class="small-3 columns">
+          <a class="button tiny">Search</a>
+        </div>
+         <div class="small-3 columns"></div>
+      </div>
+    </div>
+    <div class="row" data-ng-repeat="feed in faq | filter:query">
+  		<div class="small-6 large-2 columns"></div>
+  		<div class="small-6 large-8 columns">
+  			<fieldset>
+  				<legend>{{feed.title}}</legend>
+  				<p>{{feed.body}}</p>
+  			</fieldset>
+  		</div>
+  		<div class="small-12 large-2 columns"></div>
+	</div>
+  </div>
+

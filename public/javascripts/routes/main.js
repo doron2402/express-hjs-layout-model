@@ -32,7 +32,7 @@
 			
 			.when('/faq', {
 			  templateUrl : 'templates/faq.html',
-			  controller : 'meController'
+			  controller : 'faqController'
 			})
 
 			// route for the contact page
