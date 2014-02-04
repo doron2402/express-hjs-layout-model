@@ -1,7 +1,24 @@
 	// create the controller and inject Angular's $scope
-	adminApp.controller('mainController', function($scope) {
+	adminApp.controller('mainController', function($scope, $http) {
 		// create a message to display in our view
 		$scope.message = 'Everyone come and see how good I look!';
+
+		$http({method: 'POST',
+			data: {userId: 2},
+	    	url: 'http://localhost:3000/campigns/available'}).
+          		success(function(data, status, headers, config) {
+            	// this callback will be called asynchronously
+            	// when the response is available
+            	console.log(data);
+            	$scope.cardentials = data;
+          	}).
+          	error(function(data, status, headers, config) {
+            	// called asynchronously if an error occurs
+            	// or server returns response with an error status.
+            	console.log(data);
+            	$scope.cardentials = null;
+          });
+
 	});
 	
 	adminApp.controller('menuController',function($scope){
@@ -34,6 +51,7 @@
 		// create a message to display in our view
 		$scope.message = 'Thanks for contacting us';
 	});
+
 	adminApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
 	});
@@ -84,3 +102,5 @@
 	adminApp.controller('meController', function($scope){
 	 $scope.user = {name: 'me', email: 'me@me.com', lastLogin: '01-23-2014'};
 	});
+
+	

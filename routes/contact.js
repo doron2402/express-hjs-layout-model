@@ -5,7 +5,7 @@ exports.newContactInformation = function(req,res){
 	console.log('Self Data');
 	console.log(selfData);
 
-	if (req.body && req.body.fname && req.body.lname && req.body.phone && req.body.email){
+	if (selfData && selfData.fname && selfData.lname && selfData.phone && selfData.email){
 
 		return new Model.ContactModel({
 			name: selfData.fname + ' ' + selfData.lname,
