@@ -1,5 +1,81 @@
 <p>Campign</p>
-<div ng-repeat="data in campign">
-<p>Campign Name : {{data.name}}</p>
-<p>Campign Id : {{data.id}}</p>
-</div>
+<table>
+  <thead>
+    <tr>
+    	<th>Id</th>
+    	<th>Name</th>
+    	<th>Url</th>
+    	<th>Created At</th>
+    	
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in campign">
+      <td>{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.url}}</td>
+      <td>{{data.createdAt}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Leads Table -->
+<h5>Leads</h5>
+<table>
+  <thead>
+    <tr>
+    	<th>Index</th>
+    	<th>Name</th>
+    	<th>Phone</th>
+    	<th>Email</th>
+    	<th>Created At</th>
+    	<th>Reffer</th>
+    	<th>Channel</th>
+    	<th>Erate</th>
+    	<th>Prod</th>
+    	<th>Media</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in leads">
+      <td>{{$index + 1}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.phone}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.createdAt}}</td>
+      <td>{{data.reffer}}</td>
+      <td>{{data.channel}}</td>
+      <td>{{data.erate}}</td>
+      <td>{{data.prod}}</td>
+      <td>{{data.media}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- Traffic Table -->
+<h5>Traffic</h5>
+<table>
+  <thead>
+    <tr>
+    	<th>Index</th>
+    	<th>Created At</th>
+    	<th>Channel</th>
+    	<th>Erate</th>
+    	<th>Prod</th>
+    	<th>Media</th>
+    	
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in traffic">
+      <td>{{$index + 1}}</td>
+      <td>{{data.createdAt}}</td>
+      <td>{{data.channel}}</td>
+      <td>{{data.erate}}</td>
+      <td>{{data.prod}}</td>
+      <td>{{data.media}}</td>
+    </tr>
+  </tbody>
+</table>

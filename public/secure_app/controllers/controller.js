@@ -4,7 +4,6 @@
 		$scope.message = 'Everyone come and see how good I look!';
 
 		$http({method: 'POST',
-			data: {userId: 2},
 	    	url: 'http://localhost:3000/campigns/available'}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
@@ -100,18 +99,48 @@
 
 	
 	adminApp.controller('campignPage', function($scope, $http, $route, $routeParams, $location){
-		console.log($route);
-		console.log($routeParams);
-		console.log($routeParams.id);
-		console.log($location);
 
 		$http({method: 'POST',
-			data: { 'campignId': parseInt($routeParams.id,10), 'userId': },
+			data: { 'campignId': parseInt($routeParams.id,10)},
 	    	url: 'http://localhost:3000/campigns/info'}).
           		success(function(data, status, headers, config) {
-            	// this callback will be called asynchronously
-            	// when the response is available
-            	console.log(data);
+            	
+            	    console.log('Doron');
+            		//User have permission to all data
+            		//Get All Leads And Traffic Data
+            		$http({method: 'POST',
+						data: { 'campignId': parseInt($routeParams.id,10)},
+				    	url: 'http://localhost:3000/leads/all/123'}).
+			          		success(function(data, status, headers, config) {
+			            	// this callback will be called asynchronously
+			            	// when the response is available
+			            	console.log(data);
+			            	$scope.leads = data;
+			          	}).
+			          	error(function(data, status, headers, config) {
+			            	// called asynchronously if an error occurs
+			            	// or server returns response with an error status.
+			            	console.log(data);
+			            	$scope.leads = null;
+			          });
+
+			        $http({method: 'POST',
+						data: { 'campignId': parseInt($routeParams.id,10)},
+				    	url: 'http://localhost:3000/traffic/all/123'}).
+			          		success(function(data, status, headers, config) {
+			            	// this callback will be called asynchronously
+			            	// when the response is available
+			            	console.log(data);
+			            	$scope.traffic = data;
+			          	}).
+			          	error(function(data, status, headers, config) {
+			            	// called asynchronously if an error occurs
+			            	// or server returns response with an error status.
+			            	console.log(data);
+			            	$scope.traffic = null;
+			          });
+
+
             	$scope.campign = data;
           	}).
           	error(function(data, status, headers, config) {

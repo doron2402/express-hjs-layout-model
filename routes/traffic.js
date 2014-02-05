@@ -1,3 +1,5 @@
+var Mysql = require('../lib/mysqlKnex');
+
 exports.counter = function(req, res){
 
 /*
@@ -28,4 +30,54 @@ exports.counter = function(req, res){
 	  });  	
 	}
 
+};
+
+exports.getAllTraffic = function (req, res) {
+	console.log('get All Traffic for campignId: ' + req.body.campignId);
+	
+	if (req.body && req.body.media){ /* Traffic from specific media */
+		
+		//Clearing string for mysql injection
+		var mediaTmp = req.body.media.toString(),
+			media = mediaTmp.replace(/[^a-z0-9]/gi, "");
+
+		return Mysql.MysqlKnex('cardential')
+		.where('userId',parseInt(req.session.userId,10))
+		.andWhere('cardential','=',1)
+		.andWhere('traffic.campignId','=',parseInt(req.body.campignId,10))
+		.andWhere('traffic.media','=',media)
+		.join('traffic', function(){
+			this.on('cardential.campignId', '=', 'traffic.campignId');
+		}).exec(function (err, response) {
+			
+			if (err){
+				console.log(err);
+				res.json({'Error':'Something Went Wrong...'});
+		 	}
+				console.log(response);
+				res.json(response);
+		});
+
+		return res.json({'error':'nada'});
+	}
+	else /*This query will run for a user with 'cardential.cardential' == 1 meaning the user have access to everything in the speicific campign */ 
+	{
+
+		return Mysql.MysqlKnex('cardential')
+		.where('userId',parseInt(req.session.userId,10))
+		.andWhere('cardential','=',1)
+		.andWhere('traffic.campignId','=',parseInt(req.body.campignId,10))
+		.join('traffic', function(){
+			this.on('cardential.campignId', '=', 'traffic.campignId');
+		}).exec(function (err, response) {
+			
+			if (err){
+				console.log(err);
+				res.json({'Error':'Something Went Wrong...'});
+		 	}
+				console.log(response);
+				res.json(response);
+		});
+	}
+	
 };

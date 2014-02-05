@@ -96,7 +96,9 @@ app.post('/contact/new', contact.newContactInformation);
 app.post('/campigns/available', auth.checkAuth, cardential.getCampignCaredentialByUserId);
 app.post('/campigns/info', auth.checkAuth, campign.information);
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
-app.get('/leads/all/:campignId', leads.getAllLeads);
+
+app.post('/leads/all/:campignId', auth.checkAuth, leads.getAllLeads); //Get Leads by campign id
+app.post('/traffic/all/:campignId', auth.checkAuth, traffic.getAllTraffic); //Get Traffic by campign id
 //Create new campign
 app.post('/campign/new',campign.newCampign);
 app.post('/campign/delete',campign.deleteCampign);

@@ -1,31 +1,56 @@
-/*
-	curl -X POST 
-	-H "Content-Type: application/json" 
-	-d '{fname": "Doron", "lname": "Segal",media" : "Facebook", "size":"120x120"}' 
-	http://localhost:3000/lead/123
-*/
+var Mysql = require('../lib/mysqlKnex');
 
 exports.getAllLeads = function(req, res){
-   
-   var Collection = require('../collections/leadsCollection');
-   //Todo: Authenticate user and user.type
 
-   if (req.params.campignId > 0){
+   if (parseInt(req.params.campignId,10) > 0 || parseInt(req.body.campignId, 10) > 0){
 	
-	var qb = new Collection.LeadsCollection().query();
-	
-	return qb.where({campignId: req.params.campignId}).select().then(function(resp,err) {
-		if (err)
-			console.log('err %s',err);
+		if (req.body && req.body.media){ /* Leads from specific media */
+		
+		//Clearing string for mysql injection
+		var mediaTmp = req.body.media.toString(),
+			media = mediaTmp.replace(/[^a-z0-9]/gi, "");
+
+		return Mysql.MysqlKnex('cardential')
+		.where('userId',parseInt(req.session.userId,10))
+		.andWhere('cardential','=',1)
+		.andWhere('leads.campignId','=',parseInt(req.body.campignId,10))
+		.andWhere('leads.media','=',media)
+		.join('leads', function(){
+			this.on('cardential.campignId', '=', 'leads.campignId');
+		}).exec(function (err, response) {
 			
-			console.log(resp);
-			res.header("Access-Control-Allow-Origin", "*");
-			res.json(resp);
-
+			if (err){
+				console.log(err);
+				res.json({'Error':'Something Went Wrong...'});
+		 	}
+				console.log(response);
+				res.json(response);
 		});
+
+		return res.json({'error':'nada'});
+	}
+	else /*This query will run for a user with 'cardential.cardential' == 1 meaning the user have access to everything in the speicific campign */ 
+	{
+
+		return Mysql.MysqlKnex('cardential')
+		.where('userId',parseInt(req.session.userId,10))
+		.andWhere('cardential','=',1)
+		.andWhere('leads.campignId','=',parseInt(req.body.campignId,10))
+		.join('leads', function(){
+			this.on('cardential.campignId', '=', 'leads.campignId');
+		}).exec(function (err, response) {
+			
+			if (err){
+				console.log(err);
+				res.json({'Error':'Something Went Wrong...'});
+		 	}
+				console.log(response);
+				res.json(response);
+		});
+	}
+	
    }//eo if
 
-   res.header("Access-Control-Allow-Origin", "*");
    res.json({error: 'Missing arguments'});
 };
 
@@ -39,6 +64,11 @@ exports.getLeadByMedia = function(req, res){
 
 /*
 	Enter new leads to the system
+
+	curl -X POST 
+	-H "Content-Type: application/json" 
+	-d '{fname": "Doron", "lname": "Segal",media" : "Facebook", "size":"120x120"}' 
+	http://localhost:3000/lead/123
 */
 exports.newLead = function(req, res){
 
