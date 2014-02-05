@@ -60,7 +60,7 @@ app.set('partials', { header: "partials/header",
 					  topnav_admin: "partials/topnav_admin",
 					  script_public: "partials/script_public",
 					  script_auth: "partials/script_auth"});
-app.use(express.favicon());
+app.use(express.favicon("public/favicon.ico"));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
