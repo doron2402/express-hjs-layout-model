@@ -55,11 +55,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
 app.set('layout', 'layouts/default');
-app.set('partials', { header: "partials/header", 
-					  topnav: "partials/topnav", 
-					  topnav_admin: "partials/topnav_admin",
-					  script_public: "partials/script_public",
-					  script_auth: "partials/script_auth"});
+app.set('partials', {
+    header: "partials/header",
+    topnav: "partials/topnav",
+    topnav_admin: "partials/topnav_admin",
+    script_public: "partials/script_public",
+    script_auth: "partials/script_auth",
+    footer: "partials/footer"
+});
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());

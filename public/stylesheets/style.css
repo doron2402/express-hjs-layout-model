@@ -4789,6 +4789,45 @@ th.hide-for-touch {
 .touch th.show-for-touch {
   display: table-cell !important; }
 
+body {
+    background: #f3f5f9;
+}
+
+.top-bar{
+    background: #fff;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 1px 1px rgba(0,0,0,.15);
+}
+
+.top-bar .name h1 a{
+    color: #5BC0DE;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button){
+    background: #fff;
+}
+
+.top-bar-section ul li>a{
+    background: #fff;
+    color: #5BC0DE;
+}
+
+.top-bar-section ul li>a:hover {
+    background: #f3f5f9 !important;
+    color: #5BC0DE;
+}
+
+.wt{
+    background: none !important;
+}
+
+.lwt{
+    color: #fff !important;
+}
+
+.lwt:hover{
+    color: #5BC0DE !important;
+}
 small.warn {
   display: block;
   padding: 0.375rem 0.5625rem 0.5625rem;
