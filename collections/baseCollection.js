@@ -4,9 +4,10 @@ var Bookshelf = require('Bookshelf'),
   connection: {
     host     : 'localhost',
     user     : 'root',
-    password : '',
+    password : 'root',
     database : 'leads',
-    charset  : 'utf8'
+    charset  : 'utf8',
+    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
   }
 });
 
