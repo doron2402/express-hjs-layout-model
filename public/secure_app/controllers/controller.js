@@ -62,7 +62,7 @@
 	adminApp.controller('loginController', function($scope,$http){
 	   $scope.authenticateUserForm = function() {
 	     if (this.user && this.user.username !== null && this.user.password !== null){
-	    	$http({method: 'GET',
+	    	$http({method: 'POST',
 	    		url: 'http://localhost:3000/lead/all/' + this.user.username}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
@@ -80,7 +80,7 @@
 	
 
 	adminApp.controller('adminLeads',function($scope,$http, $route, $routeParams){
-	  	$http({method: 'GET',
+	  	$http({method: 'POST',
 	    	url: 'http://localhost:3000/leads/all/' + parseInt($routeParams.id,10)}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
