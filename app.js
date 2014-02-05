@@ -63,7 +63,7 @@ app.set('partials', {
     script_auth: "partials/script_auth",
     footer: "partials/footer"
 });
-app.use(express.favicon());
+app.use(express.favicon('public/favicon.ico'));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
