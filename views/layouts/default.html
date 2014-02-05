@@ -7,6 +7,8 @@
 {{/admin}}
   <head>
     <title>{{ title }}</title>
+      <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon">
+      <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/stylesheets/mainStyle.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
@@ -28,6 +30,8 @@
   {{^admin}}
     {{> script_public}}
   {{/admin}}
+
+  {{> footer}}
   </body>
 </html>
 
