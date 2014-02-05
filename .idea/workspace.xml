@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="904516d4-8596-4be2-8dc7-2eb1f104da9c" name="Default" comment="" />
+    <list default="true" id="904516d4-8596-4be2-8dc7-2eb1f104da9c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collections/baseCollection.js" afterPath="$PROJECT_DIR$/collections/baseCollection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/baseModel.js" afterPath="$PROJECT_DIR$/models/baseModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/mysqlKnex.js" afterPath="$PROJECT_DIR$/lib/mysqlKnex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="express-hjs-layout-model.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="904516d4-8596-4be2-8dc7-2eb1f104da9c" time="1391631506692" ignored="false" />
@@ -54,7 +60,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="5" selection-start="262" selection-end="262" vertical-scroll-proportion="0.63982105">
+            <state line="3" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.17449665">
               <folding />
             </state>
           </provider>
@@ -90,7 +96,7 @@
       <file leaf-file-name="baseModel.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/baseModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="9" column="21" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -99,7 +105,7 @@
       <file leaf-file-name="baseCollection.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/collections/baseCollection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="7" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
+            <state line="9" column="4" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,7 +114,7 @@
       <file leaf-file-name="mysqlKnex.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/mysqlKnex.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="6" column="20" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,14 +147,14 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/collections/baseCollection.js" />
-        <option value="$PROJECT_DIR$/models/baseModel.js" />
-        <option value="$PROJECT_DIR$/lib/mysqlKnex.js" />
         <option value="$PROJECT_DIR$/views/partials/footer.html" />
         <option value="$PROJECT_DIR$/views/partials/topnav.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/lib/general.css" />
         <option value="$PROJECT_DIR$/views/layouts/default.html" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/collections/baseCollection.js" />
+        <option value="$PROJECT_DIR$/lib/mysqlKnex.js" />
+        <option value="$PROJECT_DIR$/models/baseModel.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -515,13 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/mysqlKnex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/collections/campignCollection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -543,23 +542,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/baseModel.js">
+    <entry file="file://$PROJECT_DIR$/collections/baseCollection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="9" column="4" selection-start="230" selection-end="230" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/collections/baseCollection.js">
+    <entry file="file://$PROJECT_DIR$/lib/mysqlKnex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="7" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
+        <state line="6" column="20" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/baseModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="21" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="5" selection-start="262" selection-end="262" vertical-scroll-proportion="0.63982105">
+        <state line="3" column="0" selection-start="39" selection-end="39" vertical-scroll-proportion="0.17449665">
           <folding />
         </state>
       </provider>
