@@ -10,13 +10,16 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	//Signup Controller
 	myApp.controller('signupController', function($scope,$http,$location,$window) {
 		$scope.message = 'Please join us';
-		$scope.resetForm = function(){
+
+        $scope.resetForm = function(){
 			console.log(this.user);
 			return this.user = {};
 
 		};
 		
 		$scope.submitForm = function(){
+
+            console.log($scope.user);
 
 			var data = $scope.user; 
 			if (data.password && 
