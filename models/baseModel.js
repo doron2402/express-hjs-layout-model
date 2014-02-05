@@ -6,8 +6,7 @@ var Bookshelf = require('Bookshelf'),
     user     : 'root',
     password : 'root',
     database : 'leads',
-    charset  : 'utf8',
-    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
+    charset  : 'utf8'
   }
 });
 
