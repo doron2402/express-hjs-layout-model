@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcba4b87-6ea8-4eb1-a1d4-3ab1e8b3342d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/app.js" afterPath="$PROJECT_DIR$/public/javascripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collections/baseCollection.js" afterPath="$PROJECT_DIR$/collections/baseCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/baseModel.js" afterPath="$PROJECT_DIR$/models/baseModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/main.js" afterPath="$PROJECT_DIR$/public/javascripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/controllers/main.js" afterPath="$PROJECT_DIR$/public/javascripts/controllers/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="express-hjs-layout-model.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,6 +11,7 @@
     <file path="/*.regexp" changelist="fcba4b87-6ea8-4eb1-a1d4-3ab1e8b3342d" time="1391363708828" ignored="false" />
     <file path="/main.js" changelist="fcba4b87-6ea8-4eb1-a1d4-3ab1e8b3342d" time="1391365312374" ignored="false" />
     <file path="/app.js" changelist="fcba4b87-6ea8-4eb1-a1d4-3ab1e8b3342d" time="1391363723176" ignored="false" />
+    <file path="/.gitignore" changelist="fcba4b87-6ea8-4eb1-a1d4-3ab1e8b3342d" time="1391608689710" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,10 +85,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="default.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layouts/default.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="12" selection-start="544" selection-end="544" vertical-scroll-proportion="0.74127555">
+            <state line="28" column="12" selection-start="544" selection-end="544" vertical-scroll-proportion="-19.870968">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="5" selection-start="36" selection-end="36" vertical-scroll-proportion="0.051044084">
               <folding />
             </state>
           </provider>
@@ -109,15 +116,6 @@
         <entry file="file://$PROJECT_DIR$/views/partials/topnav_admin.html">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/controllers/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="9" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -146,6 +144,7 @@
         <option value="$PROJECT_DIR$/models/baseModel.js" />
         <option value="$PROJECT_DIR$/collections/baseCollection.js" />
         <option value="$PROJECT_DIR$/views/layouts/default.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -424,13 +423,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/models/trafficModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/userModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -531,7 +523,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layouts/default.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="12" selection-start="544" selection-end="544" vertical-scroll-proportion="0.74127555">
+        <state line="28" column="12" selection-start="544" selection-end="544" vertical-scroll-proportion="-19.870968">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="5" selection-start="36" selection-end="36" vertical-scroll-proportion="0.051044084">
           <folding />
         </state>
       </provider>
