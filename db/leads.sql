@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.6
+-- version 3.5.7
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 03, 2014 at 04:00 AM
--- Server version: 5.5.33
--- PHP Version: 5.5.3
+-- Generation Time: Feb 05, 2014 at 04:51 PM
+-- Server version: 5.5.29
+-- PHP Version: 5.4.10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
@@ -21,10 +21,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `campigns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(32) COLLATE utf8_bin NOT NULL,
-  `createdAtTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `createdAtDate` date NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `startAt` date NOT NULL,
   `endAt` date NOT NULL,
   `media` text COLLATE utf8_bin NOT NULL,
@@ -35,7 +34,40 @@ CREATE TABLE `campigns` (
   `contactPhone` varchar(12) COLLATE utf8_bin NOT NULL,
   `contactEmail` varchar(32) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `campigns`
+--
+
+INSERT INTO `campigns` (`id`, `name`, `createdAt`, `startAt`, `endAt`, `media`, `adminUsers`, `campignManager`, `url`, `company`, `contactPhone`, `contactEmail`) VALUES
+(123, 'TestingCampign', '2014-02-04 18:59:14', '0000-00-00', '0000-00-00', '', '', '', '', '', '', ''),
+(1234, 'just another camp', '2014-02-04 22:31:49', '0000-00-00', '0000-00-00', 0x66616365626f6f6b2c796e6574, '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cardential`
+--
+
+CREATE TABLE `cardential` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `campignId` int(11) NOT NULL,
+  `cardential` tinyint(4) NOT NULL,
+  `options` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '0',
+  `lastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `cardential`
+--
+
+INSERT INTO `cardential` (`id`, `userId`, `campignId`, `cardential`, `options`, `lastUpdated`) VALUES
+(1, 2, 123, 1, '0', '2014-02-04 19:00:39'),
+(2, 2, 1234, 1, '0', '2014-02-04 22:31:21');
 
 -- --------------------------------------------------------
 
@@ -51,7 +83,7 @@ CREATE TABLE `contacts` (
   `email` varchar(80) COLLATE utf8_bin NOT NULL,
   `message` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `contacts`
@@ -59,7 +91,8 @@ CREATE TABLE `contacts` (
 
 INSERT INTO `contacts` (`Id`, `createdAt`, `name`, `phone`, `email`, `message`) VALUES
 (1, '2014-02-03 00:39:03', 'Doron Segal', '123123123', 'afasdf@asdf.com', 0x4e554c4c),
-(2, '2014-02-03 01:29:32', 'ee eee', '123123123', 'dee@ee.com', 0x65656565);
+(2, '2014-02-03 01:29:32', 'ee eee', '123123123', 'dee@ee.com', 0x65656565),
+(3, '2014-02-04 00:33:12', 'Amir adsf', '123123123', 'amir@amir.com', 0x6c6b6a6e7364666b6a6e647320666b766a686e626473666876627364);
 
 -- --------------------------------------------------------
 
@@ -91,8 +124,8 @@ CREATE TABLE `leads` (
 --
 
 INSERT INTO `leads` (`id`, `campignId`, `name`, `email`, `phone`, `message`, `fields`, `createdAt`, `dayOfWeek`, `media`, `prod`, `erate`, `channel`, `size`, `reffer`) VALUES
-(1, 1, 'doron segal', 'doron1@doron.com', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:58:40', 2, 'facebook', '', '', '', '', ''),
-(2, 1, 'doron segal', 'doron2@doron.com', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:59:18', 2, 'facebook', '', '', '', '', ''),
+(1, 1, 'doron segal', 'doron@doron.con', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:58:40', 2, 'facebook', '', '', '', '', ''),
+(2, 1, 'doron segal', 'doron@doron.con', '1231231234', 0x617364666d206173646e666b6a61736e64666b6a, 0x616c64736e6b6a61736e64666b6e61737c7c206b6a6e616b736a68666e6a686173646266207c7c2061646661736466207c7c20, '2014-01-31 00:59:18', 2, 'facebook', '', '', '', '', ''),
 (3, 123, 'Doron Segal', 'NULL', 'NULL', 0x4e554c4c, 0x4e554c4c, '2014-01-31 06:50:02', 4, 'Boaz ata homo', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL'),
 (4, 123, 'Doron Segal', 'NULL', 'NULL', 0x4e554c4c, 0x4e554c4c, '2014-01-31 07:13:22', 4, 'Boaz ata homo', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL'),
 (21, 123, 'NULL', 'NULL', 'NULL', 0x4e554c4c, 0x4e554c4c, '2014-01-31 23:31:44', 5, 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL');
@@ -123,17 +156,10 @@ CREATE TABLE `traffic` (
 --
 
 INSERT INTO `traffic` (`id`, `campignId`, `prod`, `channel`, `media`, `size`, `reffer`, `erate`, `createdAt`, `dayOfWeek`) VALUES
-(1, 1, '', '', 'facebook', '', '', '', '2014-01-31 01:00:17', 2),
-(2, 123, '', '', 'Boaz ata homo', '', '', '', '2014-01-31 01:54:06', 0),
-(3, 123, '', '', 'Boaz ata homo', '', '', '', '2014-01-31 01:55:25', 0),
-(4, 123, '', '', 'Boaz ata homo', '', '', '', '2014-01-31 05:36:54', 4),
-(5, 123, 'NULL', '', 'Boaz ata homo', '', '', '', '2014-01-31 05:37:32', 4),
-(6, 123, 'NULL', 'NULL', 'Boaz ata homo', 'NULL', 'NULL', 'NULL', '2014-01-31 05:42:45', 4),
-(7, 123, 'NULL', 'NULL', 'Boaz ata homo', 'NULL', 'NULL', 'NULL', '2014-01-31 06:51:29', 4),
 (8, 123, 'NULL', 'NULL', 'Boaz ata homo', 'NULL', 'NULL', 'NULL', '2014-01-31 06:52:02', 4),
 (9, 123, 'NULL', 'NULL', 'Boaz ata homo', 'NULL', 'NULL', 'NULL', '2014-01-31 06:52:31', 4),
-(10, 123, 'NULL', 'NULL', 'Boaz ata homo', 'NULL', 'NULL', 'NULL', '2014-01-31 07:16:54', 4),
-(11, 123, 'NULL', 'NULL', 'facebook', 'NULL', 'NULL', 'NULL', '2014-01-31 21:35:05', 5);
+(10, 1234, 'NULL', 'NULL', 'Boaz ata homo', 'NULL', 'NULL', 'NULL', '2014-01-31 07:16:54', 4),
+(11, 1234, 'NULL', 'NULL', 'facebook', 'NULL', 'NULL', 'NULL', '2014-01-31 21:35:05', 5);
 
 -- --------------------------------------------------------
 
@@ -161,7 +187,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `username`, `type`, `phone`, `copmany`) VALUES
-(1, 'Doron Segal', 'doron2@doron.com', '2ec7c71de8020e3ce84bc8ba83967b541e6ce5db', 'doron', 0, '123123123', ''),
-(2, '', 'doron1@doron.com', '897ff81adc514e1b70306e45a4a77be12f50c92c', 'doron123', 0, '', ''),
+(1, 'Doron Segal', 'doron1@doron.com', '2ec7c71de8020e3ce84bc8ba83967b541e6ce5db', 'doron', 0, '123123123', ''),
+(2, '', 'doron2@doron.com', '897ff81adc514e1b70306e45a4a77be12f50c92c', 'doron123', 0, '', ''),
 (3, '', 'boaz@boaz.com', 'd4d8a60e491d212baa5e1087ffc901707a697172', 'boaz123', 0, '', ''),
 (4, '', 'doron1234@doron.com', '52f0cd161603999005f2a3d7ec783dfc96e5863d', 'doron1234', 0, '', '');
