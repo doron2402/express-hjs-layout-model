@@ -11,7 +11,7 @@ exports.getAllLeads = function(req, res){
 			media = mediaTmp.replace(/[^a-z0-9]/gi, "");
 
 		return Mysql.MysqlKnex('cardential')
-		.where('userId',parseInt(req.session.userId,10))
+		.where('userId','=',parseInt(req.session.userId,10))
 		.andWhere('cardential','=',1)
 		.andWhere('leads.campignId','=',parseInt(req.body.campignId,10))
 		.andWhere('leads.media','=',media)
@@ -111,3 +111,39 @@ exports.newLead = function(req, res){
 
 	return res.json({ error: 'Something went wrong '})
 };
+
+
+exports.getConversionRate = function (req, res) {
+	
+	var CampignId = null,
+		TotalTraffic = 0,
+		TotalLeads = 0;
+
+	if (req.params && req.params.campignId)
+		CampignId = parseInt(req.params.campignId, 10);
+	if (req.body && req.body.campignId)
+		CampignId = parseInt(req.params.campignId, 10);
+
+	return Mysql.MysqlKnex('traffic as t')
+	.where('campignId','=',CampignId)
+	.count('id').exec(function(err, response){
+		if (err)
+			return res.json({'Error': 'Something went wrong conversion rate'});
+
+		TotalTraffic = response[0]['count(`id`)'];
+
+		return Mysql.MysqlKnex('leads as l')
+			.where('campignId','=',CampignId)
+			.count('id').exec(function(err, response){
+			if (err)
+				return res.json({'Error': 'Something went wrong conversion rate'});
+
+			TotalLeads = response[0]['count(`id`)'];
+
+			var Conversion = Math.abs((TotalLeads / TotalTraffic) * 100);
+			return res.json({'Conversion': Conversion});
+		});
+	});
+	
+
+}

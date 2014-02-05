@@ -79,9 +79,9 @@
 	});
 	
 
-	adminApp.controller('adminLeads',function($scope,$http){
+	adminApp.controller('adminLeads',function($scope,$http, $route, $routeParams){
 	  	$http({method: 'GET',
-	    	url: 'http://localhost:3000/leads/all/123'}).
+	    	url: 'http://localhost:3000/leads/all/' + parseInt($routeParams.id,10)}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
             	// when the response is available
@@ -110,7 +110,7 @@
             		//Get All Leads And Traffic Data
             		$http({method: 'POST',
 						data: { 'campignId': parseInt($routeParams.id,10)},
-				    	url: 'http://localhost:3000/leads/all/123'}).
+				    	url: 'http://localhost:3000/leads/all/' + parseInt($routeParams.id,10)}).
 			          		success(function(data, status, headers, config) {
 			            	// this callback will be called asynchronously
 			            	// when the response is available
@@ -126,7 +126,7 @@
 
 			        $http({method: 'POST',
 						data: { 'campignId': parseInt($routeParams.id,10)},
-				    	url: 'http://localhost:3000/traffic/all/123'}).
+				    	url: 'http://localhost:3000/traffic/all/' + parseInt($routeParams.id,10)}).
 			          		success(function(data, status, headers, config) {
 			            	// this callback will be called asynchronously
 			            	// when the response is available
@@ -150,6 +150,18 @@
             	$scope.campign = null;
           });
 
+
+        $http({method: 'POST',
+			data: { 'campignId': parseInt($routeParams.id,10)},
+			url: 'http://localhost:3000/leads/conversion/' + parseInt($routeParams.id,10)}).
+			    success(function(data, status, headers, config) {
+			    	console.log(data);
+					$scope.ConversionRate = data;
+				}).error(function(data, status, headers, config) {
+					console.log(data);
+			        $scope.ConversionRate = null;
+			    });
+        
 	});
 
 	adminApp.controller('meController', function($scope){

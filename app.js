@@ -99,6 +99,7 @@ app.get('/leads/media/:campignId', leads.getLeadByMedia);
 
 app.post('/leads/all/:campignId', auth.checkAuth, leads.getAllLeads); //Get Leads by campign id
 app.post('/traffic/all/:campignId', auth.checkAuth, traffic.getAllTraffic); //Get Traffic by campign id
+app.post('/leads/conversion/:campignId', auth.checkAuth, leads.getConversionRate);
 //Create new campign
 app.post('/campign/new',campign.newCampign);
 app.post('/campign/delete',campign.deleteCampign);
