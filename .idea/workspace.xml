@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="904516d4-8596-4be2-8dc7-2eb1f104da9c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/collections/baseCollection.js" afterPath="$PROJECT_DIR$/collections/baseCollection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/baseModel.js" afterPath="$PROJECT_DIR$/models/baseModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/main.js" afterPath="$PROJECT_DIR$/public/javascripts/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/mysqlKnex.js" afterPath="$PROJECT_DIR$/lib/mysqlKnex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="express-hjs-layout-model.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="904516d4-8596-4be2-8dc7-2eb1f104da9c" time="1391619940860" ignored="false" />
+    <file path="/.gitignore" changelist="904516d4-8596-4be2-8dc7-2eb1f104da9c" time="1391625815906" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +32,24 @@
         <entry file="file://$PROJECT_DIR$/collections/baseCollection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="6" column="16" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".bowerrc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.bowerrc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="19" selection-start="37" selection-end="37" vertical-scroll-proportion="0.051044084">
               <folding />
             </state>
           </provider>
@@ -65,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leads.sql" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="leads.sql" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/leads.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="14" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.9481743">
+            <state line="67" column="14" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,6 +130,7 @@
         <option value="$PROJECT_DIR$/collections/baseCollection.js" />
         <option value="$PROJECT_DIR$/models/baseModel.js" />
         <option value="$PROJECT_DIR$/lib/mysqlKnex.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -326,13 +344,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/collections/baseCollection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="16" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/collections/campignCollection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -370,7 +381,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/leads.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="14" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.9481743">
+        <state line="67" column="14" selection-start="2117" selection-end="2117" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/collections/baseCollection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="16" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="19" selection-start="37" selection-end="37" vertical-scroll-proportion="0.051044084">
           <folding />
         </state>
       </provider>
