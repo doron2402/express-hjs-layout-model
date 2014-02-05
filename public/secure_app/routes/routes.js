@@ -29,6 +29,11 @@
 				controller : 'adminLeads'
 			})
 
+			.when('/admin/campign/:id',{
+				'templateUrl' : 'admin_templates/campign.html',
+				controller : 'campignPage'
+			})
+
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

@@ -99,6 +99,30 @@
 	});
 
 	
+	adminApp.controller('campignPage', function($scope, $http, $route, $routeParams, $location){
+		console.log($route);
+		console.log($routeParams);
+		console.log($routeParams.id);
+		console.log($location);
+
+		$http({method: 'POST',
+			data: { 'campignId': parseInt($routeParams.id,10), 'userId': },
+	    	url: 'http://localhost:3000/campigns/info'}).
+          		success(function(data, status, headers, config) {
+            	// this callback will be called asynchronously
+            	// when the response is available
+            	console.log(data);
+            	$scope.campign = data;
+          	}).
+          	error(function(data, status, headers, config) {
+            	// called asynchronously if an error occurs
+            	// or server returns response with an error status.
+            	console.log(data);
+            	$scope.campign = null;
+          });
+
+	});
+
 	adminApp.controller('meController', function($scope){
 	 $scope.user = {name: 'me', email: 'me@me.com', lastLogin: '01-23-2014'};
 	});

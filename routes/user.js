@@ -65,6 +65,7 @@ exports.loginUser = function(req, res){
 				session_id.update('#' + model.get('id') + '-' + model.get('username'));
 
 				req.session.user_id = session_id.digest('hex');
+				req.session.userId = model.get('id');
 
 				return res.json({redirect: '/admin',dataReturn: 'success' });
 			}	
@@ -80,6 +81,7 @@ exports.loginUser = function(req, res){
 
 exports.logoutUser = function(req, res, next){
 	delete req.session.user_id;
+	delete req.session.userId;
 	return res.redirect('/');
 };
 

@@ -1,3 +1,6 @@
+var Mysql = require('../lib/mysqlKnex');
+
+
 exports.newCampign = function(req, res){
 
   var Model = require('../models/campignModel');
@@ -54,3 +57,24 @@ exports.deleteCampign = function(req, res){
 
 };
 
+exports.information = function(req, res) {
+
+   if (parseInt(req.body.campignId,10) > 0 ){
+
+		return Mysql.MysqlKnex('cardential').where('userId',parseInt(req.session.userId,10))
+		.andWhere('campignId','=',parseInt(req.body.campignId,10))
+  		.join('campigns', function() {
+      		this.on('cardential.campignId', '=', 'campigns.id');
+  		}).exec(function(err, resp) { 
+  			
+  			console.log(resp);
+			res.json(resp);
+  		});
+
+  		
+
+   }//eo if
+
+   res.header("Access-Control-Allow-Origin", "*");
+   res.json({error: 'Missing arguments'});
+};

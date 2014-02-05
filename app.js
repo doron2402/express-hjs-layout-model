@@ -94,7 +94,7 @@ app.post('/auth/user', user.loginUser);
 app.get('/admin/logout', user.logoutUser);
 app.post('/contact/new', contact.newContactInformation);
 app.post('/campigns/available', auth.checkAuth, cardential.getCampignCaredentialByUserId);
-
+app.post('/campigns/info', auth.checkAuth, campign.information);
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
 app.get('/leads/all/:campignId', leads.getAllLeads);
 //Create new campign

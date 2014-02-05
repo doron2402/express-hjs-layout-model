@@ -1,23 +1,18 @@
 exports.getCampignCaredentialByUserId = function(req, res){
    
-   var Collection = require('../collections/cardentialCollection'),
-   	   Collection2 = require('../collections/campignCollection');
+   var Mysql = require('../lib/mysqlKnex');
 
    
    if (req.body.userId > 0){
-	
-	var qb = new Collection.CardentialCollection().query();
-	
-	return qb.where({userId: req.body.userId}).select().then(function(resp,err) {
-		if (err)
-			console.log('err %s',err);
-			
-			console.log(resp);
-			res.header("Access-Control-Allow-Origin", "*");
-			res.json(resp);
 
-			var qb2 = new Collection2.
-		});
+		return Mysql.MysqlKnex('cardential').where('userId',parseInt(req.body.userId,10))
+  		.join('campigns', function() {
+      		this.on('cardential.campignId', '=', 'campigns.id');
+  		}).exec(function(err, resp) { 
+  			console.log(resp);
+			res.json(resp);
+  		});
+
    }//eo if
 
    res.header("Access-Control-Allow-Origin", "*");

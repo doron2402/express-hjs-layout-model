@@ -1,4 +1,4 @@
-var base = require('./baseModel').LeadsMySql;
+var base = require('./baseModel').BaseModel;
 
 var TrafficModel = base.Model.extend({
   tableName: 'traffic'
