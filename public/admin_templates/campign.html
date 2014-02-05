@@ -66,7 +66,6 @@
     	<th>Erate</th>
     	<th>Prod</th>
     	<th>Media</th>
-    	
     </tr>
   </thead>
   <tbody>
@@ -80,3 +79,28 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Summary Table -->
+<h5>Summary</h5>
+<table>
+  <thead>
+    <tr>
+    	<th>Index</th>
+    	<th>Channel</th>
+    	<th>Erate</th>
+    	<th>Prod</th>
+    	<th>Media</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in summary">
+      <td>{{$index + 1}}</td>
+      <td>{{data.createdAt}}</td>
+      <td>{{data.channel}}</td>
+      <td>{{data.erate}}</td>
+      <td>{{data.prod}}</td>
+      <td>{{data.media}}</td>
+    </tr>
+  </tbody>
+</table>
+
