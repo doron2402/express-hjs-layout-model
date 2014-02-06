@@ -21,6 +21,38 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
+	//List of exsisting clients per user
+	adminApp.controller('clientsPage', function($scope, $http) {
+		//Get a list of all clients
+		$http({
+			method: 'POST',
+	    	url: 'http://localhost:3000/clients/all/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.clients = data;
+          	}).
+          	error(function(data, status, headers, config) {
+            		$scope.clients = null;
+          });
+
+	});
+
+	//Add new client
+	adminApp.controller('clientNew', function($scope, $http) {
+		
+		$http({
+			method: 'POST',
+	    	url: 'http://localhost:3000/client/new/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.clients = data;
+          	}).
+          	error(function(data, status, headers, config) {
+            		$scope.clients = null;
+          });
+	});
+	
+
 	adminApp.controller('menuController',function($scope){
 	  $scope.menu = [
 	    {link: '', icon: 'home', name: 'Home'},
@@ -206,6 +238,18 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				controller : 'campignPage'
 			})
 
+			//Clients page -> each users can have multiple clients
+			.when('/admin/clients',{
+				'templateUrl' : 'admin_templates/clients.html',
+				controller : 'clientsPage'
+			})
+
+			//Add a new client
+			.when('/admin/client/new',{
+				'templateUrl' : 'admin_templates/newclient.html',
+				controller : 'clientNew'
+			})
+			
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

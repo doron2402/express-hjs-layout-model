@@ -20,6 +20,38 @@
 
 	});
 	
+	//List of exsisting clients per user
+	adminApp.controller('clientsPage', function($scope, $http) {
+		//Get a list of all clients
+		$http({
+			method: 'POST',
+	    	url: 'http://localhost:3000/clients/all/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.clients = data;
+          	}).
+          	error(function(data, status, headers, config) {
+            		$scope.clients = null;
+          });
+
+	});
+
+	//Add new client
+	adminApp.controller('clientNew', function($scope, $http) {
+		
+		$http({
+			method: 'POST',
+	    	url: 'http://localhost:3000/client/new/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.clients = data;
+          	}).
+          	error(function(data, status, headers, config) {
+            		$scope.clients = null;
+          });
+	});
+	
+
 	adminApp.controller('menuController',function($scope){
 	  $scope.menu = [
 	    {link: '', icon: 'home', name: 'Home'},

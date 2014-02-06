@@ -23,7 +23,7 @@ exports.getAllLeads = function(req, res){
 				console.log(err);
 				res.json({'Error':'Something Went Wrong...'});
 		 	}
-				console.log(response);
+				//console.log(response);
 				res.json(response);
 		});
 
@@ -44,7 +44,7 @@ exports.getAllLeads = function(req, res){
 				console.log(err);
 				res.json({'Error':'Something Went Wrong...'});
 		 	}
-				console.log(response);
+				//console.log(response);
 				res.json(response);
 		});
 	}

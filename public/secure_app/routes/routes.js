@@ -34,6 +34,18 @@
 				controller : 'campignPage'
 			})
 
+			//Clients page -> each users can have multiple clients
+			.when('/admin/clients',{
+				'templateUrl' : 'admin_templates/clients.html',
+				controller : 'clientsPage'
+			})
+
+			//Add a new client
+			.when('/admin/client/new',{
+				'templateUrl' : 'admin_templates/newclient.html',
+				controller : 'clientNew'
+			})
+			
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

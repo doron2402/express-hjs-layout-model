@@ -1,11 +1,9 @@
 var Mysql = require('../lib/mysqlKnex');
+var Model = require('../models/campignModel');
 
 
 exports.newCampign = function(req, res){
 
-  var Model = require('../models/campignModel');
-	
-	
 	if (req.params.campignId > 0){
 
 	  return new Model.TrafficModel({
@@ -21,18 +19,16 @@ exports.newCampign = function(req, res){
 	  	if (err)
 	  		console.log('Error : %s', err);
 
-	  	console.log(model);
+	  	//console.log(model);
 	  	return res.json({ data: 'success' });	
 	  });  	
 	}
-  	console.log('here..');
+  	
+  	return res.json({'error' : 'missing campign id'});
 
 };
 
-exports.deleteCampign = function(req, res){
-
-  var Model = require('../models/campignModel');
-	
+exports.deleteCampign = function(req, res){	
 	
 	if (req.params.campignId > 0){
 
@@ -67,7 +63,7 @@ exports.information = function(req, res) {
       		this.on('cardential.campignId', '=', 'campigns.id');
   		}).exec(function(err, resp) { 
   			
-  			console.log(resp);
+  			//console.log(resp);
 			res.json(resp);
   		});
 

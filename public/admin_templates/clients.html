@@ -1,0 +1,50 @@
+<h3>Clients</h3>
+<a href="#/admin/client/new" class="button tiny">Add new client</a>
+
+<div ng-repeat="client in clients">
+<hr>
+	<table>
+		<tbody>
+			<tr>
+				<td><span class="label radius">Name:</span></td>
+				<td>{{client.clientName}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Phone:</span></td>
+				<td>{{client.clientPhone}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">WebSite:</span></td>
+				<td> {{client.clientSite}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Address:</span></td>
+				<td>{{client.clientAddress}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">City:</span></td>
+				<td>{{client.clientCity}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Country:</span></td>
+				<td>{{client.clientCountry}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Fax:</span></td>
+				<td>{{client.clientFax}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Contact Name:</span></td>
+				<td>{{client.clientContactName}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Contact Phone:</span></td>
+				<td>{{client.clientContactPhone}}</td>
+			</tr>
+			<tr>
+				<td><span class="label radius">Account Manager:</span></td>
+				<td>{{client.clientAccountManager}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

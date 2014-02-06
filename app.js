@@ -10,6 +10,7 @@ var express = require('express'),
 	leads = require('./routes/leads'),
 	contact = require('./routes/contact'),
 	cardential = require('./routes/cardential'),
+	clients = require('./routes/clients'),
 	campign = require('./routes/campign');
 
 
@@ -96,6 +97,10 @@ app.post('/contact/new', contact.newContactInformation);
 app.post('/campigns/available', auth.checkAuth, cardential.getCampignCaredentialByUserId);
 app.post('/campigns/info', auth.checkAuth, campign.information);
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
+
+//Clients 
+app.post('/clients/all',auth.checkAuth, clients.getAllClients);
+app.post('/client/new', auth.checkAuth, clients.addNewClient);
 
 app.post('/leads/all/:campignId', auth.checkAuth, leads.getAllLeads); //Get Leads by campign id
 app.post('/traffic/all/:campignId', auth.checkAuth, traffic.getAllTraffic); //Get Traffic by campign id
