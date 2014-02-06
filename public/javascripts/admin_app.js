@@ -39,17 +39,22 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	//Add new client
 	adminApp.controller('clientNew', function($scope, $http) {
-		
-		$http({
-			method: 'POST',
-	    	url: 'http://localhost:3000/client/new/'}).
-          		success(function(data, status, headers, config) {
-            		console.log(data);
-            		$scope.clients = data;
-          	}).
-          	error(function(data, status, headers, config) {
-            		$scope.clients = null;
-          });
+		$scope.submitNewClientForm = function(){
+			console.log(this.client);
+			
+			$http({
+				method: 'POST',
+				data: this.client,
+		    	url: 'http://localhost:3000/client/new/'}).
+	          		success(function(data, status, headers, config) {
+	            		console.log(data);
+	            		$scope.clients = data;
+	          	}).
+	          	error(function(data, status, headers, config) {
+	            		$scope.clients = null;
+	          });
+		}
+
 	});
 	
 
