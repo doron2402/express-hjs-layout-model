@@ -26,9 +26,41 @@ exports.getAllClients = function(req, res){
 //Adding a new client
 exports.addNewClient = function (req, res) {
 
-  if (req.body){
+  if (req.body && req.body.name && req.session.userId){
 
+    return Mysql.MysqlKnex('clients').insert({
+      userId: req.session.userId,
+      clientName: escape(req.body.name),
+      clientPhone: escape(req.body.phone) || 'NULL',
+      clientSite: escape(req.body.site) || 'NULL',
+      clientAddress: escape(req.body.address) || 'NULL',
+      clientCity: escape(req.body.city) || 'NULL',
+      clientState: escape(req.body.state) || 'NULL',
+      clientCountry: escape(req.body.country) || 'NULL',
+      clientFax: escape(req.body.fax) || 'NULL',
+      clientContactPhone: escape(req.body.contactPhone) || 'NULL',
+      clientContactName: escape(req.body.contactName) || 'NULL'
+     }).then(function(err, response){
+        if (err)
+          console.log(err);
+
+        return res.json({data: response});
+     });
+    
+    
   }else
     return res.json({ error: 'No body'});
 
+};
+
+exports.deleteClient = function (req, res) {
+  console.log(req.body);
+  
+  return Mysql.MysqlKnex('clients').where('id', parseInt(req.body.id,10)).del().then(function(err, response){
+    if (err)
+      console.log(err);
+
+    return res.json({data: 'Delete Successfully'});
+  });
+  
 };

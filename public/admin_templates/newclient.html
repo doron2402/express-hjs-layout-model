@@ -1,8 +1,3 @@
-<style type="text/css">
-	.signup-input {
-		margin-top: 5px;
-	}
-</style>
 <h1>New Client</h1>
 <form name="newClientForm" novalidate ng-submit="submitNewClientForm()">
   <fieldset>
@@ -18,7 +13,7 @@
 		    		ng-minlength="3" 
 		    		ng-model="client.name" 
 		    		placeholder="Client Name"
-		    		ng-pattern="/^[a-zA-Z]*$/"
+		    		ng-pattern="/^[a-zA-Z0-9 ]+$/"
 		    		required
 		    	/>
 		    	<small 
@@ -29,6 +24,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
         <div class="row">
         <!-- client phone -->
         	<div class="large-6 columns">
@@ -39,7 +35,7 @@
 	    		ng-minlength="8" 
 	    		ng-pattern="/^\d+$/" 
 	    		name="phone" 
-	    		required >
+	    		>
 	    		<small ng-hide="newClientForm.phone.$valid" class="warn">
 	    			Please enter the client/company phone number
 	    		</small>
@@ -47,6 +43,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
         <div class="row">
         <!-- client site -->
         	<div class="large-6 columns">
@@ -56,7 +53,7 @@
 	    		placeholder="Client Web Site" 
 	    		ng-minlength="5" 
 	    		name="website" 
-	    		required >
+	    		 >
 	    		<small ng-hide="newClientForm.website.$valid" class="warn">
 	    			Please enter the client web site url
 	    		</small>
@@ -64,6 +61,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
          <div class="row">
         <!-- client address -->
         	<div class="large-6 columns">
@@ -73,7 +71,7 @@
 	    		placeholder="Client address" 
 	    		ng-minlength="5" 
 	    		name="address"
-	    		ng-pattern="/^[a-zA-Z0-9]*$/"
+	    		ng-pattern="/^[a-zA-Z0-9 ]*$/"
 	    		>
 	    		<small ng-hide="newClientForm.address.$valid" class="warn">
 	    			Please enter the client address
@@ -82,6 +80,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
         <div class="row">
         <!-- client city -->
         	<div class="large-6 columns">
@@ -91,8 +90,8 @@
 	    		placeholder="Client City" 
 	    		ng-minlength="3" 
 	    		name="city"
-	    		ng-pattern="/^[a-zA-Z]*$/"
-	    		required >
+	    		ng-pattern="/^[a-zA-Z -]*$/"
+	    		>
 	    		<small ng-hide="newClientForm.city.$valid" class="warn">
 	    			Please enter the client city
 	    		</small>
@@ -100,6 +99,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
         <div class="row">
         <!-- client state -->
         	<div class="large-6 columns">
@@ -118,6 +118,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
         <div class="row">
         <!-- client country -->
         	<div class="large-6 columns">
@@ -127,7 +128,7 @@
 	    		placeholder="Client Country" 
 	    		ng-minlength="2" 
 	    		name="country"
-	    		ng-pattern="/^[a-zA-Z]*$/"
+	    		ng-pattern="/^[a-zA-Z -]*$/"
 	    		>
 	    		<small ng-hide="newClientForm.country.$valid" class="warn">
 	    			Please enter the country
@@ -136,6 +137,7 @@
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
          <div class="row">
         <!-- client fax -->
         	<div class="large-6 columns">
@@ -148,12 +150,13 @@
 	    		ng-pattern="/^\d+$/"
 	    		>
 	    		<small ng-hide="newClientForm.fax.$valid" class="warn">
-	    			Please enter the client fax number
+	    			Please enter the client fax number (only numbers)
 	    		</small>
         	</div>
         	<div class="large-6 columns">
         	</div>
         </div>
+        <br />
         <fieldset>
         	<legend>Client Contact Person Information</legend>
         		<div class="row">
@@ -164,8 +167,8 @@
 			    		ng-model="client.contactName" 
 			    		placeholder="Contact Full Name" 
 			    		ng-minlength="2" 
-			    		name="contactName"
-			    		ng-pattern="/^[a-zA-Z]*$/"
+			    		name="contactName"	
+			    		ng-pattern="/^[a-zA-Z -]*$/"
 			    		>
 			    		<small ng-hide="newClientForm.contactName.$valid" class="warn">
 			    			Please enter the client contact Name
@@ -174,6 +177,7 @@
         			<div class="large-6 columns">
         			</div>
         		</div>
+        		<br />
         		<div class="row">
         		<!-- client Contact Info - Phone -->
         			<div class="large-6 columns">
@@ -186,7 +190,7 @@
 			    		ng-pattern="/^\d+$/"
 			    		>
 			    		<small ng-hide="newClientForm.contactPhone.$valid" class="warn">
-			    			Please enter the client contact phone number
+			    			Please enter the client contact phone number (only numbers)
 			    		</small>
         			</div>
         			<div class="large-6 columns">

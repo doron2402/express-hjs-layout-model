@@ -29,18 +29,32 @@
           		success(function(data, status, headers, config) {
             		console.log(data);
             		$scope.clients = data;
+
           	}).
           	error(function(data, status, headers, config) {
             		$scope.clients = null;
           });
-
+ 
+         	var ClientId = this.client.id;
+        	$http({
+			method: 'POST',
+			data: this.client,
+	    	url: 'http://localhost:3000/client/delete/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.deleted[ClientId] = true;
+          	}).
+          	error(function(data, status, headers, config) {
+            		console.log(data);
+          });
+        }
 	});
 
 	//Add new client
-	adminApp.controller('clientNew', function($scope, $http) {
+	adminApp.controller('clientNew', function($scope, $http, $location, $window) {
 		$scope.submitNewClientForm = function(){
 			console.log(this.client);
-			
+
 			$http({
 				method: 'POST',
 				data: this.client,
@@ -48,6 +62,7 @@
 	          		success(function(data, status, headers, config) {
 	            		console.log(data);
 	            		$scope.clients = data;
+	            		$window.location.href = 'admin#/admin/clients';
 	          	}).
 	          	error(function(data, status, headers, config) {
 	            		$scope.clients = null;
@@ -102,13 +117,9 @@
 	    	$http({method: 'POST',
 	    		url: 'http://localhost:3000/lead/all/' + this.user.username}).
           		success(function(data, status, headers, config) {
-            	// this callback will be called asynchronously
-            	// when the response is available
-            	console.log(data);
+            		console.log(data);
           	}).
           	error(function(data, status, headers, config) {
-            	// called asynchronously if an error occurs
-            	// or server returns response with an error status.
             	console.log(data);
           });
 	     }
@@ -120,14 +131,10 @@
 	  	$http({method: 'POST',
 	    	url: 'http://localhost:3000/leads/all/' + parseInt($routeParams.id,10)}).
           		success(function(data, status, headers, config) {
-            	// this callback will be called asynchronously
-            	// when the response is available
             	console.log(data);
             	$scope.leads = data;
           	}).
           	error(function(data, status, headers, config) {
-            	// called asynchronously if an error occurs
-            	// or server returns response with an error status.
             	console.log(data);
             	$scope.leads = null;
           });
@@ -141,8 +148,6 @@
 			data: { 'campignId': parseInt($routeParams.id,10)},
 	    	url: 'http://localhost:3000/campigns/info'}).
           		success(function(data, status, headers, config) {
-            	
-            	    console.log('Doron');
             		//User have permission to all data
             		//Get All Leads And Traffic Data
             		$http({method: 'POST',

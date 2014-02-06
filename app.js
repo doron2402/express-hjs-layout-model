@@ -101,6 +101,7 @@ app.get('/leads/media/:campignId', leads.getLeadByMedia);
 //Clients 
 app.post('/clients/all',auth.checkAuth, clients.getAllClients);
 app.post('/client/new', auth.checkAuth, clients.addNewClient);
+app.post('/client/delete', auth.checkAuth, clients.deleteClient);
 
 app.post('/leads/all/:campignId', auth.checkAuth, leads.getAllLeads); //Get Leads by campign id
 app.post('/traffic/all/:campignId', auth.checkAuth, traffic.getAllTraffic); //Get Traffic by campign id
