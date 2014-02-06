@@ -21,6 +21,60 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
+	//List of exsisting clients per user
+	adminApp.controller('clientsPage', function($scope, $http) {
+		//Get a list of all clients
+		$http({
+			method: 'POST',
+	    	url: 'http://localhost:3000/clients/all/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.clients = data;
+
+          	}).
+          	error(function(data, status, headers, config) {
+            		$scope.clients = null;
+          });
+
+        $scope.deleteClient = function () {
+ 
+         	var ClientId = this.client.id;
+        	$http({
+			method: 'POST',
+			data: this.client,
+	    	url: 'http://localhost:3000/client/delete/'}).
+          		success(function(data, status, headers, config) {
+            		console.log(data);
+            		$scope.deleted[ClientId] = true;
+          	}).
+          	error(function(data, status, headers, config) {
+            		console.log(data);
+          });
+        }
+	});
+
+	//Add new client
+	adminApp.controller('clientNew', function($scope, $http, $location, $window) {
+		$scope.submitNewClientForm = function(){
+			console.log(this.client);
+
+			$http({
+				method: 'POST',
+				data: this.client,
+		    	url: 'http://localhost:3000/client/new/'}).
+	          		success(function(data, status, headers, config) {
+	            		console.log(data);
+	            		$scope.clients = data;
+	            		$window.location.href = 'admin#/admin/clients';
+	          	}).
+	          	error(function(data, status, headers, config) {
+	            		$scope.clients = null;
+	          });
+		}
+
+	});
+	
+
 	adminApp.controller('menuController',function($scope){
 	  $scope.menu = [
 	    {link: '', icon: 'home', name: 'Home'},
@@ -66,13 +120,9 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	    	$http({method: 'POST',
 	    		url: 'http://localhost:3000/lead/all/' + this.user.username}).
           		success(function(data, status, headers, config) {
-            	// this callback will be called asynchronously
-            	// when the response is available
-            	console.log(data);
+            		console.log(data);
           	}).
           	error(function(data, status, headers, config) {
-            	// called asynchronously if an error occurs
-            	// or server returns response with an error status.
             	console.log(data);
           });
 	     }
@@ -84,14 +134,10 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	  	$http({method: 'POST',
 	    	url: 'http://localhost:3000/leads/all/' + parseInt($routeParams.id,10)}).
           		success(function(data, status, headers, config) {
-            	// this callback will be called asynchronously
-            	// when the response is available
             	console.log(data);
             	$scope.leads = data;
           	}).
           	error(function(data, status, headers, config) {
-            	// called asynchronously if an error occurs
-            	// or server returns response with an error status.
             	console.log(data);
             	$scope.leads = null;
           });
@@ -105,8 +151,6 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			data: { 'campignId': parseInt($routeParams.id,10)},
 	    	url: 'http://localhost:3000/campigns/info'}).
           		success(function(data, status, headers, config) {
-            	
-            	    console.log('Doron');
             		//User have permission to all data
             		//Get All Leads And Traffic Data
             		$http({method: 'POST',
@@ -206,6 +250,18 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				controller : 'campignPage'
 			})
 
+			//Clients page -> each users can have multiple clients
+			.when('/admin/clients',{
+				'templateUrl' : 'admin_templates/clients.html',
+				controller : 'clientsPage'
+			})
+
+			//Add a new client
+			.when('/admin/client/new',{
+				'templateUrl' : 'admin_templates/newclient.html',
+				controller : 'clientNew'
+			})
+			
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

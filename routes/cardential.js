@@ -6,7 +6,7 @@ exports.getCampignCaredentialByUserId = function(req, res){
   		.join('campigns', function() {
       		this.on('cardential.campignId', '=', 'campigns.id');
   		}).exec(function(err, resp) { 
-  			console.log(resp);
+  			//console.log(resp);
 			res.json(resp);
   		});
 

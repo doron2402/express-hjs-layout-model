@@ -30,7 +30,7 @@ exports.signupUser = function(req, res){
 			password:  password.digest('hex'),
 			email: UserData.email || 'NULL'
 		}).save().then(function(model) {
-	    	console.log(model);
+	    	//console.log(model);
 	    	var session_id = crypto.createHash('sha1');
 				session_id.update('#' + model.get('id') + '-' + model.get('username'));
 
@@ -66,6 +66,7 @@ exports.loginUser = function(req, res){
 
 				req.session.user_id = session_id.digest('hex');
 				req.session.userId = model.get('id');
+				req.session.userType = model.get('type');
 
 				return res.json({redirect: '/admin',dataReturn: 'success' });
 			}	

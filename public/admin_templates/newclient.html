@@ -1,0 +1,205 @@
+<h1>New Client</h1>
+<form name="newClientForm" novalidate ng-submit="submitNewClientForm()">
+  <fieldset>
+    <legend><h3>Add new client</h3></legend>
+    <div class="columns text-center">
+        <div class="row">
+        	<!-- client name -->
+        	<div class="large-6 columns">
+	        	<input 
+		    		type="text" 
+		    		class="signup-input" 
+		    		name="fullname" 
+		    		ng-minlength="3" 
+		    		ng-model="client.name" 
+		    		placeholder="Client Name"
+		    		ng-pattern="/^[a-zA-Z0-9 ]+$/"
+		    		required
+		    	/>
+		    	<small 
+			    	ng-hide="newClientForm.fullname.$valid"
+			    	class="error">Please enter client name (Must be more than 3 characters)
+			    </small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+        <div class="row">
+        <!-- client phone -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.phone" 
+	    		placeholder="Client Phone" 
+	    		ng-minlength="8" 
+	    		ng-pattern="/^\d+$/" 
+	    		name="phone" 
+	    		>
+	    		<small ng-hide="newClientForm.phone.$valid" class="warn">
+	    			Please enter the client/company phone number
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+        <div class="row">
+        <!-- client site -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.site" 
+	    		placeholder="Client Web Site" 
+	    		ng-minlength="5" 
+	    		name="website" 
+	    		 >
+	    		<small ng-hide="newClientForm.website.$valid" class="warn">
+	    			Please enter the client web site url
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+         <div class="row">
+        <!-- client address -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.address" 
+	    		placeholder="Client address" 
+	    		ng-minlength="5" 
+	    		name="address"
+	    		ng-pattern="/^[a-zA-Z0-9 ]*$/"
+	    		>
+	    		<small ng-hide="newClientForm.address.$valid" class="warn">
+	    			Please enter the client address
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+        <div class="row">
+        <!-- client city -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.city" 
+	    		placeholder="Client City" 
+	    		ng-minlength="3" 
+	    		name="city"
+	    		ng-pattern="/^[a-zA-Z -]*$/"
+	    		>
+	    		<small ng-hide="newClientForm.city.$valid" class="warn">
+	    			Please enter the client city
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+        <div class="row">
+        <!-- client state -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.state" 
+	    		placeholder="Client State" 
+	    		ng-minlength="2" 
+	    		name="state"
+	    		ng-pattern="/^[a-zA-Z]*$/"
+	    		>
+	    		<small ng-hide="newClientForm.state.$valid" class="warn">
+	    			Please enter the state, if is in the US
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+        <div class="row">
+        <!-- client country -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.country" 
+	    		placeholder="Client Country" 
+	    		ng-minlength="2" 
+	    		name="country"
+	    		ng-pattern="/^[a-zA-Z -]*$/"
+	    		>
+	    		<small ng-hide="newClientForm.country.$valid" class="warn">
+	    			Please enter the country
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+         <div class="row">
+        <!-- client fax -->
+        	<div class="large-6 columns">
+	        	<input type="text" 
+	    		class="signup-input"
+	    		ng-model="client.fax" 
+	    		placeholder="Client Fax" 
+	    		ng-minlength="9" 
+	    		name="fax"
+	    		ng-pattern="/^\d+$/"
+	    		>
+	    		<small ng-hide="newClientForm.fax.$valid" class="warn">
+	    			Please enter the client fax number (only numbers)
+	    		</small>
+        	</div>
+        	<div class="large-6 columns">
+        	</div>
+        </div>
+        <br />
+        <fieldset>
+        	<legend>Client Contact Person Information</legend>
+        		<div class="row">
+        		<!-- client Contact Info - Name -->
+        			<div class="large-6 columns">
+		        		<input type="text" 
+			    		class="signup-input"
+			    		ng-model="client.contactName" 
+			    		placeholder="Contact Full Name" 
+			    		ng-minlength="2" 
+			    		name="contactName"	
+			    		ng-pattern="/^[a-zA-Z -]*$/"
+			    		>
+			    		<small ng-hide="newClientForm.contactName.$valid" class="warn">
+			    			Please enter the client contact Name
+			    		</small>
+        			</div>
+        			<div class="large-6 columns">
+        			</div>
+        		</div>
+        		<br />
+        		<div class="row">
+        		<!-- client Contact Info - Phone -->
+        			<div class="large-6 columns">
+		        		<input type="text" 
+			    		class="signup-input"
+			    		ng-model="client.contactPhone" 
+			    		placeholder="Contact Phone" 
+			    		ng-minlength="9" 
+			    		name="contactPhone"
+			    		ng-pattern="/^\d+$/"
+			    		>
+			    		<small ng-hide="newClientForm.contactPhone.$valid" class="warn">
+			    			Please enter the client contact phone number (only numbers)
+			    		</small>
+        			</div>
+        			<div class="large-6 columns">
+        			</div>
+        		</div>
+        </fieldset>
+       	<div class="row">
+	    	<button type="submit" class="button radius">Create new Client</button>
+		</div>
+    </div>
+  </fieldset>
+</form>
