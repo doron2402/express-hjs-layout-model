@@ -34,20 +34,23 @@
           	error(function(data, status, headers, config) {
             		$scope.clients = null;
           });
- 
-         	var ClientId = this.client.id;
-        	$http({
+ 		
+ 		$scope.deleteClient = function(){
+ 			var ClientId = this.client.id;
+ 			$http({
 			method: 'POST',
 			data: this.client,
 	    	url: 'http://localhost:3000/client/delete/'}).
           		success(function(data, status, headers, config) {
             		console.log(data);
+            		$scope.deleted = {};
             		$scope.deleted[ClientId] = true;
           	}).
           	error(function(data, status, headers, config) {
             		console.log(data);
           });
-        }
+ 		}
+         	
 	});
 
 	//Add new client

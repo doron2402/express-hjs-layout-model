@@ -2,7 +2,7 @@
 <a href="#/admin/client/new" class="button tiny">Add new client</a>
 <div class="row">
 	<div class="large-4 columns" ng-repeat="client in clients">
-		<div id="client-{{client.id}}">
+		<div id="client-data-{{client.id}}" ng-hide="deleted[{{client.id}}]">
 		<hr>
 			<table>
 				<tbody>
@@ -49,6 +49,16 @@
 					<tr>
 						<td><a ng-click="deleteClient()" class="button tiny alert">Delete</a></td>
 						<td><a ng-click="editClient()" class="button tiny secondary">Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="client-delete-{{client.id}}" ng-show="deleted[{{client.id}}]">
+			<hr>
+			<table>
+				<tbody>
+					<tr>
+						<td><p>Client: {{client.clientName}} was delete successfully</p></td>
 					</tr>
 				</tbody>
 			</table>

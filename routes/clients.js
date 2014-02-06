@@ -30,16 +30,16 @@ exports.addNewClient = function (req, res) {
 
     return Mysql.MysqlKnex('clients').insert({
       userId: req.session.userId,
-      clientName: escape(req.body.name),
-      clientPhone: escape(req.body.phone) || 'NULL',
-      clientSite: escape(req.body.site) || 'NULL',
-      clientAddress: escape(req.body.address) || 'NULL',
-      clientCity: escape(req.body.city) || 'NULL',
-      clientState: escape(req.body.state) || 'NULL',
-      clientCountry: escape(req.body.country) || 'NULL',
-      clientFax: escape(req.body.fax) || 'NULL',
-      clientContactPhone: escape(req.body.contactPhone) || 'NULL',
-      clientContactName: escape(req.body.contactName) || 'NULL'
+      clientName: req.body.name,
+      clientPhone: req.body.phone || 'NULL',
+      clientSite: req.body.site || 'NULL',
+      clientAddress: req.body.address || 'NULL',
+      clientCity: req.body.city || 'NULL',
+      clientState: req.body.state || 'NULL',
+      clientCountry: req.body.country || 'NULL',
+      clientFax: req.body.fax || 'NULL',
+      clientContactPhone: req.body.contactPhone || 'NULL',
+      clientContactName: req.body.contactName || 'NULL'
      }).then(function(err, response){
         if (err)
           console.log(err);
