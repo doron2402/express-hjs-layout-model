@@ -35,6 +35,8 @@
             		$scope.clients = null;
           });
  		
+ 		$scope.editable = {};
+ 		
  		$scope.deleteClient = function(){
  			var ClientId = this.client.id;
  			$http({
@@ -49,6 +51,22 @@
           	error(function(data, status, headers, config) {
             		console.log(data);
           });
+ 		}
+
+ 		$scope.editClient = function() {
+ 			console.log('editable');
+ 			console.log($scope.editable[this.client.id]);
+
+ 			if ($scope.editable[this.client.id]){
+ 				console.log('Saving...');
+ 				console.log(this.client);
+ 			}
+
+ 			if (!$scope.editable[this.client.id])
+ 				$scope.editable[this.client.id] = true;
+ 			else
+ 				$scope.editable[this.client.id] = false;
+
  		}
          	
 	});

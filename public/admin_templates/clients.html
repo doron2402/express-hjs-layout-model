@@ -2,7 +2,7 @@
 <a href="#/admin/client/new" class="button tiny">Add new client</a>
 <div class="row">
 	<div class="large-4 columns" ng-repeat="client in clients">
-		<div id="client-data-{{client.id}}" ng-hide="deleted[{{client.id}}]">
+		<div id="client-data-{{client.id}}" ng-hide="deleted[{{client.id}}] || editable[this.client.id]">
 		<hr>
 			<table>
 				<tbody>
@@ -48,10 +48,73 @@
 					</tr>
 					<tr>
 						<td><a ng-click="deleteClient()" class="button tiny alert">Delete</a></td>
-						<td><a ng-click="editClient()" class="button tiny secondary">Edit</a></td>
+						<td><a ng-click="editClient()" class="button tiny secondary">{{ editable[this.client.id] && 'Save' || 'Edit' }}</a></td>
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div id="client-form-data-{{client.id}}" ng-show=" editable[this.client.id]">
+		<form name="newClientForm" novalidate ng-submit="submitNewClientForm()">
+			<table>
+				<tbody>
+					<tr>
+							<td><span class="label radius">Name:</span></td>
+							<td>
+								<input 
+				    				type="text" 
+				    				class="signup-input" 
+				    				name="fullname" 
+				    				ng-minlength="3" 
+				    				ng-model="client.name" 
+				    				placeholder="Client Name"
+				    				ng-pattern="/^[a-zA-Z0-9 ]+$/"
+				    				required
+				    				/>
+					    		</td>
+							</tr>
+						<tr>
+							<td><span class="label radius">Phone:</span></td>
+							<td>{{client.clientPhone}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">WebSite:</span></td>
+							<td> {{client.clientSite}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">Address:</span></td>
+							<td>{{client.clientAddress}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">City:</span></td>
+							<td>{{client.clientCity}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">Country:</span></td>
+							<td>{{client.clientCountry}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">Fax:</span></td>
+							<td>{{client.clientFax}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">Contact Name:</span></td>
+							<td>{{client.clientContactName}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">Contact Phone:</span></td>
+							<td>{{client.clientContactPhone}}</td>
+						</tr>
+						<tr>
+							<td><span class="label radius">Account Manager:</span></td>
+							<td>{{client.clientAccountManager}}</td>
+						</tr>
+					<tr>
+						<td></td>
+						<td><a ng-click="editClient()" class="button tiny secondary">{{ editable[this.client.id] && 'Save' || 'Edit' }}</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
 		</div>
 		<div id="client-delete-{{client.id}}" ng-show="deleted[{{client.id}}]">
 			<hr>
