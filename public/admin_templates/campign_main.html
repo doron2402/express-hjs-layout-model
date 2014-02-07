@@ -1,0 +1,19 @@
+<h1>Campign Page</h1>
+<div class="row">
+	<div ng-switch on="createNew">
+		<div ng-switch-default>
+			<button class="button tiny" ng-click="createCampign()">Create a new campign</button>
+			<!-- show list of campigns -->
+			<!-- Sort by active, starting date, clients -->
+		</div>
+	    <div ng-switch-when="true">
+	    	<div ng-include="'admin_templates/campign/new.html'"></div>
+	    </div>
+	    <div ng-switch-when="show">
+	    	<div ng-include="'admin_templates/campign/show.html'"></div>
+	    </div>
+	    <div ng-switch-when="edit">
+	    	<!-- Edit campign -->
+	    </div>
+	</div>
+</div>

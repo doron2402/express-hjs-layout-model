@@ -21,6 +21,39 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
+	adminApp.controller('campignMain', function ($scope, $http) {
+		
+		
+		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
+		
+		$scope.createCampign = function(){
+			console.log('createCampign');
+			$scope.createNew = true;
+
+		};
+
+		$scope.addCampign = function(){
+			this.campign.code = Math.round(Math.abs(Math.random() * 1000000000));
+			console.log(this.campign);
+			
+			$scope.campign = this.campign;
+			if (this.campign.code != null && this.campign.name != null && this.campign.url != null && this.campign.managerPhone != null){
+				$http({
+					method: 'POST',
+			    	url: 'http://localhost:3000/campign/add/'}).
+		          		success(function(data, status, headers, config) {
+		            		console.log(data);
+		            		$scope.createNew = 'show';
+		          	}).
+		          	error(function(data, status, headers, config) {
+		            		
+		          });
+			}
+		};
+
+
+	});
+
 	//List of exsisting clients per user
 	adminApp.controller('clientsPage', function($scope, $http) {
 		//Get a list of all clients
@@ -101,45 +134,6 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
-
-	adminApp.controller('menuController',function($scope){
-	  $scope.menu = [
-	    {link: '', icon: 'home', name: 'Home'},
-	    {link: 'about', icon: 'shield', name: 'About'},
-	    {link: 'contact', icon: 'comment', name: 'Contact'},
-	    {link: 'register', icon: 'pencil', name: 'Register'},
-	    {link: 'login', icon: 'user', name: 'Login'}
-	    ];
-	    
-	$scope.menuUser = [
-	    {link: '', icon: 'home', name: 'Home'},
-	    {link: 'about', icon: 'shield', name: 'Leads'},
-	    {link: 'about', icon: 'comment', name: 'Campigns'},
-	    {link: 'about', icon: 'pencil', name: 'Performance'},
-	    {link: 'about', icon: 'user', name: 'Logout'}
-	    ];
-	});
-	
-	//Signup Controller
-	adminApp.controller('signupController', function($scope) {
-		$scope.message = 'Please join us';
-		$scope.signupOptions = [{name: 'Facebook', link: 'auth/facebook'},
-		{name: 'Google+', link: 'auth/google'},
-		{name: 'Twitter', link: 'auth/twitter'}];
-	});
-  
-    adminApp.controller('thanksController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Thanks for contacting us';
-	});
-
-	adminApp.controller('aboutController', function($scope) {
-		$scope.message = 'Look! I am an about page.';
-	});
-
-	adminApp.controller('contactController', function($scope) {
-		$scope.message = 'Contact us! JK. This is just a demo.';
-	});
 	
 	adminApp.controller('loginController', function($scope,$http){
 	   $scope.authenticateUserForm = function() {
@@ -171,7 +165,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 
-	
+
 	adminApp.controller('campignPage', function($scope, $http, $route, $routeParams, $location){
 
 		$http({method: 'POST',
@@ -249,12 +243,6 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				templateUrl : 'admin_templates/home.html',
 				controller  : 'mainController'
 			})
-
-	        //After user contact us
-			.when('/contact/thanks', {
-			  templateUrl : 'admin_templates/thanks.html',
-			  controller : 'thanksController'
-			})
 			
 			//Login
 			.when('/login', {
@@ -289,6 +277,12 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				controller : 'clientNew'
 			})
 			
+			//Campign page
+			.when('/admin/campign', {
+				'templateUrl' : 'admin_templates/campign_main.html',
+				controller: 'campignMain'
+			})
+
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

@@ -1,0 +1,16 @@
+<h3>Campign - {{campign.name}}</h3>
+<div class="row">
+	<p>Campign Code: {{campign.code}}</p>
+	<p>Campign Client Id: {{campign.clientId.split('-')[0]}}</p>
+	<p>Campign Client Name: {{campign.clientId.split('-')[1]}}</p>
+	<p>Campign Emails:
+		<p ng-repeat="email in campign.emails.split(',') track by $index">
+			{{$index+1}}) {{email}}
+		</p>
+	</p>
+	<p>Campign Starting date: {{campign.startDate}}</p>
+	<p>Campign Ending date: {{campign.endDate}}</p>
+	<p>Campign Note: {{campign.note}}</p>
+	<p>Campign Manager email address: {{campign.managerEmail}}</p>
+	<p>Campign URL: {{campign.url}}</p>
+</div>

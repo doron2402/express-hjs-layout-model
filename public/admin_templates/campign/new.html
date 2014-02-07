@@ -1,0 +1,119 @@
+<hr>
+<form name="newCampignForm" novalidate>
+	<ul class="pricing-table">
+	  <li class="title">New Campign</li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Campign Name:</div>
+  			<div class="large-6 columns">
+  				<input 
+  				type="text" 
+  				class="signup-input"
+  				ng-model="campign.name" 
+  				placeholder="Campign Name" 
+  				name="campignName"
+  				ng-pattern="/^[a-zA-Z0-9 ]+$/"
+  				required/>
+  				<small 
+			    	ng-hide="newCampignForm.campignName.$valid"
+			    	class="error">Please enter campign name (Must be more than 3 characters numbers or letters)
+			    </small>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Campign URL:</div>
+  			<div class="large-6 columns">
+  				<input 
+  				type="url" 
+  				ng-model="campign.url" 
+  				class="signup-input"
+  				name="campignUrl"
+  				placeholder="Campign URL" 
+  				required/>
+  				<small class="error" ng-show="newCampignForm.campignUrl.$error.url || newCampignForm.campignUrl.$error.required">
+  					Campign Url is not valid
+  				</small>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Assign Client to campign:</div>
+  			<div class="large-6 columns">
+  				<select ng-model="campign.clientId">
+					<option ng-repeat="client in clients" value="{{client.id}}-{{client.name}}">{{client.name}}</option>
+				</select>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">
+		   		Campign Date:
+		   	</div>
+  			<div class="large-3 columns">
+				<input type="text" ng-model="campign.startDate" placeholder="Campign Start date" required/>
+  			</div>
+  			<div class="large-3 columns">
+  				<input type="text" ng-model="campign.endDate" placeholder="Campign End date" required/>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Campign manager phone number:</div>
+  			<div class="large-6 columns">
+  				<input 
+  				class="signup-input"
+  				ng-model="campign.managerPhone" 
+  				placeholder="Campign manager phone number (must be only numbers)" 
+  				type="text"
+  				name="managerPhone"
+  				ng-minlength="8" 
+	    		ng-pattern="/^\d+$/"
+  				required />
+  				<small ng-hide="newCampignForm.managerPhone.$valid" class="warn">
+			    	Phone number must contains at least 9 digits (Numbers)
+			    </small>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Campign manager email:</div>
+  			<div class="large-6 columns">
+  				<input type="text"  ng-model="campign.managerEmail" placeholder="Campign manager email address" required/>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Campign email for reporting leads:</div>
+  			<div class="large-6 columns">
+  				<textarea ng-model="campign.emails" placeholder="enter email address seprated by a comma `,`"></textarea>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="bullet-item">
+	  	<div class="row">
+		   	<div class="large-3 columns">Notes:</div>
+  			<div class="large-6 columns">
+  				<textarea ng-model="campign.note"></textarea>
+  			</div>
+  			<div class="large-3 columns"></div>
+		</div>
+	  </li>
+	  <li class="cta-button"><button class="button tiny" ng-click="addCampign()">Add Campign</button></li>
+	</ul>
+</form>
+
+
