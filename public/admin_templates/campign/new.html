@@ -3,17 +3,10 @@
 	<ul class="pricing-table">
 	  <li class="title">New Campign</li>
 	  <li class="bullet-item">
-		  <div class="row">
-		   	<div class="large-3 columns">Campign Code:</div>
-  			<div class="large-6 columns"><input type="text" value="{{randNum}}" disabled/></div>
-  			<div class="large-3 columns"></div>
-		  </div>
-	  </li>
-	  <li class="bullet-item">
 	  	<div class="row">
 		   	<div class="large-3 columns">Campign Name:</div>
   			<div class="large-6 columns">
-  				<input type="text" placeholder="Campign Name" />	
+  				<input type="text" ng-model="campign.name" placeholder="Campign Name" />	
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -22,7 +15,7 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Campign URL:</div>
   			<div class="large-6 columns">
-  				<input type="text" placeholder="Campign URL" />	
+  				<input type="text" ng-model="campign.url" placeholder="Campign URL" />	
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -32,7 +25,7 @@
 		   	<div class="large-3 columns">Assign Client to campign:</div>
   			<div class="large-6 columns">
   				<select>
-					<option ng-repeat="client in clients" value="{{client.id}}">{{client.name}}</option>
+					<option ng-model="campign.clientId" ng-repeat="client in clients" value="{{client.id}}">{{client.name}}</option>
 				</select>
   			</div>
   			<div class="large-3 columns"></div>
@@ -44,10 +37,10 @@
 		   		Campign Date:
 		   	</div>
   			<div class="large-3 columns">
-				<input type="text" placeholder="Campign Start date" />
+				<input type="text" ng-model="campign.startDate" placeholder="Campign Start date" />
   			</div>
   			<div class="large-3 columns">
-  				<input type="text" placeholder="Campign End date" />
+  				<input type="text" ng-model="campign.endDate" placeholder="Campign End date" />
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -56,7 +49,7 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Campign manager email:</div>
   			<div class="large-6 columns">
-  				<input type="text" placeholder="Campign manager" />
+  				<input type="text" ng-model="campign.managerEmail" placeholder="Campign manager email address" />
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -65,7 +58,7 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Campign email for reporting leads:</div>
   			<div class="large-6 columns">
-  				<textarea placeholder="enter email address seprated by a comma `,`"></textarea>
+  				<textarea ng-model="campign.emails" placeholder="enter email address seprated by a comma `,`"></textarea>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -74,7 +67,7 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Notes:</div>
   			<div class="large-6 columns">
-  				<textarea></textarea>
+  				<textarea ng-model="campign.note"></textarea>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>

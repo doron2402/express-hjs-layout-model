@@ -23,14 +23,24 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	
 	adminApp.controller('campignMain', function ($scope, $http) {
 		
-		$scope.randNum = Math.round(Math.abs(Math.random() * 1000000000));
+		
 		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
+		
 		$scope.createCampign = function(){
 			console.log('createCampign');
 			$scope.createNew = true;
 
+		};
 
-		}
+		$scope.addCampign = function(){
+			this.campign.code = Math.round(Math.abs(Math.random() * 1000000000));
+			console.log(this.campign);
+			$scope.createNew = 'show';
+			$scope.campign = this.campign;
+			//if validate all, show campign
+		};
+
+
 	});
 
 	//List of exsisting clients per user
