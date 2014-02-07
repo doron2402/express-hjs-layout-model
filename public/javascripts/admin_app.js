@@ -21,6 +21,10 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
+	adminApp.controller('campignMain', function ($scope, $http) {
+		$scope.campigns = {id: '1'};
+	});
+
 	//List of exsisting clients per user
 	adminApp.controller('clientsPage', function($scope, $http) {
 		//Get a list of all clients
@@ -289,6 +293,12 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				controller : 'clientNew'
 			})
 			
+			//Campign page
+			.when('/admin/campign', {
+				'templateUrl' : 'admin_templates/campign_main.html',
+				controller: 'campignMain'
+			})
+
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

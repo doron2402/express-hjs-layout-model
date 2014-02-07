@@ -20,6 +20,10 @@
 
 	});
 	
+	adminApp.controller('campignMain', function ($scope, $http) {
+		$scope.campigns = {id: '1'};
+	});
+
 	//List of exsisting clients per user
 	adminApp.controller('clientsPage', function($scope, $http) {
 		//Get a list of all clients
