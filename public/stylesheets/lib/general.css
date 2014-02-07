@@ -37,3 +37,22 @@ body {
 .lwt:hover{
     color: #5BC0DE !important;
 }
+
+fieldset legend {
+    background: none;
+}
+
+.divide{
+    background: #fff;
+    margin-top: 20px;
+}
+
+.panel.callout{
+    background: #D9EDF7;
+}
+
+.pricing-table .title {
+    background-color: #FFF;
+    color: #5BC0DE;
+    border-bottom: 1px solid #ddd;
+}
