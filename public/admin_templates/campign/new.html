@@ -24,8 +24,8 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Assign Client to campign:</div>
   			<div class="large-6 columns">
-  				<select>
-					<option ng-model="campign.clientId" ng-repeat="client in clients" value="{{client.id}}">{{client.name}}</option>
+  				<select ng-model="campign.clientId">
+					<option ng-repeat="client in clients" value="{{client.id}}-{{client.name}}">{{client.name}}</option>
 				</select>
   			</div>
   			<div class="large-3 columns"></div>
