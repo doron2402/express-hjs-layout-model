@@ -18,16 +18,28 @@ module.exports = function (grunt) {
                     'public/components/jquery.cookie/jquery.cookie.js',
                     'public/components/foundation/foundation.js',
                     'public/components/angular/angular.js',
+                    'public/components/jqplot/jquery.jqplot.min.js',
+
+                    /* !!!!!!!!!!! jqplot plugins !!!!!!!!!!!!*/
+
+                    'public/components/jqplot/plugins/*'
 
                 ],
                 dest: 'public/javascripts/main.js'
             },
+            jqplot:{
+                /* !!!!!!!!!!! jqplot plugins (adding all plugins into one file) !!!!!!!!!!!!*/
+                src:[
+                    'public/components/jqplot/plugins/*'
+                ],
+                dest: 'public/javascripts/jqplot-plugins.js'
+            },
             js_app: {
                 src: [
-                    'public/javascripts/',
                     'public/javascripts/controllers/*',
                     'public/javascripts/models/*',
-                    'public/javascripts/routes/*'
+                    'public/javascripts/routes/*',
+                    'public/javascripts/main-jqplot.js'
                 ],
                 dest: 'public/javascripts/app.js'
             },
