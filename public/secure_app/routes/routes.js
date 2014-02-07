@@ -6,12 +6,6 @@
 				templateUrl : 'admin_templates/home.html',
 				controller  : 'mainController'
 			})
-
-	        //After user contact us
-			.when('/contact/thanks', {
-			  templateUrl : 'admin_templates/thanks.html',
-			  controller : 'thanksController'
-			})
 			
 			//Login
 			.when('/login', {

@@ -22,7 +22,15 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	});
 	
 	adminApp.controller('campignMain', function ($scope, $http) {
-		$scope.campigns = {id: '1'};
+		
+		$scope.randNum = Math.round(Math.abs(Math.random() * 1000000000));
+		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
+		$scope.createCampign = function(){
+			console.log('createCampign');
+			$scope.createNew = true;
+
+
+		}
 	});
 
 	//List of exsisting clients per user
@@ -105,45 +113,6 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
-
-	adminApp.controller('menuController',function($scope){
-	  $scope.menu = [
-	    {link: '', icon: 'home', name: 'Home'},
-	    {link: 'about', icon: 'shield', name: 'About'},
-	    {link: 'contact', icon: 'comment', name: 'Contact'},
-	    {link: 'register', icon: 'pencil', name: 'Register'},
-	    {link: 'login', icon: 'user', name: 'Login'}
-	    ];
-	    
-	$scope.menuUser = [
-	    {link: '', icon: 'home', name: 'Home'},
-	    {link: 'about', icon: 'shield', name: 'Leads'},
-	    {link: 'about', icon: 'comment', name: 'Campigns'},
-	    {link: 'about', icon: 'pencil', name: 'Performance'},
-	    {link: 'about', icon: 'user', name: 'Logout'}
-	    ];
-	});
-	
-	//Signup Controller
-	adminApp.controller('signupController', function($scope) {
-		$scope.message = 'Please join us';
-		$scope.signupOptions = [{name: 'Facebook', link: 'auth/facebook'},
-		{name: 'Google+', link: 'auth/google'},
-		{name: 'Twitter', link: 'auth/twitter'}];
-	});
-  
-    adminApp.controller('thanksController', function($scope) {
-		// create a message to display in our view
-		$scope.message = 'Thanks for contacting us';
-	});
-
-	adminApp.controller('aboutController', function($scope) {
-		$scope.message = 'Look! I am an about page.';
-	});
-
-	adminApp.controller('contactController', function($scope) {
-		$scope.message = 'Contact us! JK. This is just a demo.';
-	});
 	
 	adminApp.controller('loginController', function($scope,$http){
 	   $scope.authenticateUserForm = function() {
@@ -175,7 +144,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 
-	
+
 	adminApp.controller('campignPage', function($scope, $http, $route, $routeParams, $location){
 
 		$http({method: 'POST',
@@ -252,12 +221,6 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			.when('/', {
 				templateUrl : 'admin_templates/home.html',
 				controller  : 'mainController'
-			})
-
-	        //After user contact us
-			.when('/contact/thanks', {
-			  templateUrl : 'admin_templates/thanks.html',
-			  controller : 'thanksController'
 			})
 			
 			//Login

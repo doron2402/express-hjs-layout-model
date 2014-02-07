@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="small-2 large-4 columns"></div>
+  	<div class="small-4 large-4 columns">
+	  	<form>
+			<input type="text" value="{{randNum}}" disabled/>
+			<input type="text" placeholder="Campign Name" />
+				<select>
+	          		<option ng-repeat="client in clients" value="{{client.id}}">{{client.name}}</option>
+	        	</select>
+		</form>
+	</div>
+  	<div class="small-6 large-4 columns"></div>
+</div>
