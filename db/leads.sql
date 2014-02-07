@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 05, 2014 at 04:51 PM
+-- Generation Time: Feb 07, 2014 at 05:10 AM
 -- Server version: 5.5.29
 -- PHP Version: 5.4.10
 
@@ -68,6 +68,39 @@ CREATE TABLE `cardential` (
 INSERT INTO `cardential` (`id`, `userId`, `campignId`, `cardential`, `options`, `lastUpdated`) VALUES
 (1, 2, 123, 1, '0', '2014-02-04 19:00:39'),
 (2, 2, 1234, 1, '0', '2014-02-04 22:31:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `userId` int(10) unsigned NOT NULL,
+  `clientName` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientPhone` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientSite` varchar(128) COLLATE utf8_bin NOT NULL,
+  `clientAddress` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientCity` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientState` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientCountry` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientFax` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientContactPhone` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientContactName` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientAccountManager` varchar(32) COLLATE utf8_bin NOT NULL,
+  `clientCampigns` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `userId`, `clientName`, `clientPhone`, `clientSite`, `clientAddress`, `clientCity`, `clientState`, `clientCountry`, `clientFax`, `clientContactPhone`, `clientContactName`, `clientAccountManager`, `clientCampigns`) VALUES
+(1, 2, 'Activated group', '123123123', 'activated.co.il', 'Shenikin 12', 'Tel Aviv', '', 'Israel', '', '44444444', 'Mike', 'Boaz', 0x3132332c31323334),
+(15, 2, 'asdfasdfadsf', '123123123', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', 'undefined', '', ''),
+(16, 2, 'client name here', '123123123', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '123123123', 'NULL', '', '');
 
 -- --------------------------------------------------------
 

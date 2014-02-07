@@ -4828,6 +4828,25 @@ body {
 .lwt:hover{
     color: #5BC0DE !important;
 }
+
+fieldset legend {
+    background: none;
+}
+
+.divide{
+    background: #fff;
+    margin-top: 20px;
+}
+
+.panel.callout{
+    background: #D9EDF7;
+}
+
+.pricing-table .title {
+    background-color: #FFF;
+    color: #5BC0DE;
+    border-bottom: 1px solid #ddd;
+}
 small.warn {
   display: block;
   padding: 0.375rem 0.5625rem 0.5625rem;
