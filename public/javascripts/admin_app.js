@@ -59,8 +59,16 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
  			console.log($scope.editable[this.client.id]);
 
  			if ($scope.editable[this.client.id]){
- 				console.log('Saving...');
- 				console.log(this.client);
+ 				$http({
+					method: 'POST',
+					data: this.client,
+			    	url: 'http://localhost:3000/client/update/'}).
+		          		success(function(data, status, headers, config) {
+		            	console.log(data);
+		          	}).
+		          	error(function(data, status, headers, config) {
+		            		console.log(data);
+		          });
  			}
 
  			if (!$scope.editable[this.client.id])

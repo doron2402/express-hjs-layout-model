@@ -56,11 +56,45 @@ exports.addNewClient = function (req, res) {
 exports.deleteClient = function (req, res) {
   console.log(req.body);
   
-  return Mysql.MysqlKnex('clients').where('id', parseInt(req.body.id,10)).del().then(function(err, response){
-    if (err)
-      console.log(err);
+  if (req.body.id){
+    return Mysql.MysqlKnex('clients').where('id', parseInt(req.body.id,10)).del().then(function(err, response){
+      if (err)
+        console.log(err);
 
-    return res.json({data: 'Delete Successfully'});
-  });
+      return res.json({data: 'Delete Successfully'});
+    }); 
+  }
+  else
+    return res.json({error: 'Missing Id'});
+};
+
+
+exports.updateClient = function (req, res) {
   
+  console.log(req.body);
+
+  if(req.body){
+    return Mysql.MysqlKnex('clients').where('id', parseInt(req.body.id,10)).update({
+      userId: req.session.userId,
+      clientName: req.body.clientName,
+      clientPhone: req.body.clientPhone || 'NULL',
+      clientSite: req.body.clientSite || 'NULL',
+      clientAddress: req.body.clientAddress || 'NULL',
+      clientCity: req.body.clientCity || 'NULL',
+      clientState: req.body.clientState || 'NULL',
+      clientCountry: req.body.clientCountry || 'NULL',
+      clientFax: req.body.clientFax || 'NULL',
+      clientContactPhone: req.body.clientContactPhone || 'NULL',
+      clientContactName: req.body.clientContactName || 'NULL'
+    }).then(function(err, response){
+      if (err)
+        console.log(err);
+
+      return Mysql.MysqlKnex('clients').where('id', parseInt(req.body.id,10)).exec(function(err, resp) { 
+            return res.json(resp);
+      });
+    });
+  }
+  else
+    return res.json({error: 'Missing arguments'});
 };
