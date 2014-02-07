@@ -27,6 +27,7 @@
   "dependencies": {
     "angular": "~1.2.10",
     "angular-route": "~1.2.10",
-    "angular-cookies": "~1.2.10"
+    "angular-cookies": "~1.2.10",
+    "jqplot": "latest"
   }
 }

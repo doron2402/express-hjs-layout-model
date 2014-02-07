@@ -35,9 +35,20 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 		$scope.addCampign = function(){
 			this.campign.code = Math.round(Math.abs(Math.random() * 1000000000));
 			console.log(this.campign);
-			$scope.createNew = 'show';
+			
 			$scope.campign = this.campign;
-			//if validate all, show campign
+			if (this.campign.code != null && this.campign.name != null && this.campign.url != null && this.campign.managerPhone != null){
+				$http({
+					method: 'POST',
+			    	url: 'http://localhost:3000/campign/add/'}).
+		          		success(function(data, status, headers, config) {
+		            		console.log(data);
+		            		$scope.createNew = 'show';
+		          	}).
+		          	error(function(data, status, headers, config) {
+		            		
+		          });
+			}
 		};
 
 

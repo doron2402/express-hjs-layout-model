@@ -6,6 +6,7 @@ module.exports = function (grunt) {
                 src: [
                     'public/components/foundation/css/normalize.css',
                     'public/components/foundation/css/foundation.css',
+                    'public/components/jqplot/css/jquery.jqplot.min.css',
                     'public/stylesheets/lib/*.css'
                 ],
                 dest: 'public/stylesheets/style.css'
@@ -17,15 +18,28 @@ module.exports = function (grunt) {
                     'public/components/jquery.cookie/jquery.cookie.js',
                     'public/components/foundation/foundation.js',
                     'public/components/angular/angular.js',
+                    'public/components/jqplot/jquery.jqplot.min.js',
+
+                    /* !!!!!!!!!!! jqplot plugins !!!!!!!!!!!!*/
+
+                    'public/components/jqplot/plugins/*'
 
                 ],
                 dest: 'public/javascripts/main.js'
+            },
+            jqplot:{
+                /* !!!!!!!!!!! jqplot plugins (adding all plugins into one file) !!!!!!!!!!!!*/
+                src:[
+                    'public/components/jqplot/plugins/*'
+                ],
+                dest: 'public/javascripts/jqplot-plugins.js'
             },
             js_app: {
                 src: [
                     'public/javascripts/controllers/*',
                     'public/javascripts/models/*',
-                    'public/javascripts/routes/*'
+                    'public/javascripts/routes/*',
+                    'public/javascripts/main-jqplot.js'
                 ],
                 dest: 'public/javascripts/app.js'
             },
@@ -77,7 +91,7 @@ module.exports = function (grunt) {
                   legacyWatch: true
                 }
             }
-        },
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');
