@@ -21,7 +21,7 @@
 	});
 	
 	//Campign Main page where you can edit/view/create campign
-	adminApp.controller('campignMain', function ($scope, $http) {
+	adminApp.controller('campignMain', function ($scope, $http, $location, $window) {
 
 		//Get list of all campigns
 		$http({
@@ -42,6 +42,18 @@
 		           		
 		    });
 
+		$scope.displayCampignName = function(campign){
+			return campign.name;
+		};
+
+		$scope.editCampign = function(){
+			if (this.campignEdit.name !== undefined){
+				console.log(this.campignEdit);
+				//redirect to the campign page -> /admin/campign/:id
+				$window.location.href = 'admin#/admin/campign/' + this.campignEdit.id;
+			}
+			
+		};
 		
 		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
 		
@@ -110,8 +122,6 @@
  		}
 
  		$scope.editClient = function() {
- 			console.log('editable');
- 			console.log($scope.editable[this.client.id]);
 
  			if ($scope.editable[this.client.id]){
  				$http({
