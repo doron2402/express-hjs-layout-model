@@ -6,12 +6,6 @@
 				templateUrl : 'admin_templates/home.html',
 				controller  : 'mainController'
 			})
-
-	        //After user contact us
-			.when('/contact/thanks', {
-			  templateUrl : 'admin_templates/thanks.html',
-			  controller : 'thanksController'
-			})
 			
 			//Login
 			.when('/login', {
@@ -46,6 +40,12 @@
 				controller : 'clientNew'
 			})
 			
+			//Campign page
+			.when('/admin/campign', {
+				'templateUrl' : 'admin_templates/campign_main.html',
+				controller: 'campignMain'
+			})
+
 			// route for the contact page
 			.when('/contact', {
 				templateUrl : 'admin_templates/contact.html',

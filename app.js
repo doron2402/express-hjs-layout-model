@@ -95,8 +95,11 @@ app.post('/auth/user', user.loginUser);
 app.get('/admin/logout', user.logoutUser);
 app.post('/contact/new', contact.newContactInformation);
 app.post('/campigns/available', auth.checkAuth, cardential.getCampignCaredentialByUserId);
-app.post('/campigns/info', auth.checkAuth, campign.information);
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
+
+//Campign create/delete/update/read
+app.post('/campign/add', auth.checkAuth, campign.createNewCampign); //Create a new campign
+app.post('/campigns/info', auth.checkAuth, campign.information);
 
 //Clients 
 app.post('/clients/all',auth.checkAuth, clients.getAllClients);
@@ -107,9 +110,6 @@ app.post('/client/update', auth.checkAuth, clients.updateClient);
 app.post('/leads/all/:campignId', auth.checkAuth, leads.getAllLeads); //Get Leads by campign id
 app.post('/traffic/all/:campignId', auth.checkAuth, traffic.getAllTraffic); //Get Traffic by campign id
 app.post('/leads/conversion/:campignId', auth.checkAuth, leads.getConversionRate);
-//Create new campign
-app.post('/campign/new',campign.newCampign);
-app.post('/campign/delete',campign.deleteCampign);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
