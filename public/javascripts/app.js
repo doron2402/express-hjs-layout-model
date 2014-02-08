@@ -248,12 +248,18 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 	});
 
   	myApp.controller('faqController', function($scope, $http) {
-  		$scope.faq = [
-  		{title: 'title',body: 'body........'},
-  		{title: 't1',body: 'body2........'},
-  		{title: 'how to signup',body: 'body3........'},
-  		{title: 'whats the different between media to prod?',body: 'body4........'}
-  		];
+  		
+        //GET faq array 
+        $http({
+            method: 'GET',
+            url: '/faq/all'
+        }).success(function(data, status, headers, config) {
+            console.log(data);
+            $scope.faq = data;
+          }).
+          error(function(data, status, headers, config) {
+            console.log('Something Went wrong');
+          });
   	});
 
 	myApp.controller('aboutController', function($scope) {
