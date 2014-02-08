@@ -32,13 +32,16 @@
 		};
 
 		$scope.addCampign = function(){
-			this.campign.code = Math.round(Math.abs(Math.random() * 1000000000));
-			console.log(this.campign);
 			
-			$scope.campign = this.campign;
-			if (this.campign.code != null && this.campign.name != null && this.campign.url != null && this.campign.managerPhone != null){
+			if (this.campign.name != null && this.campign.url != null && this.campign.managerPhone != null){
+				this.campign.code = Math.round(Math.abs(Math.random() * 1000000000));
+				$scope.campign = this.campign;
+				
+				console.log(this.campign);
+
 				$http({
 					method: 'POST',
+					data: this.campign,
 			    	url: 'http://localhost:3000/campign/add/'}).
 		          		success(function(data, status, headers, config) {
 		            		console.log(data);

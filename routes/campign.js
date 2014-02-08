@@ -1,56 +1,66 @@
 var Mysql = require('../lib/mysqlKnex');
 var Model = require('../models/campignModel');
 
+/* 
+	Create a new campign from admin page 
+*/
+exports.createNewCampign = function(req,res){
+	if (req.body && req.body.name && req.body.url){
+		//First check if campign code is already being used
+		return Mysql.MysqlKnex.raw('select count(*) as `campignCode` from campigns where id = ' + parseInt(req.body.code,10))
+			.then(function(resp){
+				if (resp[0][0].campignCode == 0)
+				{
+					return Mysql.MysqlKnex('campigns').insert({
+						id: parseInt(req.body.code,10),
+						name: req.body.name,
+						url: req.body.url,
+						startAt: req.body.startDate || 'NULL',
+						endAt: req.body.endDate || 'NULL',
+						clientId: req.body.clientId.split('-')[0] || 'NULL',
+						clientName: req.body.clientId.split('-')[1] || 'NULL',
+						adminUser: req.session.userId,
+						media: req.body.media || 'NULL',
+						campignManagerName: req.body.managerName || 'NULL',
+						campignManagerEmail: req.body.managerEmail || 'NULL',
+						campignManagerPhone: req.body.managerPhone || 'NULL',
+						notes: req.body.note || 'NULL',
+						emailReportLeads: req.body.emails || 'NULL'
+					}).then(function(err, response){
+			        	if (err)
+			          		console.log(err);
 
-exports.newCampign = function(req, res){
+			        	return res.json({data: response});
+			     	});
+				}else{
+					console.log('Campign code is already in use, adding 1');
+					return Mysql.MysqlKnex('campigns').insert({
+						id: parseInt(req.body.code,10)+1,
+						name: req.body.name,
+						url: req.body.url,
+						startAt: req.body.startDate || 'NULL',
+						endAt: req.body.endDate || 'NULL',
+						clientId: req.body.clientId.split('-')[0] || 'NULL',
+						clientName: req.body.clientId.split('-')[1] || 'NULL',
+						adminUser: req.session.userId,
+						media: req.body.media || 'NULL',
+						campignManagerName: req.body.managerName || 'NULL',
+						campignManagerEmail: req.body.managerEmail || 'NULL',
+						campignManagerPhone: req.body.managerPhone || 'NULL',
+						notes: req.body.note || 'NULL',
+						emailReportLeads: req.body.emails || 'NULL'
+					}).then(function(err, response){
+			        	if (err)
+			          		console.log(err);
 
-	if (req.params.campignId > 0){
-
-	  return new Model.TrafficModel({
-	  	campignId: req.params.campignId,
-	  	prod: req.body.prod || 'NULL',
-	  	channel: req.body.channel || 'NULL',
-	  	media: req.body.media || 'NULL',
-	  	size: req.body.size || 'NULL',
-	  	reffer: req.body.reffer || 'NULL',
-	  	erate: req.body.erate || 'NULL',
-	  	dayOfWeek: new Date().getDay()
-	  	}).save().then(function(model,err){
-	  	if (err)
-	  		console.log('Error : %s', err);
-
-	  	//console.log(model);
-	  	return res.json({ data: 'success' });	
-	  });  	
+			        	return res.json({data: response});
+			     	});
+				}
+				return res.json({data: resp});
+			});
 	}
-  	
-  	return res.json({'error' : 'missing campign id'});
-
-};
-
-exports.deleteCampign = function(req, res){	
-	
-	if (req.params.campignId > 0){
-
-	  return new Model.TrafficModel({
-	  	campignId: req.params.campignId,
-	  	prod: req.body.prod || 'NULL',
-	  	channel: req.body.channel || 'NULL',
-	  	media: req.body.media || 'NULL',
-	  	size: req.body.size || 'NULL',
-	  	reffer: req.body.reffer || 'NULL',
-	  	erate: req.body.erate || 'NULL',
-	  	dayOfWeek: new Date().getDay()
-	  	}).save().then(function(model,err){
-	  	if (err)
-	  		console.log('Error : %s', err);
-
-	  	console.log(model);
-	  	return res.json({ data: 'success' });	
-	  });  	
-	}
-  	console.log('here..');
-
+	else
+		return res.json({error: 'Missing arguments' });
 };
 
 exports.information = function(req, res) {
