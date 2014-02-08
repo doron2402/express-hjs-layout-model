@@ -1,12 +1,12 @@
 node_modules/
 public/components
 .idea/
+lib/mysqlKnex.js
+models/baseModel.js
+collections/baseCollection.js
 public/stylesheets/style.css
 public/javascripts/app.js
 public/javascripts/main.js
 public/javascripts/admin_app.js
 public/stylesheets/mainStyle.min.css
 public/javascripts/main.min.js
-lib/mysqlKnex.js
-models/baseModel.js
-collections/baseCollection.js
