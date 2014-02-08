@@ -1,0 +1,11 @@
+<button class="button tiny" ng-click="createCampign()">Create a new campign</button>
+	<form name="editCampignForm"  ng-submit="editCampign()" novalidate>
+		<select 
+			ng-model="campignEdit"  
+			ng-options="SingleCampign as displayCampignName(SingleCampign) for SingleCampign in AllCampigns">
+			<option value="">-- choose campign --</option>
+		</select>
+		<input type="submit" value="Edit" class="button tiny" />
+	</form>
+<!-- show list of campigns -->
+<!-- Sort by active, starting date, clients -->
