@@ -100,6 +100,7 @@ app.get('/leads/media/:campignId', leads.getLeadByMedia);
 //Campign create/delete/update/read
 app.post('/campign/add', auth.checkAuth, campign.createNewCampign); //Create a new campign
 app.post('/campigns/info', auth.checkAuth, campign.information);
+app.post('/campign/all', auth.checkAuth, campign.getAllCampigns);
 
 //Clients 
 app.post('/clients/all',auth.checkAuth, clients.getAllClients);

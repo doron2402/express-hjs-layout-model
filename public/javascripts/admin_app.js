@@ -21,8 +21,28 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 	});
 	
+	//Campign Main page where you can edit/view/create campign
 	adminApp.controller('campignMain', function ($scope, $http) {
-		
+
+		//Get list of all campigns
+		$http({
+			method: 'POST',
+			url: 'http://localhost:3000/campign/all/'}).
+		   	success(function(data, status, headers, config) {
+
+		    	if (data.error){
+		    		$scope.createNew = 'block';	
+		    	}else{
+		    		console.log(data);
+		    		$scope.AllCampigns = data;
+		    	}
+		    	
+		        
+		    }).
+		    error(function(data, status, headers, config) {
+		           		
+		    });
+
 		
 		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
 		
@@ -34,7 +54,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 		$scope.addCampign = function(){
 			
-			if (this.campign.name != null && this.campign.url != null && this.campign.managerPhone != null){
+			if (this.campign.name != null && this.campign.url != null){
 				this.campign.code = Math.round(Math.abs(Math.random() * 1000000000));
 				$scope.campign = this.campign;
 				

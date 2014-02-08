@@ -3,6 +3,13 @@
 	<div ng-switch on="createNew">
 		<div ng-switch-default>
 			<button class="button tiny" ng-click="createCampign()">Create a new campign</button>
+			<form>
+				<select>
+					<option ng-repeat="SingleCampign in AllCampigns">{{SingleCampign.name}}</option>
+				</select>	
+			</form>
+			
+			<button class="button tiny" ng-click="createCampign()"></button>
 			<!-- show list of campigns -->
 			<!-- Sort by active, starting date, clients -->
 		</div>
@@ -14,6 +21,10 @@
 	    </div>
 	    <div ng-switch-when="edit">
 	    	<!-- Edit campign -->
+	    </div>
+	    <div ng-switch-when="block">
+	    	<!-- User dont have permission to edit or view the campign -->
+	    	<div ng-include="'admin_templates/campign/restrict.html'"></div>
 	    </div>
 	</div>
 </div>
