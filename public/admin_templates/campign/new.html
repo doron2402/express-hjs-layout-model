@@ -31,7 +31,7 @@
   				ng-model="campign.url" 
   				class="signup-input"
   				name="campignUrl"
-  				placeholder="Campign URL" 
+  				placeholder="http://www.campignurl.com/a/b" 
   				required/>
   				<small class="error" ng-show="newCampignForm.campignUrl.$error.url || newCampignForm.campignUrl.$error.required">
   					Campign Url is not valid
@@ -44,9 +44,15 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Assign Client to campign:</div>
   			<div class="large-6 columns">
-  				<select ng-model="campign.clientId">
-					<option ng-repeat="client in clients" value="{{client.id}}-{{client.name}}">{{client.name}}</option>
-				</select>
+  				<select 
+            name="campignClient"
+            ng-model="campign.clientId"
+            required>
+					   <option ng-repeat="client in clients" value="{{client.id}}-{{client.name}}">{{client.name}}</option>
+				  </select>
+          <small ng-show="newCampignForm.campignClient.$error.required" class="error">
+            Please select a client
+          </small>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -57,10 +63,17 @@
 		   		Campign Date:
 		   	</div>
   			<div class="large-3 columns">
-				<input type="text" ng-model="campign.startDate" placeholder="Campign Start date" required/>
+				<input type="text" 
+          ng-model="campign.startDate" 
+          placeholder="Campign Start date" 
+          required/>
   			</div>
   			<div class="large-3 columns">
-  				<input type="text" ng-model="campign.endDate" placeholder="Campign End date" required/>
+  				<input 
+          type="text" 
+          ng-model="campign.endDate" 
+          placeholder="Campign End date" 
+          required/>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -91,15 +104,15 @@
   				<input 
   				class="signup-input"
   				ng-model="campign.managerPhone" 
-  				placeholder="Campign manager phone number (must be only numbers)" 
+  				placeholder="XXX-XXX-XXXX (must be only numbers)" 
   				type="text"
   				name="managerPhone"
-  				ng-minlength="8" 
-	    		ng-pattern="/^\d+$/"
+          ng-minlength="8"
+	    		ng-pattern="/^[0-9 -]+$/"
   				 />
-  				<small ng-hide="newCampignForm.managerPhone.$valid" class="warn">
-			    	Phone number must contains at least 9 digits (Numbers)
-			    </small>
+           <small ng-hide="newCampignForm.managerName.$valid" class="warn">
+            Manager phone number must be only numbers
+          </small>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -109,9 +122,14 @@
 		   	<div class="large-3 columns">Campign manager email:</div>
   			<div class="large-6 columns">
   				<input 
-  				type="text"  
+  				type="email"  
+          class="signup-input"
+          name="managerEmail"
   				ng-model="campign.managerEmail" 
   				placeholder="Campign manager email address" />
+          <small ng-hide="newCampignForm.managerEmail.$valid" class="warn">
+            Manager email address is not valid
+          </small>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -120,7 +138,9 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Campign email for reporting leads:</div>
   			<div class="large-6 columns">
-  				<textarea ng-model="campign.emails" placeholder="enter email address seprated by a comma `,`"></textarea>
+  				<textarea 
+          ng-model="campign.emails" 
+          placeholder="enter email address seprated by a comma `,`"></textarea>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>
@@ -129,7 +149,7 @@
 	  	<div class="row">
 		   	<div class="large-3 columns">Notes:</div>
   			<div class="large-6 columns">
-  				<textarea ng-model="campign.note"></textarea>
+  				<textarea ng-model="campign.note" placeholder="Some note regarding the campign"></textarea>
   			</div>
   			<div class="large-3 columns"></div>
 		</div>

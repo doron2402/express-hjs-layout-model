@@ -5,7 +5,7 @@ var Model = require('../models/campignModel');
 	Create a new campign from admin page 
 */
 exports.createNewCampign = function(req,res){
-	if (req.body && req.body.name && req.body.url){
+	if (req.body && req.body.name && req.body.url && req.session.userType < 3){
 		//First check if campign code is already being used
 		return Mysql.MysqlKnex.raw('select count(*) as `campignCode` from campigns where id = ' + parseInt(req.body.code,10))
 			.then(function(resp){
@@ -17,8 +17,8 @@ exports.createNewCampign = function(req,res){
 						url: req.body.url,
 						startAt: req.body.startDate || 'NULL',
 						endAt: req.body.endDate || 'NULL',
-						clientId: req.body.clientId.split('-')[0] || 'NULL',
-						clientName: req.body.clientId.split('-')[1] || 'NULL',
+						clientId: req.body.clientId !== undefined ? req.body.clientId.split('-')[0] : 'NULL',
+						clientName: req.body.clientId !== undefined ? req.body.clientId.split('-')[1] : 'NULL',
 						adminUser: req.session.userId,
 						media: req.body.media || 'NULL',
 						campignManagerName: req.body.managerName || 'NULL',
@@ -61,6 +61,22 @@ exports.createNewCampign = function(req,res){
 	}
 	else
 		return res.json({error: 'Missing arguments' });
+};
+
+
+exports.getAllCampigns = function(req, res) {
+	
+	console.log(req.session.userType);
+
+	if (req.session.userType < 3){
+		console.log('getAllCampigns');
+		return Mysql.MysqlKnex.raw('select * from `campigns`').then(function(response){
+			
+			return res.json(response[0]);
+		});
+	}else{
+		return res.json({error: 'User dont have an access'});
+	}
 };
 
 exports.information = function(req, res) {
