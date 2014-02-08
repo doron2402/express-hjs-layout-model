@@ -2,6 +2,7 @@
 /*
  * GET Static Pages.
  */
+var Mysql = require('../lib/mysqlKnex');
 
 //About
 exports.about = function(req, res){
@@ -13,5 +14,17 @@ exports.contact = function(req, res){
 };
 //Faq
 exports.faq = function(req, res){
-	res.render('pages/faq', { title: 'Faq' });
+	res.render('pages/faq', { title: 'FAQ' });	
+};
+
+//return a json with all faq
+exports.getFaq = function(req, res){
+	return Mysql.MysqlKnex.raw('select * from `faq`').then(function(resp){
+		if (resp[0] === undefined)
+			return res.json({error: 'Something went wrong'});
+
+		console.log(resp[0]);
+		return res.json(resp[0]);	
+	})
+	
 };

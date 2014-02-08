@@ -97,6 +97,9 @@ app.post('/contact/new', contact.newContactInformation);
 app.post('/campigns/available', auth.checkAuth, cardential.getCampignCaredentialByUserId);
 app.get('/leads/media/:campignId', leads.getLeadByMedia);
 
+//Non Secure Pages
+app.get('/faq/all', static_pages.getFaq);
+
 //Campign create/delete/update/read
 app.post('/campign/add', auth.checkAuth, campign.createNewCampign); //Create a new campign
 app.post('/campigns/info', auth.checkAuth, campign.information);

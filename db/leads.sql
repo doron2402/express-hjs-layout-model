@@ -1,3 +1,15 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4096
+#
+# http://www.sequelpro.com/
+# http://code.google.com/p/sequel-pro/
+#
+# Host: localhost (MySQL 5.5.29)
+# Database: leads
+# Generation Time: 2014-02-08 21:19:52 +0000
+# ************************************************************
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +51,11 @@ INSERT INTO `campigns` (`id`, `name`, `url`, `createdAt`, `startAt`, `endAt`, `c
 VALUES
   (123,'TestingCampign','','2014-02-04 10:59:14','0000-00-00','0000-00-00',0,'',0,'','',NULL,NULL,NULL,NULL),
   (1234,'just another camp','','2014-02-04 14:31:49','0000-00-00','0000-00-00',0,'',0,'facebook,ynet','',NULL,NULL,NULL,NULL),
-  (660646745,'campign doron','http://segaldoron.com/campign/new.com','2014-02-08 00:07:30','0000-00-00','0000-00-00',112,'ca',2,'NULL','doron segal','doron@doron.com','123213123','just another note.','dasdf2asdf@adsf.com,asdf@adsf.com');
+  (136929067,'asdjfn','http://asdf','2014-02-08 10:00:57','0000-00-00','0000-00-00',1234111,'aasdf',0,'NULL','NULL','NULL','123-123-1234','NULL','NULL'),
+  (593881368,'adf','http://asd','2014-02-08 09:59:32','0000-00-00','0000-00-00',1234111,'aasdf',2,'NULL','NULL','NULL','1','NULL','NULL'),
+  (660646745,'campign doron','http://segaldoron.com/campign/new.com','2014-02-08 00:07:30','0000-00-00','0000-00-00',112,'ca',2,'NULL','doron segal','doron@doron.com','123213123','just another note.','dasdf2asdf@adsf.com,asdf@adsf.com'),
+  (686821065,'doron','http://dsaf.','2014-02-08 10:20:23','0000-00-00','0000-00-00',1234111,'aasdf',2,'NULL','NULL','NULL','NULL','asdf asdfjnjk kjnsdf','NULL'),
+  (883912138,'adsf','http://as','2014-02-08 09:55:33','0000-00-00','0000-00-00',0,'NULL',2,'NULL','NULL','NULL','123123123223','NULL','NULL');
 
 /*!40000 ALTER TABLE `campigns` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -133,6 +149,30 @@ VALUES
   (3,'2014-02-03 16:33:12',X'416D69722061647366',X'313233313233313233',X'616D697240616D69722E636F6D',X'6C6B6A6E7364666B6A6E647320666B766A686E626473666876627364');
 
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table faq
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `faq`;
+
+CREATE TABLE `faq` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(80) DEFAULT NULL,
+  `body` text,
+  `keywords` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `faq` WRITE;
+/*!40000 ALTER TABLE `faq` DISABLE KEYS */;
+
+INSERT INTO `faq` (`id`, `title`, `body`, `keywords`)
+VALUES
+  (1,'title1','that will be our first faq...','faq1,faq2');
+
+/*!40000 ALTER TABLE `faq` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
