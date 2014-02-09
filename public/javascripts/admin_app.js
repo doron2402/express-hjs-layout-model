@@ -5,6 +5,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 		$scope.Dashboard = {};
 		$scope.Dashboard.page = 'campigns';
 
+		//Side Nav bar dashboard call for template page
 		$scope.dashboardSideNav = function(page){
 			
 			if ($scope.Dashboard.page != page){
@@ -32,9 +33,8 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			}
 		};
 
+		//Side Nav Bar - Dashboard (set class to active)
 		$scope.getClass = function(page){
-			console.log(page);
-			console.log($scope.Dashboard.page);
 
 			if (page == $scope.Dashboard.page)
 				return 'active';
