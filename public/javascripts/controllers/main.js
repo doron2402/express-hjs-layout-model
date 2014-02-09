@@ -264,8 +264,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 
                  */
 
-                console.log(data);
-                console.log(data.keywords);
+                console.log(data);q
                 $scope.faq = data;
           }).
           error(function(data, status, headers, config) {

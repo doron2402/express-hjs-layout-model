@@ -57,3 +57,11 @@ fieldset legend {
     color: #5BC0DE;
     border-bottom: 1px solid #ddd;
 }
+
+.top-bar .toggle-topbar.menu-icon a {
+    color: #5BC0DE;
+    }
+
+.top-bar .toggle-topbar.menu-icon a::after {
+    -webkit-box-shadow: 0 10px 0 1px #5BC0DE, 0 16px 0 1px #5BC0DE, 0 22px 0 1px #5BC0DE;
+    box-shadow: 0 10px 0 1px #5BC0DE, 0 16px 0 1px #5BC0DE, 0 22px 0 1px #5BC0DE; }
