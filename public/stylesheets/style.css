@@ -4794,8 +4794,7 @@ body {
 }
 
 .top-bar{
-    background: #fff;
-    background: rgba(255,255,255,.95);
+    background: #333;
     box-shadow: 0 1px 1px rgba(0,0,0,.15);
 }
 
