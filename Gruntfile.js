@@ -4,7 +4,6 @@ module.exports = function (grunt) {
         concat: {
             css: {
                 src: [
-                    'public/components/Font-Awesome/css/font-awesome.min.css',
                     'public/components/foundation/css/normalize.css',
                     'public/components/foundation/css/foundation.css',
                     'public/components/jqplot/css/jquery.jqplot.min.css',
