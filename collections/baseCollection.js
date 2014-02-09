@@ -4,7 +4,7 @@ var Bookshelf = require('Bookshelf'),
   connection: {
     host     : 'localhost',
     user     : 'root',
-    password : '',
+    password : 'root',
     database : 'leads',
     charset  : 'utf8'
   }
