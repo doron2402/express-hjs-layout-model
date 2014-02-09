@@ -255,11 +255,12 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
             url: '/faq/all'
         }).success(function(data, status, headers, config) {
             $scope.faq = data;
-          }).
-          error(function(data, status, headers, config) {
+
+        }).error(function(data, status, headers, config) {
             console.log('Something Went wrong');
-          });
+        });
   	});
+
 
 	myApp.controller('aboutController', function($scope) {
 		$scope.message = 'Look! I am an about page.';
