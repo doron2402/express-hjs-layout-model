@@ -1,17 +1,8 @@
 var express = require('express'),
 	auth = require('./lib/auth'),
 	routes = require('./routes'),
-	admin = require('./routes/admin'),
-	user = require('./routes/user'),
-	static_pages = require('./routes/pages'),
 	http = require('http'),
-	path = require('path'),
-	traffic = require('./routes/traffic'),
-	leads = require('./routes/leads'),
-	contact = require('./routes/contact'),
-	cardential = require('./routes/cardential'),
-	clients = require('./routes/clients'),
-	campign = require('./routes/campign');
+	path = require('path');
 
 
 /*
@@ -46,8 +37,8 @@ api.use(express.urlencoded());
 api.use(express.methodOverride());
 api.use(api.router);
 /* API Calls */
-api.post('/traffic/:campignId',traffic.counter);//Traffic
-api.post('/lead/new/:campignId',leads.newLead);//Lead
+api.post('/traffic/:campignId', routes.traffic.counter);//Traffic
+api.post('/lead/new/:campignId', routes.leads.newLead);//Lead
 
 var app = express();
 // all environments
@@ -80,40 +71,43 @@ if ('development' == app.get('env')) {
   api.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', routes.static_pages.index);
 
 /* Admin Pages - Route that need to be secure */
-app.get('/admin/users', auth.checkAuth, admin.users);
-app.get('/admin/dashboard',auth.checkAuth, admin.dashboard);
-app.get('/admin', auth.checkAuth, admin.dashboard);
-app.get('/admin/analytics',auth.checkAuth, admin.analytics);
-app.get('/admin/users',auth.checkAuth, admin.users);
-app.get('/users', user.list);
-app.post('/users', user.getList);
-app.post('/user/signup', user.signupUser)
-app.post('/auth/user', user.loginUser);
-app.get('/admin/logout', user.logoutUser);
-app.post('/contact/new', contact.newContactInformation);
-app.post('/campigns/available', auth.checkAuth, cardential.getCampignCaredentialByUserId);
-app.get('/leads/media/:campignId', leads.getLeadByMedia);
+app.get('/admin/users', auth.checkAuth, routes.admin.users);
+app.get('/admin/dashboard',auth.checkAuth, routes.admin.dashboard);
+app.get('/admin', auth.checkAuth, routes.admin.dashboard);
+app.get('/admin/analytics',auth.checkAuth, routes.admin.analytics);
+app.get('/admin/users',auth.checkAuth, routes.admin.users);
+
+//User routes
+app.get('/users', routes.user.list);
+app.post('/users', routes.user.getList);
+app.post('/user/signup', routes.user.signupUser)
+app.post('/auth/user', routes.user.loginUser);
+app.get('/admin/logout', routes.user.logoutUser);
+
+app.post('/contact/new', routes.contact.newContactInformation);
+app.post('/campigns/available', auth.checkAuth, routes.cardential.getCampignCaredentialByUserId);
+app.get('/leads/media/:campignId', routes.leads.getLeadByMedia);
 
 //Non Secure Pages
-app.get('/faq/all', static_pages.getFaq);
+app.get('/faq/all', routes.static_pages.getFaq);
 
 //Campign create/delete/update/read
-app.post('/campign/add', auth.checkAuth, campign.createNewCampign); //Create a new campign
-app.post('/campigns/info', auth.checkAuth, campign.information);
-app.post('/campign/all', auth.checkAuth, campign.getAllCampigns);
+app.post('/campign/add', auth.checkAuth, routes.campign.createNewCampign); //Create a new campign
+app.post('/campigns/info', auth.checkAuth, routes.campign.information);
+app.post('/campign/all', auth.checkAuth, routes.campign.getAllCampigns);
 
 //Clients 
-app.post('/clients/all',auth.checkAuth, clients.getAllClients);
-app.post('/client/new', auth.checkAuth, clients.addNewClient);
-app.post('/client/delete', auth.checkAuth, clients.deleteClient);
-app.post('/client/update', auth.checkAuth, clients.updateClient);
+app.post('/clients/all',auth.checkAuth, routes.clients.getAllClients);
+app.post('/client/new', auth.checkAuth, routes.clients.addNewClient);
+app.post('/client/delete', auth.checkAuth, routes.clients.deleteClient);
+app.post('/client/update', auth.checkAuth, routes.clients.updateClient);
 
-app.post('/leads/all/:campignId', auth.checkAuth, leads.getAllLeads); //Get Leads by campign id
-app.post('/traffic/all/:campignId', auth.checkAuth, traffic.getAllTraffic); //Get Traffic by campign id
-app.post('/leads/conversion/:campignId', auth.checkAuth, leads.getConversionRate);
+app.post('/leads/all/:campignId', auth.checkAuth, routes.leads.getAllLeads); //Get Leads by campign id
+app.post('/traffic/all/:campignId', auth.checkAuth, routes.traffic.getAllTraffic); //Get Traffic by campign id
+app.post('/leads/conversion/:campignId', auth.checkAuth, routes.leads.getConversionRate);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
