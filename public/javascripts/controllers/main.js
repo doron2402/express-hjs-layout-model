@@ -254,7 +254,6 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
             method: 'GET',
             url: '/faq/all'
         }).success(function(data, status, headers, config) {
-            console.log(data);
             $scope.faq = data;
           }).
           error(function(data, status, headers, config) {

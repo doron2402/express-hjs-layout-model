@@ -23,7 +23,6 @@ exports.getFaq = function(req, res){
 		if (resp[0] === undefined)
 			return res.json({error: 'Something went wrong'});
 
-		console.log(resp[0]);
 		return res.json(resp[0]);	
 	})
 	
