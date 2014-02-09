@@ -1,8 +1,12 @@
 var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);  
 	// create the controller and inject Angular's $scope
 	adminApp.controller('mainController', function($scope, $http) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
+
+		$scope.permission = [];
+		$scope.permission[0] = 'Admin Permission';
+		$scope.permission[1] = 'Admin Permission';
+		$scope.permission[2] = 'Account Manager Permission';
+		$scope.permission[4] = 'Media Permission';
 
 		$http({method: 'POST',
 	    	url: 'http://localhost:3000/campigns/available'}).
