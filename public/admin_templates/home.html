@@ -1,8 +1,31 @@
-<h4>admin home page</h4>
-<h5>List Of campigns</h5>
-<input type="search" ng-model="q" placeholder="filter campings..." />    
-<fieldset ng-repeat="campign in cardentials | filter:q">
-    <legend><a href="#admin/campign/{{campign.campignId}}" alt="{{campign.name}}">{{campign.name}}</a></legend>
-  	<p>Campign Id: {{campign.campignId}}</p>
-  	<p>Cardential: {{campign.cardential}}</p>
-</fieldset>
+<div class="row text-center">
+	<h2>Dashboard</h2>
+	<hr>
+</div>
+<div class="row">
+<div ng-include="'admin_templates/dashboard/side_nav.html'"></div>
+  <div class="large-10 columns">
+  	<div class="animate-switch-container"
+        ng-switch on="Dashboard.page">
+          <div class="animate-switch" ng-switch-when="campigns">
+          	<div ng-include="'admin_templates/dashboard/campign.html'"></div>
+          </div>
+          <div class="animate-switch" ng-switch-when="users">
+          	<div ng-include="'admin_templates/dashboard/users.html'"></div>
+          </div>
+           <div class="animate-switch" ng-switch-when="customers">
+          	<div ng-include="'admin_templates/dashboard/customers.html'"></div>
+          </div>
+          <div class="animate-switch" ng-switch-when="history">
+          	<div ng-include="'admin_templates/dashboard/history.html'"></div>
+          </div>
+          <div class="animate-switch" ng-switch-default>
+          	<div ng-include="'admin_templates/dashboard/campign.html'"></div>
+          </div>
+    </div>
+  	
+  </div>
+</div>
+
+
+

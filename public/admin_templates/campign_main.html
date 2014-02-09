@@ -2,16 +2,7 @@
 <div class="row">
 	<div ng-switch on="createNew">
 		<div ng-switch-default>
-			<button class="button tiny" ng-click="createCampign()">Create a new campign</button>
-			<form>
-				<select>
-					<option ng-repeat="SingleCampign in AllCampigns">{{SingleCampign.name}}</option>
-				</select>	
-			</form>
-			
-			<button class="button tiny" ng-click="createCampign()"></button>
-			<!-- show list of campigns -->
-			<!-- Sort by active, starting date, clients -->
+			<div ng-include="'admin_templates/campign/defualt.html'"></div>
 		</div>
 	    <div ng-switch-when="true">
 	    	<div ng-include="'admin_templates/campign/new.html'"></div>

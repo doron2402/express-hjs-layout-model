@@ -1,7 +1,53 @@
 	// create the controller and inject Angular's $scope
 	adminApp.controller('mainController', function($scope, $http) {
-		// create a message to display in our view
-		$scope.message = 'Everyone come and see how good I look!';
+
+		$scope.Dashboard = {};
+		$scope.Dashboard.page = 'campigns';
+
+		//Side Nav bar dashboard call for template page
+		$scope.dashboardSideNav = function(page){
+			
+			if ($scope.Dashboard.page != page){
+
+				switch(page) {
+					case 'campigns':
+						console.log('get campigns');
+						$scope.Dashboard.page = 'campigns';
+						break;
+					case 'users':
+						console.log('get users');
+						$scope.Dashboard.page = 'users';
+						break;
+					case 'customers':
+						console.log('get customers');
+						$scope.Dashboard.page = 'customers';
+						break;
+					case 'history':
+						console.log('get history');
+						$scope.Dashboard.page = 'history';
+						break;
+
+				}
+
+			}
+		};
+
+		//Side Nav Bar - Dashboard (set class to active)
+		$scope.getClass = function(page){
+
+			if (page == $scope.Dashboard.page)
+				return 'active';
+			else
+				return 'not-active'
+		};
+
+
+		//Permissions
+		$scope.permission = [];
+		$scope.permission[0] = 'Admin Permission';
+		$scope.permission[1] = 'Admin Permission';
+		$scope.permission[2] = 'Account Manager Permission';
+		$scope.permission[4] = 'Media Permission';
 
 		$http({method: 'POST',
 	    	url: 'http://localhost:3000/campigns/available'}).
@@ -21,7 +67,7 @@
 	});
 	
 	//Campign Main page where you can edit/view/create campign
-	adminApp.controller('campignMain', function ($scope, $http) {
+	adminApp.controller('campignMain', function ($scope, $http, $location, $window) {
 
 		//Get list of all campigns
 		$http({
@@ -42,6 +88,18 @@
 		           		
 		    });
 
+		$scope.displayCampignName = function(campign){
+			return campign.name;
+		};
+
+		$scope.editCampign = function(){
+			if (this.campignEdit.name !== undefined){
+				console.log(this.campignEdit);
+				//redirect to the campign page -> /admin/campign/:id
+				$window.location.href = 'admin#/admin/campign/' + this.campignEdit.id;
+			}
+			
+		};
 		
 		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
 		
@@ -110,8 +168,6 @@
  		}
 
  		$scope.editClient = function() {
- 			console.log('editable');
- 			console.log($scope.editable[this.client.id]);
 
  			if ($scope.editable[this.client.id]){
  				$http({
@@ -248,6 +304,7 @@
 				}).error(function(data, status, headers, config) {
 					console.log(data);
 			        $scope.ConversionRate = null;
+			        
 			    });
         
 	});
