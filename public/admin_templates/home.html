@@ -1,8 +1,31 @@
-<h4>admin home page</h4>
-<h5>List Of campigns</h5>
-<input type="search" ng-model="q" placeholder="filter campings..." />    
-<fieldset ng-repeat="campign in cardentials | filter:q">
-    <legend><a href="#admin/campign/{{campign.campignId}}" alt="{{campign.name}}">{{campign.name}}</a></legend>
-  	<p>Campign Id: {{campign.campignId}}</p>
-  	<p>Cardential: {{campign.cardential}}</p>
-</fieldset>
+<div class="row text-center">
+	<h2>Dashboard</h2>
+	<hr>
+</div>
+<div class="row">
+  <div class="large-2 columns text-center">
+  	<ul class="side-nav">
+	  <li class="active">
+	  	<a href="#">Campigns</a>
+	  </li>
+	  <li class="divider"></li>
+	  <li>
+	  	<a href="#">Users</a>
+	  </li>
+	  <li class="divider"></li>
+	  <li>
+	  	<a href="#">Customers</a>
+	  </li>
+	  <li class="divider"></li>
+	  <li>
+	  	<a href="#">History</a>
+	  </li>
+	</ul>
+  </div>
+  <div class="large-10 columns">
+  	<div ng-include="'admin_templates/dashboard/campign.html'"></div>
+  </div>
+</div>
+
+
+
