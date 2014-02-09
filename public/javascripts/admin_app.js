@@ -259,6 +259,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				}).error(function(data, status, headers, config) {
 					console.log(data);
 			        $scope.ConversionRate = null;
+			        
 			    });
         
 	});
