@@ -256,6 +256,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
         }).success(function(data, status, headers, config) {
             console.log(data);
             $scope.faq = data;
+            $scope.faq.tags = data.keywords;
           }).
           error(function(data, status, headers, config) {
             console.log('Something Went wrong');

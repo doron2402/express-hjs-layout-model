@@ -254,8 +254,19 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
             method: 'GET',
             url: '/faq/all'
         }).success(function(data, status, headers, config) {
-            console.log(data);
-            $scope.faq = data;
+
+                /*
+
+                faq should keywords should be an array,
+                so it can be iterated, or an alternative would be
+                to take data.keywords split it at "," then iterate over it
+                ( some thoughts about to be consider )
+
+                 */
+
+                console.log(data);
+                console.log(data.keywords);
+                $scope.faq = data;
           }).
           error(function(data, status, headers, config) {
             console.log('Something Went wrong');
