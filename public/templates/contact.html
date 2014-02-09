@@ -1,66 +1,74 @@
-
 <div ng-controller="formContactController">
-<div ng-show="showForm">
-  <h3>Processing...</h3>
-</div>
-<form ng-hide="showForm" name="contactForm" novalidate class="css-form" ng-submit="contactFormSubmit()">
-<fieldset>
-  <legend><h3>Contact us</h3></legend>
-  <div class="row">
-    <div class="large-4 columns">
-      <label>First Name</label>
-      <input type="text" name="fname" ng-pattern="/^[a-zA-Z]*$/" placeholder="Your First Name"  ng-model="contact.fname" class="signup-input" required />
-      <small class="error" ng-hide="contactForm.fname.$valid">
-        First Name is required and must be only letters
-      </small>
+    <div class="row">
+        <div class="small-12 medium-12 large-12 small-centered columns text-center">
+            <div ng-show="showForm">
+                <h3>Processing...</h3>
+            </div>
+        </div>
     </div>
-    <div class="large-4 columns">
-      <label>Last Name</label>
-      <input type="text" name="lname" ng-pattern="/^[a-zA-Z]*$/" class="signup-input" placeholder="Your Last Name" ng-model="contact.lname" required />
-      <small class="error" ng-hide="contactForm.lname.$valid">
-        Last Name is required and must be only letters
-      </small>
+    <div class="row">
+        <div class="small-12 medium-12 large-12 small-centered columns text-center">
+            <h3>Contact us</h3>
+            <hr/>
+        </div>
     </div>
-    <div class="large-4 columns">
+    <div class="row">
+        <div class="small-10 medium-10 large-10 small-centered columns">
+            <form ng-hide="showForm" name="contactForm" novalidate class="css-form text-center" ng-submit="contactFormSubmit()">
+                <div class="row">
+                    <div class="small-6 medium-6 large-6 columns">
+                        <label>First Name</label>
+                        <input type="text" name="fname" ng-pattern="/^[a-zA-Z]*$/" placeholder="Your First Name"
+                               ng-model="contact.fname" class="signup-input" required/>
+                        <small class="error" ng-hide="contactForm.fname.$valid">
+                            First Name is required and must be only letters
+                        </small>
+                    </div>
+                    <div class="small-6 medium-6 large-6 columns">
+                        <label>Last Name</label>
+                        <input type="text" name="lname" ng-pattern="/^[a-zA-Z]*$/" class="signup-input"
+                               placeholder="Your Last Name" ng-model="contact.lname" required/>
+                        <small class="error" ng-hide="contactForm.lname.$valid">
+                            Last Name is required and must be only letters
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-6 medium-6 large-6 columns">
+                        <label>Phone</label>
+                        <input class="signup-input"
+                               type="text"
+                               placeholder="xxx-xxx-xxxx"
+                               ng-model="contact.phone"
+                               ng-pattern="/^[0-9_-]+$/"
+                               name="phone"
+                               ng-minlength="9"
+                               required/>
+                        <small class="error" ng-hide="contactForm.phone.$valid">
+                            Phone number must be only numbers or `-`
+                        </small>
+                    </div>
+                    <div class="small-6 medium-6 large-6 columns">
+                        <label>Email</label>
+                        <input type="email"
+                               name="email"
+                               class="signup-input"
+                               placeholder="xxxxx@xxxxx.xxx"
+                               ng-model="contact.email" required/>
+                        <small class="error" ng-hide="contactForm.email.$dirty && contactForm.email.$valid">
+                            Please enter your emaill address
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-10 medium-10 large-10 small-centered columns">
+                        <label>Message</label>
+                        <textarea style="max-width: 656px;" ng-model="contact.msg" placeholder="Your Message"></textarea>
+                    </div>
+                </div>
+                <input type="submit" class="button" value="Submit">
+            </form>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="large-4 columns">
-      <label>Phone</label>
-      <input class="signup-input" 
-      type="text" 
-      placeholder="xxx-xxx-xxxx" 
-      ng-model="contact.phone" 
-      ng-pattern="/^[0-9_-]+$/" 
-      name="phone"
-      ng-minlength="9"
-      required/>
-      <small class="error" ng-hide="contactForm.phone.$valid">
-        Phone number must be only numbers or `-`
-      </small>
-    </div>
-    <div class="large-4 columns">
-      <label>Email</label>
-      <input type="email"
-      name="email"
-      class="signup-input" 
-      placeholder="xxxxx@xxxxx.xxx" 
-      ng-model="contact.email" required/>
-      <small class="error" ng-hide="contactForm.email.$dirty && contactForm.email.$valid">
-        Please enter your emaill address
-      </small>
-    </div>
-    <div class="large-4 columns">
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-8 columns">
-      <label>Message</label>
-      <textarea ng-model="contact.msg" placeholder="Your Message"></textarea>
-    </div>
-  </div>
-  <input type="submit" class="button radius round" value="Submit" >
-</fieldset>
-</form>
 </div>
 
