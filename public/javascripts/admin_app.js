@@ -2,6 +2,48 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	// create the controller and inject Angular's $scope
 	adminApp.controller('mainController', function($scope, $http) {
 
+		$scope.Dashboard = {};
+		$scope.Dashboard.page = 'campigns';
+
+		$scope.dashboardSideNav = function(page){
+			
+			if ($scope.Dashboard.page != page){
+
+				switch(page) {
+					case 'campigns':
+						console.log('get campigns');
+						$scope.Dashboard.page = 'campigns';
+						break;
+					case 'users':
+						console.log('get users');
+						$scope.Dashboard.page = 'users';
+						break;
+					case 'customers':
+						console.log('get customers');
+						$scope.Dashboard.page = 'customers';
+						break;
+					case 'history':
+						console.log('get history');
+						$scope.Dashboard.page = 'history';
+						break;
+
+				}
+
+			}
+		};
+
+		$scope.getClass = function(page){
+			console.log(page);
+			console.log($scope.Dashboard.page);
+
+			if (page == $scope.Dashboard.page)
+				return 'active';
+			else
+				return 'not-active'
+		};
+
+
+		//Permissions
 		$scope.permission = [];
 		$scope.permission[0] = 'Admin Permission';
 		$scope.permission[1] = 'Admin Permission';

@@ -3,27 +3,27 @@
 	<hr>
 </div>
 <div class="row">
-  <div class="large-2 columns text-center">
-  	<ul class="side-nav">
-	  <li class="active">
-	  	<a href="#">Campigns</a>
-	  </li>
-	  <li class="divider"></li>
-	  <li>
-	  	<a href="#">Users</a>
-	  </li>
-	  <li class="divider"></li>
-	  <li>
-	  	<a href="#">Customers</a>
-	  </li>
-	  <li class="divider"></li>
-	  <li>
-	  	<a href="#">History</a>
-	  </li>
-	</ul>
-  </div>
+<div ng-include="'admin_templates/dashboard/side_nav.html'"></div>
   <div class="large-10 columns">
-  	<div ng-include="'admin_templates/dashboard/campign.html'"></div>
+  	<div class="animate-switch-container"
+        ng-switch on="Dashboard.page">
+          <div class="animate-switch" ng-switch-when="campigns">
+          	<div ng-include="'admin_templates/dashboard/campign.html'"></div>
+          </div>
+          <div class="animate-switch" ng-switch-when="users">
+          	<div ng-include="'admin_templates/dashboard/users.html'"></div>
+          </div>
+           <div class="animate-switch" ng-switch-when="customers">
+          	<div ng-include="'admin_templates/dashboard/customers.html'"></div>
+          </div>
+          <div class="animate-switch" ng-switch-when="history">
+          	<div ng-include="'admin_templates/dashboard/history.html'"></div>
+          </div>
+          <div class="animate-switch" ng-switch-default>
+          	<div ng-include="'admin_templates/dashboard/campign.html'"></div>
+          </div>
+    </div>
+  	
   </div>
 </div>
 

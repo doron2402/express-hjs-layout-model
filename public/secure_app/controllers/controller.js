@@ -1,6 +1,46 @@
 	// create the controller and inject Angular's $scope
 	adminApp.controller('mainController', function($scope, $http) {
 
+		$scope.Dashboard = {};
+		$scope.Dashboard.page = 'campigns';
+
+		//Side Nav bar dashboard call for template page
+		$scope.dashboardSideNav = function(page){
+			
+			if ($scope.Dashboard.page != page){
+
+				switch(page) {
+					case 'campigns':
+						console.log('get campigns');
+						$scope.Dashboard.page = 'campigns';
+						break;
+					case 'users':
+						console.log('get users');
+						$scope.Dashboard.page = 'users';
+						break;
+					case 'customers':
+						console.log('get customers');
+						$scope.Dashboard.page = 'customers';
+						break;
+					case 'history':
+						console.log('get history');
+						$scope.Dashboard.page = 'history';
+						break;
+
+				}
+
+			}
+		};
+
+		//Side Nav Bar - Dashboard (set class to active)
+		$scope.getClass = function(page){
+
+			if (page == $scope.Dashboard.page)
+				return 'active';
+			else
+				return 'not-active'
+		};
+
 
 		//Permissions
 		$scope.permission = [];
