@@ -3837,7 +3837,7 @@ meta.foundation-mq-topbar {
         line-height: 33px;
         padding: 0;
         padding-right: 25px;
-        color: #5BC0DE;
+        color: #fff;
         position: relative; }
         .top-bar .toggle-topbar.menu-icon a::after {
           content: "";
@@ -3847,8 +3847,8 @@ meta.foundation-mq-topbar {
           width: 16px;
           top: 0;
           height: 0;
-          -webkit-box-shadow: 0 10px 0 1px #5BC0DE, 0 16px 0 1px #5BC0DE, 0 22px 0 1px #5BC0DE;
-          box-shadow: 0 10px 0 1px #5BC0DE, 0 16px 0 1px #5BC0DE, 0 22px 0 1px #5BC0DE; }
+          -webkit-box-shadow: 0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff;
+          box-shadow: 0 10px 0 1px #fff, 0 16px 0 1px #fff, 0 22px 0 1px #fff; }
   .top-bar.expanded {
     height: auto;
     background: transparent; }
@@ -4848,6 +4848,15 @@ fieldset legend {
     color: #5BC0DE;
     border-bottom: 1px solid #ddd;
 }
+
+.top-bar .toggle-topbar.menu-icon a {
+    color: #5BC0DE;
+    }
+
+.top-bar .toggle-topbar.menu-icon a::after {
+    -webkit-box-shadow: 0 10px 0 1px #5BC0DE, 0 16px 0 1px #5BC0DE, 0 22px 0 1px #5BC0DE;
+    box-shadow: 0 10px 0 1px #5BC0DE, 0 16px 0 1px #5BC0DE, 0 22px 0 1px #5BC0DE; }
+
 small.warn {
   display: block;
   padding: 0.375rem 0.5625rem 0.5625rem;
