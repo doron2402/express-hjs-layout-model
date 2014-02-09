@@ -13,7 +13,7 @@ body {
 }
 
 .top-bar-section li:not(.has-form) a:not(.button){
-    background: #fff;
+    background: #5BC0DE;
 }
 
 .top-bar-section ul li>a{
