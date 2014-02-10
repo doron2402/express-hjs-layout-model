@@ -81,9 +81,8 @@ app.get('/admin/analytics',auth.checkAuth, routes.admin.analytics);
 app.get('/admin/users',auth.checkAuth, routes.admin.users);
 
 //User routes
-app.get('/users', routes.user.list);
-app.post('/users', routes.user.getList);
-app.post('/user/signup', routes.user.signupUser)
+app.get('/user/all', auth.checkAuth, routes.user.getAllUsers); //Return an array with all the users
+app.post('/user/signup', routes.user.signupUser);
 app.post('/auth/user', routes.user.loginUser);
 app.get('/admin/logout', routes.user.logoutUser);
 

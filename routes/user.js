@@ -1,11 +1,15 @@
+exports.getAllUsers = function(req, res){
+	//First check for user type
+	if (req.session.userType < 3){
+		var UserCollection = require('../collections/usersCollection');
+		console.log(UserCollection);
 
-/*
- * GET users listing.
- */
-
-exports.list = function(req, res){
-	return res.json([{username: 'Doron'},{username: 'Rachel'}]);
+		return res.json(UserCollection.fetch().toJSON());
+	}
+	else
+		return res.json({error: 'No Permission'});
 };
+
 
 //Get User by Id
 exports.getUserId = function(req, res){
@@ -85,8 +89,3 @@ exports.logoutUser = function(req, res, next){
 	delete req.session.userId;
 	return res.redirect('/');
 };
-
-exports.getList = function(req, res){
-
-	return res.json([{username: 'Doron'},{username: 'Rachel'}]);
-}
