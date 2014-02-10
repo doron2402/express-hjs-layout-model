@@ -16,6 +16,9 @@
 	    	<div ng-include="'admin_templates/users/restrict.html'"></div>
 	    </div>
 	</div>
+	<div ng-if="Users.CurrentPage == 'home'">
+		<div ng-include="'admin_templates/users/all.html'"></div>
+	</div>
 	<div ng-if="Users.CurrentPage != 'home'">
 		<button class="button tiny" ng-click="goBack()">Back</button>
 	</div>

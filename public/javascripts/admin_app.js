@@ -394,7 +394,12 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 		//Edit user detail / permission
 		$scope.editUser = function(){
-			$scope.Users.CurrentPage = 'edit';
+			if (this.user && this.user.id){
+				console.log(this.user);
+				$scope.Users.user = this.user;
+				$scope.Users.CurrentPage = 'edit';
+			}
+			
 		};
 
 		//Delete user
