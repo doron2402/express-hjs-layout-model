@@ -11,14 +11,9 @@ body {
     color: #5BC0DE;
 }
 
-<<<<<<< HEAD
 .top-bar-section li:not(.has-form) a:not(.button){
     background: #5BC0DE;
-=======
-.top-bar-section li:not(.has-form) a:not(.button) {
-    background: #fff;
     color: #5BC0DE;
->>>>>>> f661bc2fa3cc1a3dd84e568273df5568012fc094
 }
 
 .top-bar-section ul li>a{
