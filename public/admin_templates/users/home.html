@@ -1,0 +1,25 @@
+<div ng-include="'admin_templates/users/defualt.html'"></div>
+<div class="row">
+	<div ng-switch on="Users.CurrentPage">
+	    <div ng-switch-when="add">
+	    	<div ng-include="'admin_templates/users/new.html'"></div>
+	    </div>
+	    <div ng-switch-when="edit">
+	    	<!-- Edit campign -->
+	    	<div ng-include="'admin_templates/users/edit.html'"></div>
+	    </div>
+	    <div ng-switch-when="del">
+	    	<div ng-include="'admin_templates/users/del.html'"></div>
+	    </div>
+	    <div ng-switch-when="block">
+	    	<!-- User dont have permission to edit or view the campign -->
+	    	<div ng-include="'admin_templates/users/restrict.html'"></div>
+	    </div>
+	</div>
+	<div ng-if="Users.CurrentPage == 'home'">
+		<div ng-include="'admin_templates/users/all.html'"></div>
+	</div>
+	<div ng-if="Users.CurrentPage != 'home'">
+		<button class="button tiny" ng-click="goBack()">Back</button>
+	</div>
+</div>

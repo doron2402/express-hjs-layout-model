@@ -1,0 +1,25 @@
+<h4>Edit users</h4>
+<fieldset>
+	<legend>
+		User Cardential
+	</legend>
+	<label>Username:</label><input type="text" ng-model="user.user">
+	<label>Password:</label><input type="password" ng-model="user.pass1">
+	<label>Password Confirmation:</label><input type="password" ng-model="user.pass2">
+	<small class="error" ng-if="user.user.length < 5">Username must be atleast 5 chars</small>
+	<small class="error" ng-if="user.pass2 != user.pass1">Password Must be indentical</small>
+	<small class="error" ng-if="user.pass1.length < 6">password must be at least 6 digits</small>
+</fieldset>
+<fieldset>
+	<legend>
+		User Info
+	</legend>
+		<form>
+		<p>User ID: {{Users.user.id}}</p>
+		<input type="email" ng-model="Users.user.email" />
+		<input type="phone" ng-model="Users.user.phone" />
+		<input type="text" ng-model="Users.user.name" />
+		<input type="text" ng-model="Users.user.company" />
+		<p>Type: {{Users.user.type}}</p>
+		</form>
+</fieldset>
