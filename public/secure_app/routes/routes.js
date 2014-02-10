@@ -7,6 +7,12 @@
 				controller  : 'mainController'
 			})
 			
+			//Users CRUD
+			.when('/admin/users', {
+				templateUrl : 'admin_templates/users/home.html',
+				controller : 'usersController'
+			})
+
 			//Login
 			.when('/login', {
 			  templateUrl : 'admin_templates/login.html',

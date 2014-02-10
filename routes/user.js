@@ -1,11 +1,20 @@
-
-/*
- * GET users listing.
- */
-
-exports.list = function(req, res){
-	return res.json([{username: 'Doron'},{username: 'Rachel'}]);
+var Mysql = require('../lib/mysqlKnex');
+/* 
+	Return an array of user list
+	a user can see only greater type than himself, for example if my user type=1 I can see all user type 2 and 4. (not 1 or 0)
+*/
+exports.getAllUsers = function(req, res){
+	//First check for user type is 0,1,2
+	//0 - Admin , 1 - Manager, 2 - account manager
+	if (req.session.userType < 3){
+		return Mysql.MysqlKnex('users').select().where('type', '>', parseInt(req.session.userType,10)).then(function(resp){
+			return res.json(resp);
+		});
+	}
+	else
+		return res.json({error: 'No Permission'});
 };
+
 
 //Get User by Id
 exports.getUserId = function(req, res){
@@ -85,8 +94,3 @@ exports.logoutUser = function(req, res, next){
 	delete req.session.userId;
 	return res.redirect('/');
 };
-
-exports.getList = function(req, res){
-
-	return res.json([{username: 'Doron'},{username: 'Rachel'}]);
-}

@@ -367,6 +367,52 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	 $scope.user = {name: 'me', email: 'me@me.com', lastLogin: '01-23-2014'};
 	});
 
+	/*
+		User Controller
+	*/
+	adminApp.controller('usersController', function($scope, $http){
+		
+		$scope.Users = {};
+		$scope.Users.CurrentPage = 'home';
+
+		//Get List of Users and check if the user have the right permission
+
+        $http({method: 'GET',
+			url: 'http://localhost:3000/user/all'}).
+			    success(function(data, status, headers, config) {
+			    	console.log(data);
+					$scope.users = data;
+				}).error(function(data, status, headers, config) {
+			        $scope.users = null;
+			        $scope.Users.CurrentPage = 'block';
+			    });
+
+		//Create user
+		$scope.addUser = function(){
+			$scope.Users.CurrentPage = 'add';
+		};
+
+		//Edit user detail / permission
+		$scope.editUser = function(){
+			if (this.user && this.user.id){
+				console.log(this.user);
+				$scope.Users.user = this.user;
+				$scope.Users.CurrentPage = 'edit';
+			}
+			
+		};
+
+		//Delete user
+		$scope.deleteUser = function(){
+			$scope.Users.CurrentPage = 'del';
+		};
+
+		$scope.goBack = function(){
+			$scope.Users.CurrentPage = 'home';
+		}
+
+	});
+
 	
 	adminApp.config(function($routeProvider) {
 		$routeProvider
@@ -377,6 +423,12 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 				controller  : 'mainController'
 			})
 			
+			//Users CRUD
+			.when('/admin/users', {
+				templateUrl : 'admin_templates/users/home.html',
+				controller : 'usersController'
+			})
+
 			//Login
 			.when('/login', {
 			  templateUrl : 'admin_templates/login.html',
