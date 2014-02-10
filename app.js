@@ -96,6 +96,7 @@ app.get('/faq/all', routes.static_pages.getFaq);
 
 //Campign create/delete/update/read
 app.post('/campign/add', auth.checkAuth, routes.campign.createNewCampign); //Create a new campign
+app.post('/campign/update',auth.checkAuth, routes.campign.updateCampign); //Create a new campign
 app.post('/campigns/info', auth.checkAuth, routes.campign.information);
 app.post('/campign/all', auth.checkAuth, routes.campign.getAllCampigns);
 

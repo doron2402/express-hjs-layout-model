@@ -1,12 +1,50 @@
 var Mysql = require('../lib/mysqlKnex');
 var Model = require('../models/campignModel');
 
+
+exports.updateCampign = function(req, res){
+	
+	if (req.body && req.body.id > 0){
+		
+		console.log(req.body);
+
+		return Mysql.MysqlKnex('campigns').where('id','=',parseInt(req.body.id,10))
+ 				.update({
+ 					name: req.body.name || 'NULL',
+ 					url: req.body.url || 'NULL',
+ 					startAt: req.body.startAt || 'NULL',
+ 					endAt: req.body.endAt || 'NULL',
+ 					clientId: req.body.clientId || 'NULL',
+ 					clientName: req.body.clientName || 'NULL',
+ 					adminUser: req.body.adminUser || 'NULL',
+ 					media: req.body.media || 'NULL',
+ 					campignManagerName: req.body.campignManagerName || 'NULL',
+ 					campignManagerEmail: req.body.campignManagerEmail || 'NULL',
+ 					campignManagerPhone: req.body.campignManagerPhone || 'NULL',
+ 					notes: req.body.note || 'NULL',
+ 					emailReportLeads: req.body.emailReportLeads || 'NULL'
+ 				}).then(function(resp){
+ 					console.log(resp);
+ 					return res.json(resp);
+ 				});
+	}else
+		res.json({error: 'Missing arguments'});
+};
+
 /* 
 	Create a new campign from admin page 
 */
 exports.createNewCampign = function(req,res){
 	if (req.body && req.body.name && req.body.url && req.session.userType < 3){
 		//First check if campign code is already being used
+		var clientId = 'NULL',
+			clientName = 'NULL';
+		if (req.body.clientId){
+			var clientId = req.body.clientId.split('-')[0],
+				clientName = req.body.clientId.split('-')[1];
+		}
+
+
 		return Mysql.MysqlKnex.raw('select count(*) as `campignCode` from campigns where id = ' + parseInt(req.body.code,10))
 			.then(function(resp){
 				if (resp[0][0].campignCode == 0)
@@ -17,8 +55,8 @@ exports.createNewCampign = function(req,res){
 						url: req.body.url,
 						startAt: req.body.startDate || 'NULL',
 						endAt: req.body.endDate || 'NULL',
-						clientId: req.body.clientId !== undefined ? req.body.clientId.split('-')[0] : 'NULL',
-						clientName: req.body.clientId !== undefined ? req.body.clientId.split('-')[1] : 'NULL',
+						clientId: clientId,
+						clientName: clientName,
 						adminUser: req.session.userId,
 						media: req.body.media || 'NULL',
 						campignManagerName: req.body.managerName || 'NULL',

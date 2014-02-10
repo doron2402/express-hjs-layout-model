@@ -70,6 +70,12 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	//Campign Main page where you can edit/view/create campign
 	adminApp.controller('campignMain', function ($scope, $http, $location, $window) {
 
+		$scope.createNew = true;
+
+		$scope.goBackMainCampign = function(){
+			$scope.createNew = true;
+		};
+
 		//Get list of all campigns
 		$http({
 			method: 'POST',
@@ -93,20 +99,41 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			return campign.name;
 		};
 
+		//EDIT CAMPIGN PAGE
 		$scope.editCampign = function(){
-			if (this.campignEdit.name !== undefined){
+			if (this.campignEdit && this.campignEdit.name !== undefined){
+				$scope.createNew = 'edit';
+				$scope.campign = this.campignEdit;
+				//$window.location.href = 'admin#/admin/campign/' + this.campignEdit.id;
+			}
+			
+		};
+
+		//View CAMPIGN PAGE
+		$scope.viewCampign = function(){
+
+			if (this.campignEdit && this.campignEdit.name !== undefined){
+				console.log(this.campignEdit);
+				$scope.campign = this.campignEdit;
+				$scope.createNew = 'show';
+			}
+		};
+
+		//Analyze CAMPIGN PAGE
+		$scope.analyzeCampign = function(){
+
+			if (this.campignEdit && this.campignEdit.name !== undefined){
 				console.log(this.campignEdit);
 				//redirect to the campign page -> /admin/campign/:id
 				$window.location.href = 'admin#/admin/campign/' + this.campignEdit.id;
 			}
-			
 		};
 		
 		$scope.clients = [{id: 1, name: 'a'},{id: 1234111, name: 'aasdf'},{id: 112, name: 'ca'}];
 		
 		$scope.createCampign = function(){
 			console.log('createCampign');
-			$scope.createNew = true;
+			$scope.createNew = 'new';
 
 		};
 
@@ -131,6 +158,32 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 		          });
 			}
 		};
+
+		$scope.updateCampign = function(){
+
+			if (this.campign.name != null && this.campign.url != null && this.campign.id){
+				
+				$scope.campign = this.campign;
+				console.log(this.campign);
+
+				$http({
+					method: 'POST',
+					data: this.campign,
+			    	url: 'http://localhost:3000/campign/update'}).
+		          		success(function(data, status, headers, config) {
+		            		if (data.error){
+		            			console.log(data.error);
+		            			$scope.createNew = true;	
+		            		}
+		            		console.log(data);
+		            		$scope.createNew = 'show';
+		          	}).
+		          	error(function(data, status, headers, config) {
+		            		console.log('something went wrong updating the campign');
+		          });
+			}
+		};
+		
 
 
 	});
@@ -361,12 +414,5 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			.when('/admin/campign', {
 				'templateUrl' : 'admin_templates/campign_main.html',
 				controller: 'campignMain'
-			})
-
-			// route for the contact page
-			.when('/contact', {
-				templateUrl : 'admin_templates/contact.html',
-				controller  : 'contactController'
 			});
-			
 	});

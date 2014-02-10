@@ -4,7 +4,7 @@
 		<div ng-switch-default>
 			<div ng-include="'admin_templates/campign/defualt.html'"></div>
 		</div>
-	    <div ng-switch-when="true">
+	    <div ng-switch-when="new">
 	    	<div ng-include="'admin_templates/campign/new.html'"></div>
 	    </div>
 	    <div ng-switch-when="show">
@@ -12,10 +12,14 @@
 	    </div>
 	    <div ng-switch-when="edit">
 	    	<!-- Edit campign -->
+	    	<div ng-include="'admin_templates/campign/edit.html'"></div>
 	    </div>
 	    <div ng-switch-when="block">
 	    	<!-- User dont have permission to edit or view the campign -->
 	    	<div ng-include="'admin_templates/campign/restrict.html'"></div>
 	    </div>
+	</div>
+	<div ng-if="createNew != true">
+		<button class="button tiny" ng-click="goBackMainCampign()">Back</button>
 	</div>
 </div>

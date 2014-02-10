@@ -44,12 +44,5 @@
 			.when('/admin/campign', {
 				'templateUrl' : 'admin_templates/campign_main.html',
 				controller: 'campignMain'
-			})
-
-			// route for the contact page
-			.when('/contact', {
-				templateUrl : 'admin_templates/contact.html',
-				controller  : 'contactController'
 			});
-			
 	});
