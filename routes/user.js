@@ -7,7 +7,7 @@ exports.getAllUsers = function(req, res){
 	//First check for user type is 0,1,2
 	//0 - Admin , 1 - Manager, 2 - account manager
 	if (req.session.userType < 3){
-		return Mysql.MysqlKnex('users').select().where('type', '>', parseInt(req.session.userType,10)).then(function(resp){
+		return Mysql.MysqlKnex('users').select().where('type', '>=', parseInt(req.session.userType,10)).then(function(resp){
 			return res.json(resp);
 		});
 	}
@@ -35,16 +35,24 @@ exports.signupUser = function(req, res){
 		password.update(UserData.password);
 		
 		new Model.UserModel({ 
-			username: UserData.username, 
+			name: UserData.name || 'NULL',
+			email: UserData.email || 'NULL',
 			password:  password.digest('hex'),
-			email: UserData.email || 'NULL'
+			username: UserData.username,
+			type: parseInt(UserData.type,10) || '4',
+			phone: UserData.phone || 'NULL',
+			company: UserData.company_name || 'NULL',
+			companySite: UserData.company_website || 'NULL'
 		}).save().then(function(model) {
 	    	//console.log(model);
 	    	var session_id = crypto.createHash('sha1');
 				session_id.update('#' + model.get('id') + '-' + model.get('username'));
 
 				req.session.user_id = session_id.digest('hex');
-	    	return res.json({redirect: '/admin',dataReturn: 'success' });
+	    	return res.json({ redirect: '/admin',
+	    					dataReturn: 'success',
+	    					username: model.get('username')
+	    			});
 	  	});
 
 	}

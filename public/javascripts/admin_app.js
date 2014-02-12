@@ -373,7 +373,9 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 	adminApp.controller('usersController', function($scope, $http){
 		
 		$scope.Users = {};
-		$scope.Users.CurrentPage = 'home';
+		$scope.Users.CurrentPage = 'home';		
+		$scope.patternCheckAlpha = /^[a-zA-Z]*$/;
+		$scope.patternCheckNumeric = /^\d+$/;
 
 		//Get List of Users and check if the user have the right permission
 
@@ -387,6 +389,41 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 			        $scope.Users.CurrentPage = 'block';
 			    });
 
+		$scope.resetForm = function(){
+			console.log(this.user);
+			return this.user = {};
+
+		};
+		
+		$scope.submitForm = function(){
+
+			var data = this.user; 
+			if (data && data.password && 
+				data.password_confirmation && 
+				data.password == data.password_confirmation && 
+				data.username && data.email){
+				
+				//Create User
+				$http({
+			      	method: 'POST',
+			      	data: data, 
+			      	headers: {"Content-Type": "application/json"},
+		  			url: '/user/signup'
+		  		}).
+		          	success(function(data, status, headers, config) {
+		            // this callback will be called asynchronously
+		            // when the response is available
+		            console.log(data);
+		            $scope.Users.CurrentPage = 'success';
+		            $scope.Users.username = data.username;
+		        }).
+		        	error(function(data, status, headers, config) {
+		            // called asynchronously if an error occurs
+		            // or server returns response with an error status.
+		            console.log(data);
+		        });
+			}
+		};		
 		//Create user
 		$scope.addUser = function(){
 			$scope.Users.CurrentPage = 'add';

@@ -82,7 +82,7 @@ app.get('/admin/users',auth.checkAuth, routes.admin.users);
 
 //User routes
 app.get('/user/all', auth.checkAuth, routes.user.getAllUsers); //Return an array with all the users
-app.post('/user/signup', routes.user.signupUser);
+app.post('/user/signup',auth.checkAuth, routes.user.signupUser);
 app.post('/auth/user', routes.user.loginUser);
 app.get('/admin/logout', routes.user.logoutUser);
 
