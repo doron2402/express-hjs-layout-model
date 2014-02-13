@@ -161,7 +161,7 @@ var adminApp = angular.module('adminApp', ['ngRoute','ngCookies']);
 
 		$scope.updateCampign = function(){
 
-			if (this.campign.name != null && this.campign.url != null && this.campign.id){
+			if (this.campign.name && this.campign.url && this.campign.id){
 				
 				$scope.campign = this.campign;
 				console.log(this.campign);

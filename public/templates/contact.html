@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="small-6 medium-6 large-6 columns">
                         <label>First Name</label>
-                        <input type="text" name="fname" ng-pattern="/^[a-zA-Z]*$/" placeholder="Your First Name"
+                        <input type="text" name="fname" ng-pattern="/^[a-zA-Z ]*$/" placeholder="Your First Name"
                                ng-model="contact.fname" class="signup-input" required/>
                         <small class="error" ng-hide="contactForm.fname.$valid">
                             First Name is required and must be only letters
@@ -26,7 +26,7 @@
                     </div>
                     <div class="small-6 medium-6 large-6 columns">
                         <label>Last Name</label>
-                        <input type="text" name="lname" ng-pattern="/^[a-zA-Z]*$/" class="signup-input"
+                        <input type="text" name="lname" ng-pattern="/^[a-zA-Z ]*$/" class="signup-input"
                                placeholder="Your Last Name" ng-model="contact.lname" required/>
                         <small class="error" ng-hide="contactForm.lname.$valid">
                             Last Name is required and must be only letters
@@ -40,7 +40,7 @@
                                type="text"
                                placeholder="xxx-xxx-xxxx"
                                ng-model="contact.phone"
-                               ng-pattern="/^[0-9_-]+$/"
+                               ng-pattern="/^[0-9_- ]+$/"
                                name="phone"
                                ng-minlength="9"
                                required/>
