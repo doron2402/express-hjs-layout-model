@@ -198,26 +198,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
             /* !!!!!!!!!!!!! jqplot examples END  !!!!!!!!!!*/
         };
     });
-	
-	//Signup Controller
-	myApp.controller('signupController', function($scope,$http,$location,$window) {
-		
-		$scope.message = 'Please join us';
-		$scope.patternCheckAlpha = /^[a-zA-Z]*$/;
-		$scope.patternCheckNumeric = /^\d+$/;
 
-		$scope.resetForm = function(){
-			console.log(this.user);
-			return this.user = {};
-
-		};
-		
-		$scope.submitForm = function(){
-
-			var data = $scope.user; 
-            console.log(data);
-		};
-	});
   
   	myApp.controller('thanksController', function($scope) {
 		// create a message to display in our view

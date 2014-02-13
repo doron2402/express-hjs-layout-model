@@ -19,12 +19,7 @@
 			  controller : 'thanksController'
 			})
 			
-			//Signup page
-			.when('/signup',{
-			  templateUrl : 'templates/signup.html',
-			  controller : 'signupController'
-			})
-
+			//Login view
 			.when('/login',{
 				templateUrl : 'templates/login.html',
 			  	controller : 'loginController'
