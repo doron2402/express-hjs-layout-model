@@ -1,4 +1,4 @@
-  {
+{
   "name": "myExpressApp",
   "version": "0.0.0",
   "homepage": "https://github.com/doron2402/express-hjs-layout-model",
@@ -28,6 +28,7 @@
     "angular": "~1.2.10",
     "angular-route": "~1.2.10",
     "angular-cookies": "~1.2.10",
-    "Font-Awesome": "latest"
+    "Font-Awesome": "latest",
+    "angular-google-chart": "~0.0.8"
   }
 }

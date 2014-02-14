@@ -1,11 +1,95 @@
-var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
+var myApp = angular.module('myApp', ['ngRoute','ngCookies','googlechart']);
 
 	// create the controller and inject Angular's $scope
 	myApp.controller('mainController', function($scope) {
 		// create a message to display in our view
 
         $scope.showGraphAndCharts = function () {
-            console.log('showGraphAndCharts');
+            
+            var chart1 = {};
+            chart1.type = "ColumnChart";
+            chart1.cssStyle = "height:400px; width:400px;";
+            chart1.data = {"cols": [
+                {id: "month", label: "Month", type: "string"},
+                {id: "laptop-id", label: "Laptop", type: "number"},
+                {id: "desktop-id", label: "Desktop", type: "number"},
+                {id: "server-id", label: "Server", type: "number"},
+                {id: "cost-id", label: "Shipping", type: "number"}
+            ], "rows": [
+                {c: [
+                    {v: "January"},
+                    {v: 19, f: "42 items"},
+                    {v: 12, f: "Ony 12 items"},
+                    {v: 7, f: "7 servers"},
+                    {v: 4}
+                ]},
+                {c: [
+                    {v: "February"},
+                    {v: 13},
+                    {v: 1, f: "1 unit (Out of stock this month)"},
+                    {v: 12},
+                    {v: 2}
+                ]},
+                {c: [
+                    {v: "March"},
+                    {v: 24},
+                    {v: 0},
+                    {v: 11},
+                    {v: 6}
+
+                ]}
+            ]};
+
+            chart1.options = {
+                "title": "Sales per month",
+                "isStacked": "true",
+                "fill": 20,
+                "displayExactValues": true,
+                "vAxis": {
+                    "title": "Sales unit", "gridlines": {"count": 6}
+                },
+                "hAxis": {
+                    "title": "Date"
+                }
+            };
+
+            chart1.formatters = {};
+
+            $scope.chart = chart1;
+
+
+        };
+
+        $scope.showMediaPieChart = function(){
+            $scope.chartObject = {};
+            $scope.chartObject.type = "PieChart";
+            $scope.chartObject.data = {"cols": [
+                {id: "t", label: "Topping", type: "string"},
+                {id: "s", label: "Slices", type: "number"}
+            ], "rows": [
+                {c: [
+                    {v: "Ynet"},
+                    {v: 3},
+                ]},
+                {c: [ {v: "Facebook"},{v: 33} ]},
+                {c: [
+                    {v: "Yad2"},
+                    {v: 31}
+                ]},
+                {c: [
+                    {v: "Blogs"},
+                    {v: 1},
+                ]},
+                {c: [
+                    {v: "Instagram"},
+                    {v: 2},
+                ]}
+            ]};
+
+
+            $scope.chartObject.options = {
+                'title': 'Which media works the best for your campign?!'
+            }
         };
     });
 

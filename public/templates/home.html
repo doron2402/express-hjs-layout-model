@@ -20,7 +20,11 @@
         </div>
 
         <div ng-init="showGraphAndCharts()">
-            <p>Graph will be here</p>
+            <div google-chart chart="chart" style="{{chart.cssStyle}}"/>
+        </div>
+
+        <div ng-init="showMediaPieChart()">
+            <div google-chart chart="chartObject" style="{{PieChart.cssStyle}}"/>
         </div>
     </div>
 </div>

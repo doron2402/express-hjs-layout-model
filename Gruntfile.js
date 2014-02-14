@@ -10,16 +10,17 @@ module.exports = function (grunt) {
                 ],
                 dest: 'public/stylesheets/style.css'
             },
-            js: {
+            js_main: {
                 src: [
                     'public/components/jquery/jquery.js',
-                    'public/components/jquery-placeholder/jquery.placeholder.js',
-                    'public/components/jquery.cookie/jquery.cookie.js',
-                    'public/components/foundation/foundation.js',
                     'public/components/angular/angular.js',
-
+                    'public/components/angular-cookies/angular-cookies.js',
+                    'public/components/angular-route/angular-route.js',
+                    'public/components/angular-google-chart/ng-google-chart.js',
+                    'public/components/foundation/foundation.js',
+                    'public/components/angular-google-chart/ng-google-chart.js'
                 ],
-                dest: 'public/javascripts/main.js'
+                dest: 'public/javascripts/public_main.js'
             },
             js_app: {
                 src: [

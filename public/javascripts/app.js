@@ -1,120 +1,95 @@
-var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
+var myApp = angular.module('myApp', ['ngRoute','ngCookies','googlechart']);
 
 	// create the controller and inject Angular's $scope
 	myApp.controller('mainController', function($scope) {
 		// create a message to display in our view
 
         $scope.showGraphAndCharts = function () {
-
-            /*
-                Pie Chart - Most effective Media
-            */
-            var data = [
-                ['Facebook', 12],
-                ['Ynet', 9],
-                ['Yad2', 14],
-                ['Calcalist', 16],
-                ['Instagram', 7],
-                ['Blog', 9]
-            ];
             
-            $.jqplot ('piechart', [data],
-                {
-                    seriesDefaults: {
-                        // Make this a pie chart.
-                        renderer: $.jqplot.PieRenderer,
-                        rendererOptions: {
-                            showDataLabels: true
-                        }
-                    },
-                    legend: { 
-                        show:true, 
-                        location: 'e' 
-                    }
-                }
-            );
-            $.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]],
-                { title:'Number of leads',
-                    axes:{yaxis:{min:-10, max:240}},
-                    series:[{color:'#5FAB78'}]
-                });
+            var chart1 = {};
+            chart1.type = "ColumnChart";
+            chart1.cssStyle = "height:400px; width:400px;";
+            chart1.data = {"cols": [
+                {id: "month", label: "Month", type: "string"},
+                {id: "laptop-id", label: "Laptop", type: "number"},
+                {id: "desktop-id", label: "Desktop", type: "number"},
+                {id: "server-id", label: "Server", type: "number"},
+                {id: "cost-id", label: "Shipping", type: "number"}
+            ], "rows": [
+                {c: [
+                    {v: "January"},
+                    {v: 19, f: "42 items"},
+                    {v: 12, f: "Ony 12 items"},
+                    {v: 7, f: "7 servers"},
+                    {v: 4}
+                ]},
+                {c: [
+                    {v: "February"},
+                    {v: 13},
+                    {v: 1, f: "1 unit (Out of stock this month)"},
+                    {v: 12},
+                    {v: 2}
+                ]},
+                {c: [
+                    {v: "March"},
+                    {v: 24},
+                    {v: 0},
+                    {v: 11},
+                    {v: 6}
 
-            var line1=[['23-May-08', 578.55], ['20-Jun-08', 566.5], ['25-Jul-08', 480.88], ['22-Aug-08', 509.84],
-                ['26-Sep-08', 454.13], ['24-Oct-08', 379.75], ['21-Nov-08', 303], ['26-Dec-08', 308.56],
-                ['23-Jan-09', 299.14], ['20-Feb-09', 346.51], ['20-Mar-09', 325.99], ['24-Apr-09', 386.15]];
-            
-            $.jqplot('chart', [line1], {
-                title:'Data Point Highlighting',
-                axes:{
-                    xaxis:{
-                        renderer:$.jqplot.DateAxisRenderer,
-                        tickOptions:{
-                            formatString:'%b&nbsp;%#d'
-                        }
-                    },
-                    yaxis:{
-                        tickOptions:{
-                            formatString:'$%.2f'
-                        }
-                    }
-                },
-                highlighter: {
-                    show: true,
-                    sizeAdjust: 7.5
-                },
-                cursor: {
-                    show: false
-                }
-            });
+                ]}
+            ]};
 
-            var line1 = [['Cup Holder Pinion Bob', 7], ['Generic Fog Lamp', 9], ['HDTV Receiver', 15],
-                ['8 Track Control Module', 12], [' Sludge Pump Fourier Modulator', 3],
-                ['Transcender/Spice Rack', 6], ['Hair Spray Danger Indicator', 18]];
+            chart1.options = {
+                "title": "Sales per month",
+                "isStacked": "true",
+                "fill": 20,
+                "displayExactValues": true,
+                "vAxis": {
+                    "title": "Sales unit", "gridlines": {"count": 6}
+                },
+                "hAxis": {
+                    "title": "Date"
+                }
+            };
 
-            $.jqplot('barchart', [line1], {
-                title: 'Concern vs. Occurrance',
-                series:[{renderer:$.jqplot.BarRenderer}],
-                axesDefaults: {
-                    tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
-                    tickOptions: {
-                        angle: -30,
-                        fontSize: '10pt'
-                    }
-                },
-                axes: {
-                    xaxis: {
-                        renderer: $.jqplot.CategoryAxisRenderer
-                    }
-                }
-            });
-            // For horizontal bar charts, x an y values must will be "flipped"
-            // from their vertical bar counterpart.
-            $.jqplot('charts', [
-                [[2,1], [4,2], [6,3], [3,4]],
-                [[5,1], [1,2], [3,3], [4,4]],
-                [[4,1], [7,2], [1,3], [2,4]]], {
-                seriesDefaults: {
-                    renderer:$.jqplot.BarRenderer,
-                    // Show point labels to the right ('e'ast) of each bar.
-                    // edgeTolerance of -15 allows labels flow outside the grid
-                    // up to 15 pixels.  If they flow out more than that, they
-                    // will be hidden.
-                    pointLabels: { show: true, location: 'e', edgeTolerance: -15 },
-                    // Rotate the bar shadow as if bar is lit from top right.
-                    shadowAngle: 135,
-                    // Here's where we tell the chart it is oriented horizontally.
-                    rendererOptions: {
-                        barDirection: 'horizontal'
-                    }
-                },
-                axes: {
-                    yaxis: {
-                        renderer: $.jqplot.CategoryAxisRenderer
-                    }
-                }
-            });
-            
-            /* !!!!!!!!!!!!! jqplot examples END  !!!!!!!!!!*/
+            chart1.formatters = {};
+
+            $scope.chart = chart1;
+
+
+        };
+
+        $scope.showMediaPieChart = function(){
+            $scope.chartObject = {};
+            $scope.chartObject.type = "PieChart";
+            $scope.chartObject.data = {"cols": [
+                {id: "t", label: "Topping", type: "string"},
+                {id: "s", label: "Slices", type: "number"}
+            ], "rows": [
+                {c: [
+                    {v: "Ynet"},
+                    {v: 3},
+                ]},
+                {c: [ {v: "Facebook"},{v: 33} ]},
+                {c: [
+                    {v: "Yad2"},
+                    {v: 31}
+                ]},
+                {c: [
+                    {v: "Blogs"},
+                    {v: 1},
+                ]},
+                {c: [
+                    {v: "Instagram"},
+                    {v: 2},
+                ]}
+            ]};
+
+
+            $scope.chartObject.options = {
+                'title': 'Which media works the best for your campign?!'
+            }
         };
     });
 
@@ -251,4 +226,3 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 			});
 			
 	});
-
