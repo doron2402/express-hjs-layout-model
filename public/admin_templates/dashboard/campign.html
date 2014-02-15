@@ -13,9 +13,9 @@
 		<tbody>
 			<tr ng-repeat="campign in cardentials | filter:q">
 				<td>
-					<a href="#admin/campign/{{campign.campignId}}" alt="{{campign.name}}">View</a>
+					<a href="#admin/campign/{{campign.id}}" alt="{{campign.name}}">View</a>
 				</td>
-				<td>{{campign.campignId}}</td>
+				<td>{{campign.id}}</td>
 				<td>{{campign.name}}</td>
 				<td>{{permission[campign.cardential]}}</td>
 			</tr>

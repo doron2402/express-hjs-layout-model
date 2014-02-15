@@ -50,7 +50,7 @@
 		$scope.permission[4] = 'Media Permission';
 
 		$http({method: 'POST',
-	    	url: 'http://localhost:3000/campigns/available'}).
+	    	url: 'http://localhost:3000/campign/all'}).
           		success(function(data, status, headers, config) {
             	// this callback will be called asynchronously
             	// when the response is available
