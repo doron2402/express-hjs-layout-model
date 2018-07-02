@@ -4,18 +4,21 @@
   "private": true,
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js app.js",
-    "test": "echo testing..."
+    "test": "echo testing...",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "express": "3.4.4",
+    "express": "4.16.0",
     "hjs": "*",
     "less-middleware": "*",
     "hogan-express": "~0.5.2",
-    "bower": "~1.2.8",
+    "bower": "~1.7.5",
     "nodemon": "~1.0.13",
     "mysql": "~2.14.0",
     "knex": "~0.5.5",
-    "bookshelf": "~0.6.2"
+    "bookshelf": "~0.6.2",
+    "snyk": "^1.88.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -24,5 +27,6 @@
     "grunt-contrib-cssmin": "~0.7.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-nodemon": "~0.2.0"
-  }
+  },
+  "snyk": true
 }
