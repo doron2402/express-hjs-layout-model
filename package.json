@@ -11,7 +11,7 @@
     "hjs": "*",
     "less-middleware": "*",
     "hogan-express": "~0.5.2",
-    "bower": "~1.2.8",
+    "bower": "~1.7.5",
     "nodemon": "~1.0.13",
     "mysql": "~2.14.0",
     "knex": "~0.5.5",
